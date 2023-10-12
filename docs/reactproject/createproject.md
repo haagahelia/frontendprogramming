@@ -7,9 +7,9 @@ sidebar_position: 2
 
 - Vite (French word for "quick", pronounced /vit/) https://vitejs.dev/
 - Vite requires Node.js and you can check the latest version requirements from Vite website.
-- You can create a new Vite project by entering the following command in command line:
+- You can create a new Vite project by entering the following npm command in command line:
 
-```
+```bash
 npm create vite@latest
 ```
 - The command opens a project wizard where you can define a name of your project and framework. Select **React** framework and  **javascript** variant.
@@ -18,12 +18,12 @@ npm create vite@latest
 
 - Next, you change directory into you project folder and install the dependencies:
 
-```
+```bash
 cd your_project
 npm install
 ```
 - Finally, run the project in development mode:
-```
+```bash
 npm run dev
 ```
 
