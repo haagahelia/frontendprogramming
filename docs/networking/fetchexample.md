@@ -3,11 +3,12 @@ title: 'Networking Example'
 sidebar_label: 'Example'
 sidebar_position: 4
 ---
+### NASA APOD API
 - The following example uses **NASA APOD** API that shows astronomy picture or video of the date. (https://api.nasa.gov/)
-- The example makes call to rest api and shows daily image and explanation in the page
-- Rest API can be called by using following URL:
+- The example sends a request to the NASA APOD Rest API and displays daily image and explanation that we receive in a response.
+- Rest API can be called by using following URL (GET method):
 https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY
-- The call response returns explanation and image URL as JSON format. The media_type field can be used to check if the response contains video or image.
+- The response payload contains `explanation` and `url` properties. The `media_type` property can be used to check if the daily media is video or image.
 
 The response data looks like the image below:
 
@@ -30,10 +31,9 @@ React.useEffect(() => {
   .then(responseData => setData(responseData))
   .catch(err => console.error(err))
 }, []);
-
 ```
 - Then, we will use conditional rendering. We will check the `media_type` and render either image or video:
-```js
+```jsx
 if (!data.media_type) {
   return <p>Loading...</p>
 }
@@ -55,7 +55,7 @@ else {
 }
 ```
 - Or using inline conditional rendering
-```js
+```jsx
 if (!data.media_type) {
   return <p>Loading...</p>
 }
