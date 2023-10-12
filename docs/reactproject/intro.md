@@ -18,3 +18,9 @@ In this course, we are using **Vite** (https://vitejs.dev/) that is a build tool
 
 Next.js, Remix and Gatsby are React frameworks that provide a lot of features out of the box.
 
+:::note
+Now, we start to use command line / terminal. If you are not familiar to use command line, you can use some online tutorial to get started.
+
+
+:::
+
