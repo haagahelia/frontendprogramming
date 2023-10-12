@@ -10,4 +10,5 @@ In this section, you will learn the Basics of React
 - Props
 - State
 - Conditional rendering
+- Reading user input
 - React Developer Tools
