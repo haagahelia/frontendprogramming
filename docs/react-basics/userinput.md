@@ -21,7 +21,7 @@ const handleChange = (event) => {
 ```
 - The following example prints a text on the screen, that you type to the input element
 
-```jsx
+```jsx live
 function HelloName() {
   const [name, setName] = React.useState('');
   
