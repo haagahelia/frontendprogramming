@@ -2,8 +2,7 @@
 title: 'State'
 sidebar_position: 5
 ---
-
-- **State** value can change during the lifecycle of the component.
+- **State** value can change during the lifecycle of the component. State is component specific "memory" and it triggers component re-render when its value is changed.
 - **State** is declared using the **`useState`** hook function. In React, **hook** functions are named using the convention of starting the function name with **use** followed by a descriptive term that explains what the hook does (in this case "State"). 
 - Example below creates state variable called `firstName` and function `setFirstName` is used to update its value.
 - The `useState` takes one argument that is an initial value of the defined state.
