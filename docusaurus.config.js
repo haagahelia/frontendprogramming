@@ -67,8 +67,8 @@ const config = {
       navbar: {
         title: 'Front End Programming',
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: 'Haaga-Helia',
+          src: 'img/haagahelia.png',
         },
         items: [
           {
