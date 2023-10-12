@@ -54,7 +54,7 @@ return (
 
 - Below is the source code of the `Counter` component:
 
-```jsx
+```jsx live
 function Counter() {
   const [count, setCount] = React.useState(0);
 
@@ -70,15 +70,26 @@ function Counter() {
 ### Question
 - Change the counter app and render `Counter` component three times. How counter values are changed if you click any of the buttons? and Why?
 
-```jsx
-ReactDOM.render(
+```jsx live
+function Counters(){
+  function Counter() {
+    const [count, setCount] = React.useState(0);
+
+    return (
+      <div>
+        <p>You clicked {count} times</p>
+        <button onClick={() => setCount(count + 1)}>+</button>
+      </div>
+    );
+  }
+
+return (
   <div>
     <Counter />
     <Counter />
     <Counter />
-  </div>,
-  document.getElementById("root")
-);
+  </div>);
+}
 ```
 ---
 - **Note!** State updates are asynchronous and batched. In the Counter example, the new state depends on the previous value of the state. To make sure that the state is always updated correctly, you should pass a function that updates the state like shown in the following example.
