@@ -54,7 +54,7 @@ return (
 
 - Below is the source code of the `Counter` component:
 
-```jsx live
+```jsx
 function Counter() {
   const [count, setCount] = React.useState(0);
 
@@ -152,13 +152,6 @@ function handleClick() {
 
 - We can embed javascript to JSX by wrapping it in the curly braces.
   After compilation, JSX expressions becomes regular JavaScript objects.
-
-
-Here you can test how JSX works by changing the calculation inside the curly brackets:
-```jsx live
-<p>1 + 3 = {1 + 3}</p>
-````
-
 ---
 ###  React Developer Tools
 

@@ -2,7 +2,7 @@
 title: 'List Handling'
 sidebar_position: 5
 ---
-## map()
+### map()
 - First, it is good to learn JavaScript function that is really useful with arrays. 
 - The `map()` function creates a new array with the results of calling a function for every array element.
 ```js
@@ -12,14 +12,11 @@ let arrB = arrA.map(x => x * 2);
 ```
 - The `map` statement above returns a new array with values multiplied by 2.
 
-- By Joe Devilla
+- See the nice emoji explanation By Joe Devilla
 (https://www.globalnerdy.com/2016/06/23/map-filter-and-reduce-explained-using-emoji/) 
-![Map](./img/map-emoji.png)
 
 ---
-<!-- _class: smaller -->
-
-## List handling
+### List handling
 - The following example creates a state that is array of numbers.
 - Then, we render array of listitems in the return statement by using the `map` function.
 - **Note!** `key` string attribute is needed in the lists. That helps react to identify which rows have changed. The `map` method has second argument that is running index and we use that in the following exampe.   
@@ -77,6 +74,9 @@ return (
   </div>
 );
 ```
-- The source code can be found in http://bit.ly/2kdCcwS
+Now, the list should look like the following screenshot:
 
 ![](./img/persons2.png)
+
+- The source code can be found in http://bit.ly/2kdCcwS
+
