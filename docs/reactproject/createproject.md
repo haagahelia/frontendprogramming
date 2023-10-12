@@ -12,13 +12,14 @@ sidebar_position: 2
 ```
 npm create vite@latest
 ```
-- The command opens a project wizard where you can define a name of your project and framework. Select **React** framework and from the language variant select **javascript**.
+- The command opens a project wizard where you can define a name of your project and framework. Select **React** framework and  **javascript** variant.
+
   ![Vite project](./img/create_vite1.png)
 
 - Next, you change directory into you project folder and install the dependencies:
 
 ```
-cd your_folder
+cd your_project
 npm install
 ```
 - Finally, run the project in development mode:
@@ -39,10 +40,11 @@ You can stop the process by pressing **_Ctrl + c_** in the terminal
 ---
 ### Project structure
 
-- Vite creates the following folder structure
+- Vite creates the following project structure
 - The **_App.jsx_** file contains the React component that is rendered.
-- If you have bigger app with multiple components, it is better to create own folder for these
-  ![](./img/vite_project.png)
+- If you have bigger app with multiple components and functionalities, it is better to create own folder for these. For example, /components, /api, etc.
+
+![Project structure](./img/vite_project.png)
 
 
 - `import` statements are used to import libraries, react components, stylesheet and assets to the component.
@@ -60,7 +62,7 @@ function App() {
 
 export default App;
 ```
-- The **_main.jsx_** file imports App component and renders it to **_index.html_** file’s `root` element. The **_index.html_** file can be found from the root folder of your project.
+- The **_main.jsx_** file imports the `App` component and renders it to **_index.html_** file’s `root` element. The **_index.html_** file can be found from the root folder of your project.
 
 ```jsx
 // main.jsx
@@ -75,3 +77,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   </React.StrictMode>
 );
 ```
+:::note
+The `React.StrictMode` lets you find common bug in your React app in the development phase. Due to strict mode, components will re-render extra time in the development mode to find bugs.
+:::
