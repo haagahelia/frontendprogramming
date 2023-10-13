@@ -1,10 +1,8 @@
 ---
 title: 'Create Project'
-sidebar_position: 2
+sidebar_position: 3
 ---
-
 ### Create Vite React project
-
 - Vite (French word for "quick", pronounced /vit/) https://vitejs.dev/
 - Vite requires Node.js and you can check the latest version requirements from Vite website.
 - You can create a new Vite project by entering the following npm command in command line:

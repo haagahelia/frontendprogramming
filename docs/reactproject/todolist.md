@@ -1,8 +1,8 @@
 ---
 title: 'Todolist Example'
-sidebar_position: 3
+sidebar_position: 4
 ---
-- Create a new React App using **Vite**
+- Create a new React App using **Vite** (Select React and JavaScript).
 - Create a new file called **TodoList.jsx** inside the **src** folder. Add the following code into the file.
 ```jsx title="TodoList.jsx"
 function TodoList() {
@@ -123,8 +123,7 @@ button {
 - The todolist is now in the center of screen because the `body` style contains the following setting `place-items: center;`. You can remove that line from the `index.css` file.
 
 Now, your todolist should look the following:
-![](./img/todolist1.png)
-
+![Todolist](./img/todolist1.png)
 
 `***Tasks***: Try to implement the following features to your Todolist app.
 1. Clear the input element after the Add button is pressed.
