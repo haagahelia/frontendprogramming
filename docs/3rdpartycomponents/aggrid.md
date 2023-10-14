@@ -27,6 +27,10 @@ npm install ag-grid-community ag-grid-react
   "react-dom": "^18.2.0"
 },
 ```
+:::note
+In the line `"ag-grid-community": "^30.2.0"` the `ag-grid-community` is the name of the installed package. The `"^30.2.0"` specifies the installed version. The `^` symbol inidcates that it allows to receive bug fixes and minor version updates. The major version updates are not allowed (For example, 31.0.0). The packages are automatically updated when you execute the `npm install` command. The installed versions are saved to the dependency lock file **package.lock.json** file. If the version is specified `"30.2.0"` it means that the project requires version 30.2.0 and updates are not received automatically. 
+:::
+
 #### Import AG-Grid component and stylesheets
 - To use AG-Grid component in our TodoList component we have to import it. We import the `AgGridReact` component and stylesheets. AG-Grid provides pre-defined styles (Bootstrap, Alpine and Material Design) and we use the Material Design styling. Add the following imports in your `TodoList` component.
 

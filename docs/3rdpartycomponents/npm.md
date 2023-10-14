@@ -3,7 +3,7 @@ title: 'Npm'
 sidebar_position: 3
 ---
 ### Npm basics
-- When you are using third-party libraries in your React project, you should know how to install these. The installation is done in the project folder using the **npm**. The most of the third-party libraries are published public that anyone can download and use these. 
+- When you are using third-party libraries in your React project, you should know how to install them. The installation is done in the project folder using the **npm**. The most of the third-party libraries are published public that anyone can download and use these. 
 - The following npm command is used to install libraries or packages to your React project. The command is executed in your project folder using the command line.
 ```bash
 npm install <package-name>
