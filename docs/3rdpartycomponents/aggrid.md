@@ -79,5 +79,20 @@ return (
   </>
 )  
 ```
+Now, your Todolist should look like the following screenshot and the todo table looks already more professional:
+![Todolist](./img/todolist3.png)
 
+#### Column properties
+- The column properties are used to define the column behaviour. So far, we have only used `field` property in our column definitions.
+- You can find all column properties in https://www.ag-grid.com/react-data-grid/column-properties/
+- By default, column sort is disabled. Set `sortable` property to `true` to enable sorting on a column.
+- You can also get a column-based filter that filters rows using the spcified values. You can enble colmun filter by setting `filter` property to `true`.
+- Now, the `columndDef` look like the code below:
 
+```js  title="TodoList.jsx"
+const [columnDefs] = useState([
+  {field: 'desc', sortable: true, filter: true},
+  {field: 'priority', sortable: true, filter: true},
+  {field: 'date', sortable: true, filter: true}
+]);
+```
