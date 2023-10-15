@@ -5,7 +5,7 @@ sidebar_position: 4
 - **AG-Grid** (https://www.ag-grid.com/) is popular data grid component that can be used with several JavaScript libraries, such as React.
 - AG-grid provides free community version (MIT license).
 - We have developed Todolist app and if you have done the assignments, you should now have also date field and delete functionality.
-- Let's add third property to our Todolist that is priority. Add the `priority` property to your todo state and add an input element that user can enter priority and it is stored to the state. Then, your Todolist should look like the following screenshot:
+- Let's add third property to our Todolist that is priority. Add the `priority` property to the `todo` state and add an input element that user can enter priority and it is stored to the state. Then, your Todolist should look like the following screenshot:
 
 ![Todolist](./img/todolist2.png)
 
@@ -89,10 +89,123 @@ Now, your Todolist should look like the following screenshot and the todo table 
 - You can also get a column-based filter that filters rows using the spcified values. You can enble colmun filter by setting `filter` property to `true`.
 - Now, the `columndDef` look like the code below:
 
-```js  title="TodoList.jsx"
+```js title="TodoList.jsx"
 const [columnDefs] = useState([
   {field: 'desc', sortable: true, filter: true},
   {field: 'priority', sortable: true, filter: true},
   {field: 'date', sortable: true, filter: true}
 ]);
 ```
+- If you click any of the column header, you can see that column is now sorted. Column headers contains also 'hamburger'-menu that opens column filter.
+
+#### Styling cells
+- We can use `cellStyle` column property to define cell styling. The value of the property is a callback function that returns an object of css values.
+- In the example code below, the priority cell text color is red if the priority value is High.
+
+```js title="TodoList.jsx"
+const columns = [
+  { field: "desc", sortable: true, filter: true },
+  { field: "priority", sortable: true, filter: true, 
+    //highlight-next-line
+    cellStyle: params => params.value === "High" ? {color: 'red'} : {color: 'black'} },
+  { field: "date", sortable: true, filter: true }
+];
+```
+#### Delete functionality
+- Let’s implement the delete functionality, where user can select a row and when the delete button is pressed, the selected row is deleted.
+- First, we have to enable row selection and set mode to single selection by using the `rowSelection` grid prop.
+```jsx title="TodoList.jsx"
+<AgGridReact
+  columnDefs={columns}
+  rowData={todos}>
+  //highlight-next-line
+  rowSelection="single"
+</AgGridReact>
+```
+- We should be able to get the selected row and therefore we need access to ag-grid component’s API. The API provides method called getSelectedNodes() that we can use to get selected row index.
+- To get access to the Grid API, we can use React `useRef` hook function (https://reactjs.org/docs/hooks-reference.html#useref).
+
+```js title="TodoList.jsx"
+// Import useRef
+import { useRef, useState } from 'react'
+
+function TodoList() {
+  const [todo, setTodo] = useState({ desc: '', date: '', priority: '' });
+  const [todos, setTodos] = useState([]);
+  //highlight-next-line
+  const gridRef = useRef();
+```
+- By using `ref` prop we can make a reference to the `AgGridReact` component. It allows us to access it's methods directly.
+```jsx title="TodoList.jsx"
+<AgGridReact 
+  //highlight-next-line
+  ref={gridRef}
+  rowData={todos}
+  columnDefs={columnDefs}
+  rowSelection="single"
+/>
+```
+- The `AgGridReact` component's methods are in the Grid API (https://www.ag-grid.com/react-data-grid/grid-api/); therefore, we have to link our reference to the API. AG-Grid provides the `gridReady` event that is invoked when the grid has initialised and is ready for most api calls, but may not be fully rendered yet. We can use `onGridReady` event handler to get access to the grid API and store the grid API object to our reference. Then, we can use the `gridRef.current` to call methods that grid API provides.
+```jsx title="TodoList.jsx"
+<AgGridReact 
+  ref={gridRef}
+  //highlight-next-line
+  onGridReady={ params => gridRef.current = params.api }
+  rowData={todos}
+  columnDefs={columnDefs}
+  rowSelection="single"
+/>
+```
+- Next, we add Delete button inside the `return` statement and when the button is pressed, it call `handleDelete` function.
+```jsx
+return (
+    <>
+      <input 
+        placeholder="Description" 
+        onChange={e => setTodo({...todo, desc: e.target.value })} 
+        value={todo.desc} />
+      <input 
+        placeholder="Priority" 
+        onChange={e => setTodo({...todo, priority: e.target.value })} 
+        value={todo.priority} /> 
+      <input 
+        placeholder="Date" 
+        onChange={e => setTodo({...todo, date: e.target.value })} 
+        value={todo.date} />
+      <button onClick={addTodo}>Add</button>
+      //highlight-next-line
+      <button onClick={handleDelete}>Delete</button>
+      <div className="ag-theme-material" style={{width: 700, height: 500}}>
+        <AgGridReact 
+          ref={gridRef}
+          onGridReady={ params => gridRef.current = params.api }
+          rowData={todos}
+          columnDefs={columnDefs}
+          rowSelection="single"
+        />
+      </div>    
+    </>
+)
+```
+- Finally, we implement the `handleDelete` function. We can use the grid API's `getSelectedNodes` method that returns an array of selected rows. We are using the single selection mode; therefore, it only returns one row. The row index can be get from the row object's `id` property. We use the JavaScript `filter` function to filter selected row from the `todos` state. The `filter` function create a new array containing elements from the original array that meet a specific condition. It does not modify the original array but returns a new array with the filtered elements.
+```js title="TodoList.jsx"
+const handleDelete = () => {
+  setTodos(todos.filter((todo, index) => 
+      index != gridRef.current.getSelectedNodes()[0].id))
+};
+```
+- If you select a row in the grid and press the Delete button, the selected row is deleted from the grid. If you don't select any row and press the Delete button, you can see an error in the console. We also have to check that one row is selcted before filtering.
+```js title="TodoList.jsx"
+const deleteTodo = () => {
+  if (gridRef.current.getSelectedNodes().length > 0) {
+    setTodos(todos.filter((todo, index) => 
+      index != gridRef.current.getSelectedNodes()[0].id))
+  }
+  else {
+    alert('Select a row first!');
+  }
+};
+```
+- Now, we have finalized our Todolist using the AG-Grid, and your Todolist should look like the following screenshot:
+
+SCREENSHOT
