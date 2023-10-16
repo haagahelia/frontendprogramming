@@ -82,7 +82,7 @@ useEffect(() => {   // regular non-async function passed to useEffect
 ```
 - Because the precedence of the function call operator `()` is so high, the function expression (arrow function) needs to be in brackets
 ---
-### Sources
+### Further reading
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
 - https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#table

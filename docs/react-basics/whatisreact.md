@@ -3,9 +3,10 @@ sidebar_position: 2
 ---
 
 # What is React?
+![React logo](./img/react.png)
 - JavaScript library for building user interfaces.
 - Uses declarative way to define the UI and its changes.
-- Developed by Meta (formerly Facebook) https://reactjs.org/ (MIT license).
+- Developed by Meta (formerly Facebook) under the MIT license.
 - React is component based and components are reusable. React components are JavaScript functions.
 - React documentation: https://react.dev/
 

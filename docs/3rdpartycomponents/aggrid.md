@@ -3,16 +3,16 @@ title: 'AG-Grid'
 sidebar_position: 4
 ---
 - **AG-Grid** (https://www.ag-grid.com/) is popular data grid component that can be used with several JavaScript libraries, such as React.
-- AG-grid provides free community version (MIT license).
-- We have developed Todolist app and if you have done the assignments, you should now have also date field and delete functionality.
-- Let's add third property to our Todolist that is priority. Add the `priority` property to the `todo` state and add an input element that user can enter priority and it is stored to the state. Then, your Todolist should look like the following screenshot:
+- AG-grid provides a free community version (MIT license).
+- We have developed the Todolist app, and if you have done the assignments, you should now also have date field and delete functionality.
+- Let's add a third property to our Todolist that is a priority. Add the `priority` property to the `todo` state and add an input element that user can enter priority which is stored to the state. Then, your Todolist should look like the following screenshot:
 
 ![Todolist](./img/todolist2.png)
 
-- Now, we will replace the HTML table with AG-Grid component in our Todolist app. Then, we can get easily nice features such as sorting, filtering, etc. to our Todolist app.
+- Now, we will replace the HTML table with the AG-Grid component in our Todolist app. Then, we can easily get nice features such as sorting, filtering, etc. to our Todolist app.
 - Move to your Todolist project folder using the command line.
 #### Install AG-Grid
-- First, you have to install the AG-Grid component to your project. The installation command can be found in the component's documentation. In this case in https://www.ag-grid.com/react-data-grid/getting-started/. The npm command is the following and you should execute it in your project folder:
+- First, you have to install the AG-Grid component in your project. The installation command can be found in the component's documentation. In this case in https://www.ag-grid.com/react-data-grid/getting-started/. The npm command is the following and you should execute it in your project folder:
 ```bash
 npm install ag-grid-community ag-grid-react
 ```
@@ -32,7 +32,7 @@ In the line `"ag-grid-community": "^30.2.0"` the `ag-grid-community` is the name
 :::
 
 #### Import AG-Grid component and stylesheets
-- To use AG-Grid component in our TodoList component we have to import it. We import the `AgGridReact` component and stylesheets. AG-Grid provides pre-defined styles (Bootstrap, Alpine and Material Design) and we use the Material Design styling. Add the following imports in your `TodoList` component.
+- To use the AG-Grid component in our TodoList component, we have to import it. We import the `AgGridReact` component and stylesheets. AG-Grid provides pre-defined styles (Bootstrap, Alpine, and Material Design) and we use the Material Design styling. Add the following imports to your `TodoList` component.
 
 ```js title="TodoList.jsx"
 import { AgGridReact } from "ag-grid-react";
@@ -41,7 +41,7 @@ import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-material.css";
 ```
 #### Define columns
-- Next, we have to define data grid columns. The columns are defined using a state and the value is an array of column definition objects. Each column definition object has mandatory property `field` that defines what data is shown in a column. For example, if we define `{field: 'date'}`, this column shows our `todo` object's `date` property value.
+- Next, we have to define data grid columns. The columns are defined using a state, and the value is an array of column definition objects. Each column definition object has a mandatory property `field` that defines what data is shown in a column. For example, if we define `{field: 'date'}`, this column shows our `todo` object's `date` property value.
 
 ```js title="TodoList.jsx"
 const [columnDefs, setColumnDefs] = useState([
@@ -51,7 +51,7 @@ const [columnDefs, setColumnDefs] = useState([
 ]);
 ```
 #### Render AG-Grid
-- Then, we render the `AgGridReact component`. The `rowData` prop defines where row data comes and the value should be an array. In our case, it is the `todos` array state where our todo objects are stored. The `columnDefs` prop defines column definition and it is the `columnDefs` state that we just created before. Remove the `TodoTable` component because, now we will use AG-Grid to show our data. You have to wrap `AgGridReact` component inside `div` that defines the theme CSS class and grid size.
+- Then, we render the `AgGridReact component`. The `rowData` prop defines where row data comes from and the value should be an array. In our case, it is the `todos` array state where our todo objects are stored. The `columnDefs` prop defines the column definition, and it is the `columnDefs` state that we just created before. Remove the `TodoTable` component because now we will use AG-Grid to show our data. You have to wrap the `AgGridReact` component inside `div` that defines the theme CSS class and grid size.
 ```js title="TodoList.jsx"
 return (
   <>
@@ -83,8 +83,8 @@ Now, your Todolist should look like the following screenshot and the todo table 
 ![Todolist](./img/todolist3.png)
 
 #### Column properties
-- The column properties are used to define the column behaviour. So far, we have only used `field` property in our column definitions.
-- You can find all column properties in https://www.ag-grid.com/react-data-grid/column-properties/
+- The column properties are used to define the column behavior. So far, we have only used the `field` property in our column definitions.
+- You can find all column properties at https://www.ag-grid.com/react-data-grid/column-properties/
 - By default, column sort is disabled. Set `sortable` property to `true` to enable sorting on a column.
 - You can also get a column-based filter that filters rows using the spcified values. You can enble colmun filter by setting `filter` property to `true`.
 - Now, the `columndDef` look like the code below:
@@ -96,7 +96,7 @@ const [columnDefs] = useState([
   {field: 'date', sortable: true, filter: true}
 ]);
 ```
-- If you click any of the column header, you can see that column is now sorted. Column headers contains also 'hamburger'-menu that opens column filter.
+- If you click any of the column headers, you can see that the column is now sorted. Column headers also contain a 'hamburger'-menu that opens the column filter.
 
 #### Styling cells
 - We can use `cellStyle` column property to define cell styling. The value of the property is a callback function that returns an object of css values.
@@ -112,7 +112,7 @@ const columns = [
 ];
 ```
 #### Delete functionality
-- Let’s implement the delete functionality, where user can select a row and when the delete button is pressed, the selected row is deleted.
+- Let’s implement the delete functionality, where the user can select a row, and when the delete button is pressed, the selected row is deleted.
 - First, we have to enable row selection and set mode to single selection by using the `rowSelection` grid prop.
 ```jsx title="TodoList.jsx"
 <AgGridReact
@@ -122,8 +122,8 @@ const columns = [
   rowSelection="single"
 </AgGridReact>
 ```
-- We should be able to get the selected row and therefore we need access to ag-grid component’s API. The API provides method called getSelectedNodes() that we can use to get selected row index.
-- To get access to the Grid API, we can use React `useRef` hook function (https://reactjs.org/docs/hooks-reference.html#useref).
+- We should be able to get the selected row, and therefore we need access to the ag-grid component’s API. The API provides a method called getSelectedNodes() that we can use to get the selected row index.
+- To get access to the Grid API, we can use the React `useRef` hook function (https://reactjs.org/docs/hooks-reference.html#useref).
 
 ```js title="TodoList.jsx"
 // Import useRef
@@ -145,7 +145,7 @@ function TodoList() {
   rowSelection="single"
 />
 ```
-- The `AgGridReact` component's methods are in the Grid API (https://www.ag-grid.com/react-data-grid/grid-api/); therefore, we have to link our reference to the API. AG-Grid provides the `gridReady` event that is invoked when the grid has initialised and is ready for most api calls, but may not be fully rendered yet. We can use `onGridReady` event handler to get access to the grid API and store the grid API object to our reference. Then, we can use the `gridRef.current` to call methods that grid API provides.
+- The `AgGridReact` component's methods are in the Grid API (https://www.ag-grid.com/react-data-grid/grid-api/); therefore, we have to link our reference to the API. AG-Grid provides the `gridReady` event that is invoked when the grid has initialized and is ready for most api calls, but may not be fully rendered yet. We can use `onGridReady` event handler to get access to the grid API and store the grid API object for our reference. Then, we can use the `gridRef.current` to call methods that grid API provides.
 ```jsx title="TodoList.jsx"
 <AgGridReact 
   ref={gridRef}
@@ -187,16 +187,16 @@ return (
     </>
 )
 ```
-- Finally, we implement the `handleDelete` function. We can use the grid API's `getSelectedNodes` method that returns an array of selected rows. We are using the single selection mode; therefore, it only returns one row. The row index can be get from the row object's `id` property. We use the JavaScript `filter` function to filter selected row from the `todos` state. The `filter` function create a new array containing elements from the original array that meet a specific condition. It does not modify the original array but returns a new array with the filtered elements.
+- Finally, we implement the `handleDelete` function. We can use the grid API's `getSelectedNodes` method, which returns an array of selected rows. We are using the single selection mode; therefore, it only returns one row. The row index can be get from the row object's `id` property. We use the JavaScript `filter` function to filter selected row from the `todos` state. The `filter` function creates a new array containing elements from the original array that meet a specific condition. It does not modify the original array but returns a new array with the filtered elements.
 ```js title="TodoList.jsx"
 const handleDelete = () => {
   setTodos(todos.filter((todo, index) => 
       index != gridRef.current.getSelectedNodes()[0].id))
 };
 ```
-- If you select a row in the grid and press the Delete button, the selected row is deleted from the grid. If you don't select any row and press the Delete button, you can see an error in the console. We also have to check that one row is selcted before filtering.
+- If you select a row in the grid and press the Delete button, the selected row is deleted from the grid. If you don't select any row and press the Delete button, you can see an error in the console. We also have to check that one row is selected before filtering.
 ```js title="TodoList.jsx"
-const deleteTodo = () => {
+const handleDelete = () => {
   if (gridRef.current.getSelectedNodes().length > 0) {
     setTodos(todos.filter((todo, index) => 
       index != gridRef.current.getSelectedNodes()[0].id))
@@ -208,4 +208,6 @@ const deleteTodo = () => {
 ```
 - Now, we have finalized our Todolist using the AG-Grid, and your Todolist should look like the following screenshot:
 
-SCREENSHOT
+![Todolist](./img/todolist4.png)
+
+Next, we are going to style the rest of our Todolist app using the Material Design styling.
