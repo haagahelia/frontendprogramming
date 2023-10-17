@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # React Component
 
-- In the past the most common way to create components was by using classes.
+- In the past the most common way to create components was using classes. You might see class components still, if you look some older React code.
 - `React.Component` is abstract base class that will be typically subclassed by your own components.
 
 ```js
@@ -18,7 +18,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<HelloComponent />);
 ```
 
-- Nowadays, the components are mostly created using the functions and this is the way we are using in this course.
+- Nowadays, the React components are created using the functions and this is the way we are using in this course.
 
 ```jsx
 // React component
@@ -33,6 +33,10 @@ root.render(<HelloComponent />);
 ```
 - `return` statement defines how component is rendered (How it looks like).
 - `ReactDOM.createRoot` creates a 'root element' that is rendered into a html page.
+:::note
+React component's name must start with an uppercase letter. Use PascalCase in naming for example, MyComponent.
+:::
+
 
 - You can also use ES6 arrow function:
 
@@ -44,7 +48,6 @@ const HelloComponent = () => {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<HelloComponent />);
 ```
----
 ### How to start coding?
 - At the beginning of this course, we are using HTML file where we include React library. That is fast way to start learning React and it doesn't require any installations.
 
@@ -128,15 +131,22 @@ return (
 
 - You can use conditional rendering when rendered content depends on the current state of your component. For example:
 
-```js
+```jsx
 if (iconurl) {
   return <img alt="icon" src={iconurl} />;
 } else {
   return <div>No image found</div>;
 }
 ```
-
 - The example above renders image element if the `iconurl` state is defined, otherwise it renders **_No image found_** text.
+- You can also use ternary operator and now, we have only one `return` statement.
+```jsx
+return (
+  iconurl ? 
+  <img alt="icon" src={iconurl} /> :
+  <div>No image found</div>
+);
+```
 - Find out more about conditional rendering https://react.dev/learn/conditional-rendering
 
 ---

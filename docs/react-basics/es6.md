@@ -5,7 +5,7 @@ sidebar_position: 3
 # Modern JavaScript
 
 ## ES6 and beyond
-				
+- **ECMAScript** (ES), is a scripting language specification that serves as the foundation for several programming languages, such as JavaScript (https://www.ecma-international.org/technical-committees/tc39/?tab=general.) 				
 - JavaScript language got several new features when the **ECMAScript 2015 (ES6)** version of the language standard was released. The previous version before ES6 was ES5 from year 2009.
 - Many more new features have been introduced in the ECMAScript versions.
 - In React programming many modern JavaScript features are used extensively.
@@ -13,7 +13,8 @@ sidebar_position: 3
 
 ### Classes
 
-Class declaration:
+#### Class declaration
+- You can declare classes using the `class` keyword. The `constructor` method is a special method that gets called when a new instance of the class is created. It initializes the object's properties.
 
 ```javascript
 class Shape { 
@@ -28,9 +29,13 @@ class Shape {
   } 
 }							
 ```
-Classes were used in React class components. Nowadays, React components are created using functions and in this material we use only functional components.
+:::note
+Classes were used in React to declare components before React version 16.8. Nowadays, React components are created using the functions and in this material we use only functional components.
+:::
 
-Inheritance:
+#### Inheritance
+
+- You can achieve inheritance using the `extends` keyword. The following example demonstrates how to create a subclass `Circle` that inherits from the parent class `Shape`.
 
 ```javascript
 class Circle extends Shape { 
@@ -40,10 +45,9 @@ class Circle extends Shape {
   } 
 }								
 ```
-
  ### Variables
 
-**`let`** keyword (block scope)
+**`let`** keyword. The scope of `let` variables is **block** (`{ }`) in which they are defined. Block scope is different from the function scope of variables declared with `var`, as let variables are scoped to the nearest block, statement, or expression.
 ```	js
 let age = 24;
 ```
@@ -51,10 +55,13 @@ let age = 24;
 ```js
 const PI = 3.141593;
 ````
-**Note!** Using `var` keyword is considered obsolete.
-		
-## String Interpolation (template literals)
-- Template literals can be used to concatenate strings easily and with  more readable syntax.
+:::note
+Using `var` keyword is considered obsolete.
+:::
+
+### String Interpolation (template literals)
+
+- Template literals can be used to concatenate strings easily and to get more readable syntax.
 
 ```js
 let person = { firstname: 'Jack', lastname: 'Russell' };
@@ -65,8 +72,9 @@ let msg = "Hello " + person.firstname + " " + person.lastname;
 // Using ES6 template literals
 let msg = `Hello ${person.firstname} ${person.lastname}`;
 ```
-
-**Note!**  Use backticks (``)	with template literals.			
+:::note
+You must use backticks (``)	with template literals.			
+:::
 
 ### Arrow functions
 
@@ -74,7 +82,7 @@ let msg = `Hello ${person.firstname} ${person.lastname}`;
 
 Syntax: `params => expression`
 
-```javascript
+```js
 // anonymous arrow function
 x => x + 1;
 					
@@ -83,7 +91,6 @@ function(x) {
   return x + 1;
 }
 ```
-
 - In the case of multiple parameters, you have to use parenthesis.
 ```js
 (x, y) => x * y;
@@ -92,8 +99,7 @@ function(x) {
 ```js
 () => "Hello World";
 ```
----
-- If there are several statements in the function body, you need the curly braces and the return statement.
+- If there are several statements in the function body, you need the curly braces and the `return` statement.
 ```js
 (x, y) => {
   console.log(x, y); 
@@ -158,9 +164,7 @@ const newPerson = {...person, firstname: 'William'};
 // 'William' overrides the previous value of 
 // firstname, other attributes remain as they were 
 ```
-
 ### Property intializer shorthand
-
 ```js
 // Property initializer shorthand
 let length = 12;
