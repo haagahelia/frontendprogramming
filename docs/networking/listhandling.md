@@ -20,17 +20,19 @@ let arrB = arrA.map(x => x * 2);
 - The following example creates a state that is array of numbers.
 - Then, we render array of listitems in the return statement by using the `map` function.
 - **Note!** `key` string attribute is needed in the lists. That helps react to identify which rows have changed. The `map` method has second argument that is running index and we use that in the following exampe.   
-```jsx
-const [numbers, setNumbers] = React.useState([1, 2, 3, 4, 5]);
+```jsx live
+function MyList() {
+  const [numbers, setNumbers] = React.useState([1, 2, 3, 4, 5]);
 
-return (
-  <div>
-    <ul>
-      { numbers.map((number, index) =>
-        <li key={index}>Listitem {number}</li>) }
-    </ul>
-  </div>
-);
+  return (
+    <div>
+      <ul>
+        { numbers.map((number, index) =>
+          <li key={index}>Listitem {number}</li>) }
+      </ul>
+    </div>
+  );
+}
 
 ```
 :::note

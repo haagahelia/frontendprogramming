@@ -10,7 +10,7 @@ sidebar_position: 3
 ```bash
 npm create vite@latest
 ```
-- The command opens a project wizard where you can define a name of your project and framework. Select **React** framework and  **javascript** variant.
+- The command opens a project wizard where you can define a name of your project and framework. Select **React** framework and  **javascript** variant. SWC (Speedy Web Compiler) is a fast JavaScript and TypeScript compiler written in Rust. It is a faster alternative to Babel, which is normally used.
 
   ![Vite project](./img/create_vite1.png)
 
@@ -28,7 +28,7 @@ npm run dev
 ![Vite Project](./img/create_vite2.png)
 
 :::note
-You can stop the process by pressing **_Ctrl + c_** in the terminal
+You can stop the process by pressing **q** in the terminal
 :::
 - Now, you can navigate to the local URL that is shown in the terminal.
 - Vite provides HMR (Hot Module Replacement) which updates the page automatically when you make changes to javascript/typescript or css files.
@@ -76,5 +76,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 ```
 :::note
-The `React.StrictMode` lets you find common bug in your React app in the development phase. Due to strict mode, components will re-render extra time in the development mode to find bugs.
+The `React.StrictMode` lets you find common bugs in your React app in the development phase. Due to strict mode, components will re-render extra time in the development mode to find bugs.
 :::

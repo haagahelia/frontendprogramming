@@ -102,8 +102,7 @@ npm run dev
 ---
 ### Styling
 
-- Styles are defined in the App.css and index.css files.
-- These are Vite's default styles, and you can use your own instead.
+- Styles are defined in the App.css and index.css files. These are Vite's default styles, and you can use your own instead.
 - For example, the button style can be found in the index.css file
 
 ```css
@@ -127,12 +126,12 @@ Now, your todolist should look the following:
 
 `***Tasks***: Try to implement the following features to your Todolist app.
 1. Clear the input element after the Add button is pressed.
-2. Add validation that an  `alert` is shown, if the `desc` state value is empty.
+2. Add validation that an `alert` is shown if the `desc` state value is empty.
 ---
-## Split components
+### Split components
 - Let’s split todolist example application into multiple components.
 - We will add a new stateless component called `TodoTable` and separate it from the `TodoList` component.
-- Add a new file called **TodoTable.jsx** into the **src** folder. The skeleton code of the component is shown below.
+- Add a new file called **TodoTable.jsx** into the **src** folder. The starter code of the component is shown below.
 
 ```jsx
 import React from "react";
@@ -155,7 +154,7 @@ import TodoTable from "./TodoTable";
 
 - Remove the HTML table element from the `TodoList` component's `return` statement and add the `TodoTable` component there.
 
-```js title="TodoList.jsx"
+```jsx title="TodoList.jsx"
 return (
   <>
     <input type="text" onChange={handleChange} value={desc} />
@@ -173,7 +172,7 @@ In this phase, our React app's component tree is the following:
 - The `TodoTable` component will be a child component of the `TodoList` component. Therefore, we can send data from the `TodoList` to `TodoTable` component by using the props.
 
 - Now, we can pass the `todos` state to the `TodoTable` component using props.
-```js title="TodoList.jsx"
+```jsx title="TodoList.jsx"
 <TodoTable todos={todos} />
 ```
 
@@ -208,7 +207,7 @@ return (
 - You can define ESLint rules in this file to specify coding standards and guidelines for your project. 
 - You might have seen that ESLint is giving a warning about missing `PropTypes`. We introduced PropTypes at the beginning of the course, but we haven't used them. React recommends using TypeScript instead of checking prop types at runtime.  
 
-- You can exclude PropTypes check by adding the following line in your `.eslintrc.cjs` file:
+- You can exclude the PropTypes check by adding the highlighted line in your `.eslintrc.cjs` file:
 ```js title=".eslintrc.cjs"
 module.exports = {
   root: true,
@@ -228,7 +227,8 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    'react/prop-types': 0  // ADD THIS LINE 
+    //highlight-next-line
+    'react/prop-types': 0 
   },
 }
 ```

@@ -74,7 +74,7 @@ Source code: http://bit.ly/2HuoPR7
 ![Nasa API example](./img/nasa2.png)
 
 :::note
-In the NASA APOD example we made network request using the `useEffect` hook because we wanted to show apod image when component is rendered. If request requires some user input for example, user have to press some button, then request can be invoked in the button's `onClick` event handler and `useEffect` is not needed.
+In the NASA APOD example, we made network request using the `useEffect` hook because we wanted to show apod image after the component is rendered first time. If a request requires some user input, for example, if the user have to press some button, then the request can be invoked in the button's `onClick` event handler, and `useEffect` is not needed. You should avoid using unnecessary `useEffect`s as it increases the complexity of the component.
 :::
 ---
 ### Further reading

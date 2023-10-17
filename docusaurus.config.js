@@ -109,33 +109,12 @@ const config = {
             ],
           },
           {
-            title: 'Community',
+            title: 'Powered By Docusaurus',
             items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Haaga-Helia.`,
+        copyright: `Front End Programming © (${new Date().getFullYear()}) is licensed under CC BY-NC-SA 4.0`,
       },
       docs: {
         sidebar: {

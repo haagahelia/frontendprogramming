@@ -2,9 +2,6 @@
 title: 'Introduction'
 sidebar_position: 1
 ---
-
-### About this section
-
 So far, we have used HTML file for React coding. Now, we start to implement proper React apps.
 
 There are multiple ways to create react app/project, such as:
