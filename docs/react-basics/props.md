@@ -4,8 +4,8 @@ sidebar_position: 4
 ---
 - React components can communicate with each other using ***props***
 - Props are passed to component in function arguments.
-- Props can be then accessed using the `props` keyword.
-- You can show the value of the props by wrapping it inside the curly braces, for example `{props.firstname}` (= JSX, coming later).
+- You can access props as an argument in the component function. For example, using the `props` keyword as shown in the following code snippet.
+- You can render the value of the props by wrapping it inside the curly braces, for example `{props.firstname}` (= JSX, coming later).
 
 ```js
 function HelloComponent(props) {

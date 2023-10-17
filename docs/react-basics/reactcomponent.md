@@ -15,9 +15,7 @@ class HelloComponent extends React.Component {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<HelloComponent />);
 ```
-
 - Nowadays, the React components are created using the functions and this is the way we are using in this course.
-
 ```jsx
 // React component
 function HelloComponent() {
@@ -34,10 +32,7 @@ root.render(<HelloComponent />);
 :::note
 React component's name must start with an uppercase letter. Use PascalCase in naming for example, MyComponent.
 :::
-
-
 - You can also use ES6 arrow function:
-
 ```js
 const HelloComponent = () => {
   return <div>Hello World</div>;
@@ -48,13 +43,13 @@ root.render(<HelloComponent />);
 ```
 ### How to start coding?
 - At the beginning of this course, we are using HTML file where we include React library. That is fast way to start learning React and it doesn't require any installations.
+- We recommend to use proper IDE, such as VS Code (https://code.visualstudio.com/). 
+- **Task**: Use the following steps and create your first React component that renders hello message and your name.
 
-- We recommend to use proper IDE, such as VS Code (https://code.visualstudio.com/). To start coding examples and assignments from the first parts of this course, 
-
-Create your first React component:
-1. Create a new HTML file using the VS Code  and copy the following code into the file. 
-2. Create a React component inside the last `<script>` tags.
-3. Open the file in a Web browser.
+To start coding examples and assignments from the first part of this course:
+1. Create a new HTML file using the VS Code and copy the following code into the file. 
+2. Then, you can create React component inside the last `<script>` tags.
+3. Open the file in a Web browser to see how your component looks.
 3. After you have modified the HTML file, refresh the browser to see changes.
 
 ```html
