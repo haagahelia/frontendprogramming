@@ -3,7 +3,6 @@ title: 'User Input'
 description: 'In this section, you will learn how to read user input in React components'
 sidebar_position: 6
 ---
-
 ### Reading user input
 In this part, you will learn how to read user input in React components
 
@@ -37,7 +36,6 @@ function HelloName() {
    );
 }
 ```
----
 ### Mutliple input elements
 - If you have multiple input elements it is not good idea to create own `onChange` listener function to all input elements.
 - We can handle all input fields using one common `onChange` listener function. To achieve that we will also use `name` attribute of the input elements.
@@ -82,11 +80,10 @@ const [lastName, setLastName] = React.useState('');
   value={lastName} 
   onChange={ e => setLastName(e.target.value) } />
 ```
-
 ---
 ### Forms
 - You can also use HTML `form` element.
-- Form handling is a little bit different with React. HTML form will navigate to other page when it is submitted but we want to avoid that. Common case is that we want to invoke javascript function that has access to form data after submission.
+- Form handling is a little bit different with React. HTML form will navigate to other page when it is submitted but we want to avoid that. Common case is that we want to invoke javascript function that has access to form data after the submission.
 - If we use the form element:
 ```html
 <form onSubmit={addTodo}>
@@ -95,7 +92,6 @@ const [lastName, setLastName] = React.useState('');
 </form>
 ```
 - Now, if an user submits the form it invokes `addTodo` function.
-
 - In the `addTodo` function we have to first call `event.preventDefault()` function. That function ignores the default behavior of the form and it is not submitted.
 ```js
 const addTodo = (event) => {

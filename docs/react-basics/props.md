@@ -15,9 +15,7 @@ function HelloComponent(props) {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<HelloComponent firstname="John" />);
 ```
-
 - There can be multiple props passed to a component:
-
 ```js
 function HelloComponent(props) {
   return (
@@ -30,9 +28,7 @@ function HelloComponent(props) {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<HelloComponent firstname="John" lastname="Smith" />);
 ```
-
 - Or you can use object destructuring:
-
 ```js
 // Destructing the props object --> {firstname, lastname}
 function HelloComponent({ firstname, lastname }) {
@@ -43,7 +39,6 @@ function HelloComponent({ firstname, lastname }) {
   );
 }
 ```
-
 ---
 ### PropTypes
 
@@ -60,10 +55,9 @@ HelloComponent.propTypes = {
   firstname: PropTypes.string, // string, number, bool, func etc.
 };
 ```
-
 - Note! This works only in development mode.
 ---
-# Example code
+### Example code
 Let's define two components. One of them (__parent__) renders the other (__child__) three times.
 ```js
 function ParentComponent() {
@@ -83,16 +77,15 @@ function ChildComponent() {
   );
 }
 ```
----
-# Example output
+### Example output
 
 ![Props example](./img/props_example_1.png)
 
 - As expected, the program renders all childred the same. They all think they are the first child.
 - The children do not have the the information about their position, only the parent knows it.
 - The parent can convey this information to the children in __props__. 
----
-# Passing props
+
+### Passing props
 - We can define our own attributes for components and give them JavaScript values at rendering. In React they are called _props_:
 ```jsx
   <ChildComponent attribute1={value1} attribute2={value2}>
@@ -104,9 +97,7 @@ function ChildComponent() {
 ```jsx
   <ChildComponent text={'I am the first Child'}>
 ```
-
----
-# Receiving props
+### Receiving props
 - React components are functions. Functions receive arguments in their parameters. 
 - We need to define a parameter for the props. Let us also log the contents of the parameter to console:
 ```javascript
@@ -118,10 +109,9 @@ function ChildComponent() {
 - The console shows that `props` contains an object that has the attribute `text` as property:
 ![Props console](./img/props_console.png)
 
----
-# Using props
+### Using props
 ![Props example 2](./img/props_example_2.png)
-- Now the parent can tell the children what to show. The information is in`props`: 
+- Now the parent can tell the children what to show. The information is in `props`: 
 ```javascript
 function ParentComponent() {
   return (
@@ -139,8 +129,7 @@ function ChildComponent(props) {
 }
 ```
 ---
-<!-- _class: smaller -->
-# Summary
+### Summary
 - Why do you need props?
   - You need them whenever a parent component (one that renders other components) needs to pass information to the child it renders.
 - How do `props` work?
@@ -149,12 +138,13 @@ function ChildComponent(props) {
   - To be able to use the `props` is a component one must define a parameter for it.
 - Why are they called `props`?
   - `props`is short for _properties_. It is just a name of a function parameter. You could call it anything but by convention the parameter name is `props`.
----
-# A tip for `props`
+
+### A tip for `props`
 - You can simplify the usage of `props` properties by defining variables for the properties received, especially if there are several. Object destructuring syntax provides a nice shorthand notation:
 ```html
   <ChildComponent text={'I am child number'} position={pos} />
 ```
+
 ```javascript
   function ChildComponent(props) {
     const { text, position } = props;
@@ -164,9 +154,7 @@ function ChildComponent(props) {
     );
   }
 ```
-
----
-# References
+### References
 
 - https://itnext.io/what-is-props-and-how-to-use-it-in-react-da307f500da0
 - https://javascript.info/destructuring-assignment#object-destructuring

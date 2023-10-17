@@ -1,9 +1,7 @@
 ---
+title: 'React Component'
 sidebar_position: 3
 ---
-
-# React Component
-
 - In the past the most common way to create components was using classes. You might see class components still, if you look some older React code.
 - `React.Component` is abstract base class that will be typically subclassed by your own components.
 
@@ -127,7 +125,7 @@ return (
 
 ---
 
-## Conditional rendering
+### Conditional rendering
 
 - You can use conditional rendering when rendered content depends on the current state of your component. For example:
 
