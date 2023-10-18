@@ -3,17 +3,17 @@ title: 'Promises'
 sidebar_position: 3
 ---
 ### Handling Promise objects
-- __`fetch`__ calls are __asynchronous__ and they return __Promise__ objects
-- A Promise is an object representing the completion of an asynchronous operation in future: the operation either succeeds (_is fulfilled_) of fails (_is rejected_).
-- The end result of a promise is not immediately available and we do not know if the operation will succeed or not, nor do we know when it will be available. 
-- For that reason Promise objects need special handling:
-    - the handling needs to be launched when the value of the Promise is available
-    - we need to handle both successful results as well as failures
--  JavaScript provides two ways to handle Promises
+- `fetch` calls are **asynchronous** and they return **Promise** objects.
+- A promise is an object representing the completion of an asynchronous operation in future: the operation either succeeds (_fulfilled_) of fails (_rejected_).
+- The end result of a promise is not immediately available, and we do not know if the operation will succeed or not, nor do we know when it will be available. 
+- For that reason, promise objects need special handling:
+    - The handling needs to be launched when the value of the promise is available
+    - We need to handle both successful results as well as failures
+-  JavaScript provides two ways to handle promises
 
 ### then-catch
 - Promises can be handled using the Promise `then` and `catch` methods:
-```javascript
+```js
 fetch('https://mydomain.com/api')
     .then(response => response.json())  // handle Promise success, handling returns Promise
     .then(data => {                     // handle the latter Promise
@@ -23,9 +23,9 @@ fetch('https://mydomain.com/api')
   }
 }
 ```
-- When the promise resolves successfully, the result is passed as argument to the handler function passed in the `then` call
-- `then` calls can be chained, the previous handler returns another Promise
-- If the promise fails or there is any other error during the handling, the handler function passed in the `catch` call is called 
+- When the promise resolves successfully, the result is passed as an argument to the handler function passed in the `then` call.
+- `then` calls can be chained; the previous handler returns another promise.
+- If the promise fails or there is any other error during the handling, the handler function passed in the `catch` call is called.
 ---
 ### async-await
 - ECMAScript 2017 added a new syntax for handling Promise objects. 
@@ -35,7 +35,7 @@ fetch('https://mydomain.com/api')
 - Errors are handled as exceptions, that is using `try-catch` blocks
 
 ### async-await example
-```javascript
+```js
 fetchData = async () => {
   try {
     // execution is paused until the fetch call result is available
@@ -52,10 +52,10 @@ fetchData = async () => {
 - __Note__: `await` only works inside `async` functions! Even though the code looks like synchronous it is still asynchronous.
 ---
 ### Using async-await in React code
-- Both syntaxes are equally valid  and usable, you can use either
+- Both syntaxes are equally valid and usable, you can use either.
 - Note that the function passed to `useEffect` may not be `async`. 
 - If you need to call an async function with useEffect, pass it a sychronous function that calls your asynchronous function, e.g.
-```javascript
+```js
 useEffect(() => {   // regular non-async function passed to useEffect
     // define async function that makes the asyncronous calls
     const doFetch = async () => {   

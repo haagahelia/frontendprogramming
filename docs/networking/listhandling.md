@@ -17,9 +17,9 @@ let arrB = arrA.map(x => x * 2);
 
 ---
 ### List handling
-- The following example creates a state that is array of numbers.
-- Then, we render array of listitems in the return statement by using the `map` function.
-- **Note!** `key` string attribute is needed in the lists. That helps react to identify which rows have changed. The `map` method has second argument that is running index and we use that in the following exampe.   
+- The following example creates a state that is an array of numbers.
+- Then we render an array of listitems in the return statement by using the `map` function.
+- **Note!** `key` string attribute is needed in the lists. That helps React to identify which rows have changed. The `map` method has a second argument, that is running index and we use that in the following example.   
 ```jsx live
 function MyList() {
   const [numbers, setNumbers] = React.useState([1, 2, 3, 4, 5]);
@@ -36,12 +36,12 @@ function MyList() {
 
 ```
 :::note
-The usage of index is not recommended in proper apps because it can cause bugs if list is reordered or you add or delete list items. Instead of that you should use unique key from a data if that exists, There are also libraries available that you can use to generate unique id’s like uuid (https://github.com/uuidjs/uuid)
+The use of index is not recommended in proper apps because it can cause bugs if a list is reordered or you add or delete list items. Instead of that, you should use a unique key from a data if it exists, There are also libraries available that you can use to generate unique id’s like uuid (https://github.com/uuidjs/uuid)
 :::
 ---
 ### List handling example
-- The next example fetch an array of listitems from the REST API and set it to react state.
-- The REST API to be used is **Reqres.in** fake API and the following URL returns list of persons (https://reqres.in/api/users).
+- The next example fetches an array of listitems from the REST API and store it to React state.
+- The REST API to be used is **Reqres.in** fake API, and the following URL returns a list of persons (https://reqres.in/api/users).
 
 ![Persons example](./img/persons.png)
 - We need an array to store list of persons; therefore, we create the state called `listItems` and initialize that to an empty array. Then, we use the `useEffect` hook to send a request once after the first render.

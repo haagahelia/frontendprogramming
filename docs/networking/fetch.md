@@ -2,10 +2,10 @@
 title: 'Fetch'
 sidebar_position: 4
 ---
-- **Fetch API** can be used to handle web requests and it is supported by modern browsers natively.
-- Fetch takes URL as a first argument.
-- Fetch is asynchronous operation and it provides promises that makes response handling easier.
-- The `catch` handles network errors (offline etc.).
+- **Fetch API** can be used to handle web requests, and it is supported by modern browsers natively.
+- Fetch takes a URL as its first argument.
+- Fetch is an asynchronous operation; and it provides promises that make response handling easier.
+- The `catch` handles network errors (offline, etc.).
 ```js
 fetch('https://mydomain.com/api')
 .then(response => {
@@ -28,7 +28,7 @@ fetch('https://mydomain.com/api')
 ```
 ---
 ### Response
-- The `response` is an object that contains following properties: body, headers, status etc. (https://developer.mozilla.org/en-US/docs/Web/API/Response)
+- The `response` is an object that contains following properties: body, headers, status, etc. (https://developer.mozilla.org/en-US/docs/Web/API/Response)
 ```js
 fetch('https://mydomain.com/api')
 .then(response => console.log(response))
@@ -55,8 +55,8 @@ fetch('https://mydomain.com/api', {
 ```
 ---
 ### Response status
-- You should also check response status
-- `response.ok` returns true if response status is 2XX.
+- You should also check the response status.
+- `response.ok` returns true if the response status is 2XX.
 ```js 
 fetch('https://mydomain.com/api')
 .then(response => {
@@ -74,7 +74,7 @@ fetch('https://mydomain.com/api')
 ```
 ---
 ### async / await
-- In this material, we use `then` statements but, you can use `async/await` as well to handle promises.
+- In this material, we use `then` statements, but you can use `async/await` as well to handle promises.
 ```js
 const fetchData = async () => {
   try {

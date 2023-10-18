@@ -8,7 +8,7 @@ const FeatureList = [
     Svg: require('@site/static/img/React-icon.svg').default,
     description: (
       <>
-        Welcome to Front End Programming course. This course is based on React front end library.
+        Welcome to Front End Programming course. This course is based on React front end library. Learning by doing is at the heart of this course.
       </>
     ),
   },
@@ -26,8 +26,8 @@ const FeatureList = [
     Svg: require('@site/static/img/project.svg').default,
     description: (
       <>
-        The part of this course is the final project where you implement the front end to the existing backend. 
-        In this project, you will utilize all skills that you will learn in this course.
+        The final part of this course is the front end project where you implement the front end for the existing backend. 
+        In this project, you will utilize all the skills that you will learn in this course.
       </>
     ),
   },
