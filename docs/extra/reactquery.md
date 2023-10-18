@@ -9,12 +9,12 @@ sidebar_position: 3
   - **SWR** (https://swr.vercel.app/)
 - These libraries provides nice features like caching, error handling, detect out-of-date data etc. and it is recommended to use these when developing proper React apps.
 
-### React Query
-- Installation
+### React Query (Tanstack Query)
+- To install React Query , execute the following npm command in your project using the command line.
 ```bash
 npm install @tanstack/react-query
 ```
-- Usage: Create a client instance and provide it to your app using the `QueryClientProvider` component. Query client is responsible for data caching and you can use it to configure global settings for React Query.
+- First, you have to create a client instance and provide it to your app using the `QueryClientProvider` component. Query client is responsible for data caching and you can use it to configure global settings for React Query.
 
 ```jsx
 import { QueryClient QueryClientProvider } from '@tanstack/react-query'
@@ -31,13 +31,13 @@ function App() {
   )
 }
 ```
-### GET request
+#### GET request
 - You can use `useQuery` hook function to send GET request
 - The syntax is the following
 ```js
 useQuery({ queryKey: ['your_query_key'], queryFn: fetchSomething })
 ```
-- Where
+where
   - `queryKey` is the unique key for the query  
   - `queryFn` is the function that invokes the query. The function must return a promise. 
 ```js
@@ -105,8 +105,7 @@ React query refetch data automatically when:
 
 By default, React Query considers data to be stale (out of date) immediately after a successful query, which means that it will automatically trigger a background refetch the next time the data is accessed. However, you can customize this behavior by setting a specific stale time for your queries using the `staleTime` option.
 
----
-### POST, DELETE & UPDATE
+#### POST, DELETE & UPDATE
 - You can use `useMutation` hook to update date
 ```js
 import { useMutation } from '@tanstack/react-query';

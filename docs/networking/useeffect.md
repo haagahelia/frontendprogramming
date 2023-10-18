@@ -64,7 +64,7 @@ function ChatRoom() {
 ```
 ---
 ### React hooks (useState, useEffect, etc.)
-- There are some general rules when using React Hooks:
+- There are some general rules when using React hooks:
   1.  Use hooks only at the top level of your component function
   2.  Don’t use hooks inside the loops, if statements or nested functions
 

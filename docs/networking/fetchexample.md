@@ -23,7 +23,9 @@ const [data, setData] = React.useState({});
 
 - The fetch API call is made inside the `useEffect` hook, and the second argument is an empty array because we want to send requests only once after the first render.
 - When the response arrives, the response data is saved to the `data` state, and UI is re-rendered automatically by React.
-- **Note!** We want to call API only once when the component has been rendered the first time. Therefore, we have to pass `[]` to the `useEffect` hook function:
+:::note
+We want to call API only once when the component has been rendered the first time. Therefore, we have to pass `[]` to the `useEffect` hook function:
+:::
 ```js
 React.useEffect(() => {
   fetch('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
