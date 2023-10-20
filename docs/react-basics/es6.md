@@ -30,7 +30,7 @@ class Shape {
 }							
 ```
 :::note
-Classes were used in React to declare components before React version 16.8. Nowadays, React components are created using the functions and in this material we use only functional components.
+Classes were used in React to declare components before React version 16.8. Nowadays, React components are created using functions, and in this material, we use only functional components.
 :::
 
 #### Inheritance
@@ -177,3 +177,7 @@ let dimensions = {
   width: width
 };
 ```
+---
+### Further reading
+- http://es6-features.org/
+

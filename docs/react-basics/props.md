@@ -2,10 +2,10 @@
 title: 'Props'
 sidebar_position: 4
 ---
-- React components can communicate with each other using ***props***
+- React components can communicate with each other using the ***props***
 - Props are passed to component in function arguments.
 - You can access props as an argument in the component function. For example, using the `props` keyword as shown in the following code snippet.
-- You can render the value of the props by wrapping it inside the curly braces, for example `{props.firstname}` (= JSX, coming later).
+- You can display the value of the props by wrapping it inside the curly brackets, for example `{props.firstname}` (= JSX, coming later).
 
 ```js
 function HelloComponent(props) {
@@ -15,7 +15,7 @@ function HelloComponent(props) {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<HelloComponent firstname="John" />);
 ```
-- There can be multiple props passed to a component:
+- There can be multiple props passed to a component (multiple object properties):
 ```js
 function HelloComponent(props) {
   return (
@@ -154,7 +154,8 @@ function ChildComponent(props) {
     );
   }
 ```
-### References
+---
+### Further reading
 
 - https://itnext.io/what-is-props-and-how-to-use-it-in-react-da307f500da0
 - https://javascript.info/destructuring-assignment#object-destructuring

@@ -262,5 +262,3 @@ function reducer(state, action) {
 <button onClick={() => dispatch({type: 'decrement'})}>-</button>
 <button onClick={() => dispatch({type: 'increment'})}>+</button>
 ```
-
-- Source code of the counter example done by using useReducer can be found from: http://bit.ly/2pfa27b

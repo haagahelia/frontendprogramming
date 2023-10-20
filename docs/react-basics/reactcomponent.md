@@ -28,7 +28,11 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<HelloComponent />);
 ```
 - `return` statement defines how component is rendered (How it looks like).
-- `ReactDOM.createRoot` creates a 'root element' that is rendered into a html page.
+- `ReactDOM.createRoot` creates a 'root element' that is rendered into a html page. 
+- In this example, `createRoot` is used to create a root at the DOM element with the id `root` and then the render method is used to render a React component (in this case, `HelloComponent`) into that root. 
+- What does **render** means in React? Before your components are displayed on screen, they must be rendered by React. You can read more about rendering in https://react.dev/learn/render-and-commit#.
+- It is also good to understand that when the React component re-renders, all it's child components are also re-rendered. For example, in the component tree that was shown in the 'What is React?'- section, if the 'Table' component re-renders, the 'Table row' component also re-renders. 
+
 :::note
 React component's name must start with an uppercase letter. Use PascalCase in naming for example, MyComponent.
 :::
@@ -119,7 +123,6 @@ return (
 - You can also use short syntax with fragment: `<>` `</>`.
 
 ---
-
 ### Conditional rendering
 
 - You can use conditional rendering when rendered content depends on the current state of your component. For example:
@@ -132,7 +135,7 @@ if (iconurl) {
 }
 ```
 - The example above renders image element if the `iconurl` state is defined, otherwise it renders **_No image found_** text.
-- You can also use ternary operator and now, we have only one `return` statement.
+- You can also use ternary operator and now, we can have only one `return` statement.
 ```jsx
 return (
   iconurl ? 
@@ -140,7 +143,9 @@ return (
   <div>No image found</div>
 );
 ```
-- Find out more about conditional rendering https://react.dev/learn/conditional-rendering
-
 ---
+### Further reading
+
+-  https://react.dev/learn/conditional-rendering
+
 

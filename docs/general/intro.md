@@ -11,7 +11,7 @@ You should have good basic knowledge of the following topics:
 
 ### Tools
 
-You should do the following installations:
+For the course you need to do the following installations:
 1. **Node.js** (https://nodejs.org/) 
 - Install the latest LTS version
 - Check that Node and Npm were installed successfully by entering the following commands in the command line. You should see the installed version numbers.

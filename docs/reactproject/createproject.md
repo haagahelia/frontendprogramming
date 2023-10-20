@@ -48,8 +48,7 @@ You can stop the process by pressing **q** in the terminal
 - `import` statements are used to import libraries, react components, stylesheet and assets to the component.
 - `export` statement allows you to import component to another file by using the `import` statement
 
-```jsx
-// App.jsx
+```jsx title="App.jsx"
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -62,8 +61,7 @@ export default App;
 ```
 - The **_main.jsx_** file imports the `App` component and renders it to **_index.html_** file’s `root` element. The **_index.html_** file can be found from the root folder of your project.
 
-```jsx
-// main.jsx
+```jsx title="main.jsx"
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
