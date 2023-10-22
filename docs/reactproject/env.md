@@ -1,6 +1,6 @@
 ---
 title: 'Env Variables'
-sidebar_position: 5
+sidebar_position: 7
 ---
 - Environment variables are part of the environment in which a process runs and can be used to store configuration settings, system information, or other data that programs may need.
 - Vite exposes env variables on the special `import.meta.env` object and there are some built-in variable, such as `import.meta.env.BASE_URL` that contains the base URL where your app is running.

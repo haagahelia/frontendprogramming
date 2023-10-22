@@ -31,7 +31,6 @@ root.render(<HelloComponent />);
 - `ReactDOM.createRoot` creates a 'root element' that is rendered into a html page. 
 - In this example, `createRoot` is used to create a root at the DOM element with the id `root` and then the render method is used to render a React component (in this case, `HelloComponent`) into that root. 
 - What does **render** means in React? Before your components are displayed on screen, they must be rendered by React. You can read more about rendering in https://react.dev/learn/render-and-commit#.
-- It is also good to understand that when the React component re-renders, all it's child components are also re-rendered. For example, in the component tree that was shown in the 'What is React?'- section, if the 'Table' component re-renders, the 'Table row' component also re-renders. 
 
 :::note
 React component's name must start with an uppercase letter. Use PascalCase in naming for example, MyComponent.

@@ -31,7 +31,7 @@ const [todos, setTodos] = useState([]);
   return(
     <>
       //highlight-next-line
-      <input type="text" onChange={handleChange} value={desc} />
+      <input placeholder="Description" onChange={handleChange} value={desc} />
       //highlight-next-line
       <button onClick={addTodo}>Add</button>    
     </>
@@ -55,7 +55,7 @@ const addTodo = () => {
 ```jsx title="TodoList.jsx"
 return (
   <>
-    <input type="text" onChange={handleChange} value={desc} />
+    <input placeholder="Description" onChange={handleChange} value={desc} />
     <button onClick={addTodo}>Add</button>
     //highlight-start
     <table>
