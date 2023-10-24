@@ -16,7 +16,7 @@ How to use env variables in practice?
 1. Create the `.env` file in the root of your project.
 2. Define your environment variables.
 ```
-VITE_API_URL=https://reqres.in/persons
+VITE_API_URL=https://testapi.com/students
 ```
 3. Then, you can use env variables in you code
 ```js

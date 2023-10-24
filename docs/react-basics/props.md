@@ -5,7 +5,7 @@ sidebar_position: 4
 - React components can communicate with each other using the ***props***
 - Props are passed to component in function arguments.
 - You can access props as an argument in the component function. For example, using the `props` keyword as shown in the following code snippet.
-- You can display the value of the props by wrapping it inside the curly brackets, for example `{props.firstname}` (= JSX, coming later).
+- You can display the value of the props by wrapping them inside curly brackets, for example `{props.firstname}` (= JSX, coming later).
 
 ```js
 function HelloComponent(props) {
@@ -81,8 +81,8 @@ function ChildComponent() {
 
 ![Props example](./img/props_example_1.png)
 
-- As expected, the program renders all childred the same. They all think they are the first child.
-- The children do not have the the information about their position, only the parent knows it.
+- As expected, the program renders all children the same. They all think they are the first child.
+- The children do not have the information about their position, only the parent knows it.
 - The parent can convey this information to the children in __props__. 
 
 ### Passing props
@@ -92,14 +92,14 @@ function ChildComponent() {
 ```
 - There can be any number of props. 
 - You can use any name you like. It is the name of a variable.
-- The value can be of any type: number, text, boolean, object, function
+- The value can be of any type: number, text, boolean, object, or function
 - We can pass the text to show to the child component as an attribute. Let's call the attribute `text`:
 ```jsx
   <ChildComponent text={'I am the first Child'}>
 ```
 ### Receiving props
 - React components are functions. Functions receive arguments in their parameters. 
-- We need to define a parameter for the props. Let us also log the contents of the parameter to console:
+- We need to define a parameter for the props. Let us also log the contents of the parameter to the console:
 ```javascript
   function ChildComponent(props) {
     console.log(props);
@@ -135,18 +135,18 @@ function ChildComponent(props) {
 - How do `props` work?
   - The parent can give information to the child in attributes.
   - The child receives `props` as argument (parameter value). The value of `props` in a JavaScript object with the attributes as properties. 
-  - To be able to use the `props` is a component one must define a parameter for it.
-- Why are they called `props`?
+  Why are they called `props`?
   - `props`is short for _properties_. It is just a name of a function parameter. You could call it anything but by convention the parameter name is `props`.
 
 ### A tip for `props`
-- You can simplify the usage of `props` properties by defining variables for the properties received, especially if there are several. Object destructuring syntax provides a nice shorthand notation:
+- You can simplify the usage of `props` by defining variables for the properties received, especially if there are several. Object destructuring syntax provides a nice shorthand notation:
 ```html
   <ChildComponent text={'I am child number'} position={pos} />
 ```
 
 ```javascript
   function ChildComponent(props) {
+      //highlight-next-line
     const { text, position } = props;
 
     return (
@@ -154,6 +154,16 @@ function ChildComponent(props) {
     );
   }
 ```
+OR
+
+```javascript
+  function ChildComponent({ text, position }) {
+    return (
+      <p>{text} {position}</p>
+    );
+  }
+```
+
 ---
 ### Further reading
 

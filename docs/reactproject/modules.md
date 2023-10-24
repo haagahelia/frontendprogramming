@@ -2,10 +2,10 @@
 title: 'JavaScript Modules'
 sidebar_position: 2
 ---
-Before we start to create React Projects, it is important to undestand how JavaScript modules works.
+Before we start to create React projects, it is important to understand how JavaScript modules works.
 
-- Scripts can be split into several files using modules. A module can provide classes, library functions and variables for other modules to use.
-- There are several different JavaScript module systems. In React programming we use **ES6 modules**.
+- Scripts can be split into several files using modules. A module can provide classes, library functions, and variables for other modules to use.
+- There are several different JavaScript module systems. In React programming, we use **ES6 modules**.
 - CommonJS modules are imported using require-function. It is the default in Node.js even though ES6 modules are supported too. 
 - In brief
   - A module is simply a JavaScript file.
@@ -14,7 +14,7 @@ Before we start to create React Projects, it is important to undestand how JavaS
 
 ---
 ### JavaScript modules / Export
-- You can export an identifier by adding the keyword `export` in front of the declaration. This is so called **named export** and module can have multiple named exports. Named exports are useful for exporting variables and functions. 
+- You can export an identifier by adding the keyword `export` in front of the declaration. This is so called **named export**, and module can have multiple named exports. Named exports are useful for exporting variables and functions. 
 ```js
 export const myPi = 3.14;
 
@@ -26,7 +26,7 @@ export function circleArea(r) {
 ```js
 export { myPi, circleArea };
 ```
-- The exported items can be imported to other files. The imported features can be used just like they were defined inside the same file. 
+- The exported items can be imported into other files. The imported features can be used just like they were defined inside the same file. 
 - Note: imported variables are always considered `const`, no matter how they were declared.
 ```js
 import { myPi, circleArea } from './mylib.js';
