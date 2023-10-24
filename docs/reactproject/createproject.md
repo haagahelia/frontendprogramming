@@ -14,8 +14,7 @@ npm create vite@latest
 
   ![Vite project](./img/create_vite1.png)
 
-- Next, you change directory into you project folder and install the dependencies:
-
+- Next, you change the directory to your project folder and install the dependencies:
 ```bash
 cd your_project
 npm install
@@ -24,13 +23,12 @@ npm install
 ```bash
 npm run dev
 ```
-
 ![Vite Project](./img/create_vite2.png)
 
 :::note
 You can stop the process by pressing **q** in the terminal
 :::
-- Now, you can navigate to the local URL that is shown in the terminal.
+- Now, you can access the local URL displayed in the terminal using your web browser.
 - Vite provides HMR (Hot Module Replacement) which updates the page automatically when you make changes to javascript/typescript or css files.
 
 ![Vite Project](./img/vite_browser.png)
@@ -39,8 +37,8 @@ You can stop the process by pressing **q** in the terminal
 ### Project structure
 
 - Vite creates the following project structure
-- The **_App.jsx_** file contains the React component that is rendered.
-- If you have bigger app with multiple components and functionalities, it is better to create own folder for these. For example, /components, /api, etc.
+- The **App.jsx** file contains the React component that is displayed when you open the app in a web browser.
+- If you have a bigger app with multiple components and functionalities, it is better to create own folders for them. For example, /components, /api, etc.
 
 ![Project structure](./img/vite_project.png)
 
