@@ -35,22 +35,27 @@ function MyList() {
 }
 
 ```
-:::note
-The use of index is not recommended in proper apps because it can cause bugs if a list is reordered or you add or delete list items. Instead of that, you should use a unique key from a data if it exists, There are also libraries available that you can use to generate unique id’s like uuid (https://github.com/uuidjs/uuid)
+:::warning
+The use of index is not recommended in proper apps because it can cause bugs if a list is reordered or you add or delete list items. Instead of that, you should use a unique key from the data if it exists. There are also libraries available that you can use to generate unique IDs, such as uuid (https://github.com/uuidjs/uuid)
 :::
 ---
 ### List handling example
 - The next example fetches an array of listitems from the REST API and store it to React state.
-- The REST API to be used is **Reqres.in** fake API, and the following URL returns a list of persons (https://reqres.in/api/users).
+- The REST API to be used is **Reqres.in** fake API, and the following URL returns a list of fake users (https://reqres.in/api/users).
 
 ![Persons example](./img/persons.png)
 - We need an array to store list of persons; therefore, we create the state called `listItems` and initialize that to an empty array. Then, we use the `useEffect` hook to send a request once after the first render.
 ```js
 const [listItems, setListItems] = React.useState([]);
 
-//Fetch call is done inside the useEffect hook
 React.useEffect(() => {
-  fetch('https://reqres.in/api/users').then(response => response.json()) 
+  fetch('https://reqres.in/api/users')
+  .then(response => { 
+    if (!response.ok)
+      throw new Error("Error in fetch: " + response.statusText);  
+    
+    return response.json();
+  }) 
   .then(responseData => { 
     setListItems(responseData.data)
   }) 
@@ -79,6 +84,4 @@ return (
 Now, the list should look like the following screenshot:
 
 ![](./img/persons2.png)
-
-- The source code can be found in http://bit.ly/2kdCcwS
 

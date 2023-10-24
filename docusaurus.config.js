@@ -119,6 +119,10 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      markdown: {
+        mermaid: true,
+      },
+      themes: ['@docusaurus/theme-mermaid'],
     }),
 };
 

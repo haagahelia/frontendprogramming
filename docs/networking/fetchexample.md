@@ -23,13 +23,15 @@ const [data, setData] = React.useState({});
 
 - The fetch API call is made inside the `useEffect` hook, and the second argument is an empty array because we want to send requests only once after the first render.
 - When the response arrives, the response data is saved to the `data` state, and UI is re-rendered automatically by React.
-:::note
-We want to call API only once when the component has been rendered the first time. Therefore, we have to pass `[]` to the `useEffect` hook function:
-:::
 ```js
 React.useEffect(() => {
   fetch('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
-  .then(response => response.json())
+  .then(response =>  { 
+    if (!response.ok)
+      throw new Error("Error in fetch: " + response.statusText);  
+    
+    return response.json();
+  })
   .then(responseData => setData(responseData))
   .catch(err => console.error(err))
 }, []);
@@ -71,15 +73,13 @@ else {
   );
 }
 ```
-Source code: http://bit.ly/2HuoPR7 
-
 ![Nasa API example](./img/nasa2.png)
 
 :::note
-In the NASA APOD example, we made a network request using the `useEffect` hook because we wanted to show the APOD image after the component is rendered the first time. If a request requires some user input, for example, if the user has to press a button, then the request can be invoked in the button's `onClick` event handler, and `useEffect` is not needed. You should avoid using unnecessary `useEffect`s as it increases the complexity of the component.
+In the NASA APOD example, we made a network request using the `useEffect` hook because we wanted to display the APOD image once after the component is rendered the first time. When a request requires some user input, such as pressing a button, you can trigger the request within the button's `onClick` event handler, and the `useEffect` hook is not needed. You should avoid using unnecessary `useEffect`s as it increases the complexity of the component.
 :::
 ---
 ### Further reading
+- **Axios**: Axios is a popular JavaScript library that is used for making asynchronous HTTP requests to web servers and handling responses. https://axios-http.com/
 - **React Query**: *"React Query is often described as the missing data-fetching library for React, but in more technical terms, it makes fetching, caching, synchronizing and updating server state in your React applications a breeze."* 
 https://tanstack.com/query
-- **Axios** https://axios-http.com/
