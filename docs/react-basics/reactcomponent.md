@@ -30,7 +30,15 @@ root.render(<HelloComponent />);
 - `return` statement defines how component is rendered (How it looks like).
 - `ReactDOM.createRoot` creates a 'root element' that is rendered into a html page. 
 - In this example, `createRoot` is used to create a root at the DOM element with the id `root` and then the render method is used to render a React component (in this case, `HelloComponent`) into that root. 
-- What does **render** means in React? Before your components are displayed on screen, they must be rendered by React. You can read more about rendering in https://react.dev/learn/render-and-commit#.
+
+What does **render** mean in React? 
+Before your components are displayed on screen, they must be rendered by React. The rendering process can be divided into three phases:
+1) Trigger: There are two reasons that trigger the rendering process. The first one is intial render which is the first time a React component is rendered and displayed on the web page. The re-render is triggered when component's state changes (state comes later).
+2) Render: After the render process is triggered, React calls components to find out what to display on screen.
+3) Commit: Once React determines the minimal set of changes required, it updates the actual DOM.
+
+
+You can read more about rendering in https://react.dev/learn/render-and-commit#.
 
 :::note
 React component's name must start with an uppercase letter. Use PascalCase in naming for example, MyComponent.
