@@ -40,7 +40,7 @@ export default defineConfig({
   }
 }
 ```
-- Now you can run tests using the following command
+- Now, you can run tests using the following command
 
 ```bash
 npm run test
