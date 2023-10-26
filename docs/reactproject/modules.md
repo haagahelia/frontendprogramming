@@ -57,3 +57,6 @@ import * as c from './mylib.js';
 console.log('The value of pi is', c.myPi);
 console.log(c.circleArea(1.0));
 ```
+---
+### Further Reading
+- MDN - JavaScript modules: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
