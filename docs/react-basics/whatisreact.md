@@ -16,7 +16,10 @@ React components are like lego blocks from which you can build a user interface.
 
 ![Components](./img/components.PNG)
 
-React components build a component tree that now looks the following. **Note!** By default, data only flows in one direction i.e. from top to bottom in the component tree.
+React components build a component tree that now looks the following. 
+:::note Data Flow 
+By default, data only flows in one direction from parent to child component in component tree.
+:::
 
 ![Components](./img/componentTree.PNG)
 

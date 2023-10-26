@@ -2,8 +2,9 @@
 title: 'Props'
 sidebar_position: 4
 ---
-- React components can communicate with each other using the ***props***
+- Parent component can pass data to its child component using the **props**. 
 - Props are passed to component in function arguments.
+- Props are JavaScript **objects** where keys are the prop names and the values are data you pass from a parent component to a child component.
 - You can access props as an argument in the component function. For example, using the `props` keyword as shown in the following code snippet.
 - You can display the value of the props by wrapping them inside curly brackets, for example `{props.firstname}` (= JSX, coming later).
 
@@ -57,7 +58,7 @@ HelloComponent.propTypes = {
 ```
 - Note! This works only in development mode.
 ---
-### Example code
+### Example of using props
 Let's define two components. One of them (__parent__) renders the other (__child__) three times.
 ```js
 function ParentComponent() {
@@ -77,7 +78,7 @@ function ChildComponent() {
   );
 }
 ```
-### Example output
+The output looks like the screenshot below:
 
 ![Props example](./img/props_example_1.png)
 
@@ -132,8 +133,10 @@ function ChildComponent(props) {
 ### Summary
 - Why do you need props?
   - You need them whenever a parent component (one that renders other components) needs to pass information to the child it renders.
+  - You can create reusable components using the props.
+
 - How do `props` work?
-  - The parent can give information to the child in attributes.
+  - Parent component can pass data to its child component usign the props.
   - The child receives `props` as argument (parameter value). The value of `props` in a JavaScript object with the attributes as properties. 
   Why are they called `props`?
   - `props`is short for _properties_. It is just a name of a function parameter. You could call it anything but by convention the parameter name is `props`.
