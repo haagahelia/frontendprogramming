@@ -2,6 +2,9 @@
 title: 'Todolist Example'
 sidebar_position: 4
 ---
+### Create Todolist project
+We will create a simple todolist app where the user enters tasks and all tasks are listed in a table.
+
 - Create a new React App using **Vite** (Select React and JavaScript).
 - Create a new file called **TodoList.jsx** inside the **src** folder. Add the following code into the file.
 ```jsx title="TodoList.jsx"
@@ -50,7 +53,8 @@ const addTodo = () => {
   setTodos([...todos, desc]);
 };
 ```
-- Next, we add the `table` element to the `return` statement and render all todos inside the table using the `map()` function.
+### Display todos
+- Next, we add the `table` element to the `return` statement and display all todos inside the table using the `map()` function.
 
 ```jsx title="TodoList.jsx"
 return (
