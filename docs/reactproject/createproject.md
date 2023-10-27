@@ -37,15 +37,14 @@ You can stop the process by pressing **q** in the terminal
 ### Project structure
 
 - Vite creates the following project structure
-- The **App.jsx** file contains the React component that is displayed when you open the app in a web browser.
 - If you have a bigger app with multiple components and functionalities, it is better to create own folders for them. For example, /components, /api, etc.
 
 ![Project structure](./img/vite_project.png)
 
-
+#### App.jsx
+- The **App.jsx** file contains the React component that is displayed when you open the app in a web browser.
 - `import` statements are used to import libraries, react components, stylesheet and assets to the component.
 - `export` statement allows you to import component to another file by using the `import` statement
-
 ```jsx title="App.jsx"
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
@@ -57,6 +56,7 @@ function App() {
 
 export default App;
 ```
+#### Main.jsx
 - The **_main.jsx_** file imports the `App` component and renders it to **_index.html_** file’s `root` element. The **_index.html_** file can be found from the root folder of your project.
 
 ```jsx title="main.jsx"

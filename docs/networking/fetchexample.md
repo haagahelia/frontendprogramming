@@ -10,17 +10,19 @@ sidebar_position: 4
 https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY
 - The response payload contains `explanation` and `url` properties. The `media_type` property can be used to check if the daily media is video or image.
 
+#### Response
 The response data looks like the image below:
 
 ![Nasa API response](./img/nasa1.png)
 
+#### State for response data
 - We will create a React app that calls the NASA APOD API and displays the daily image and explanation.
 - We need a state to store data from the response (image url, explanation, and type of media).
 ```js
 // State for response data
 const [data, setData] = React.useState({});
 ```
-
+#### Fetch
 - The fetch API call is made inside the `useEffect` hook, and the second argument is an empty array because we want to send requests only once after the first render.
 - When the response arrives, the response data is saved to the `data` state, and UI is re-rendered automatically by React.
 ```js
@@ -36,6 +38,7 @@ React.useEffect(() => {
   .catch(err => console.error(err))
 }, []);
 ```
+#### Display data
 - Then, we will use conditional rendering. We will check the `media_type` and render either an image or video:
 ```jsx
 if (!data.media_type) {
