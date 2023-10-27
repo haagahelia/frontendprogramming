@@ -11,7 +11,7 @@ sidebar_position: 3
     - We need to handle both successful results as well as failures
 -  JavaScript provides two ways to handle promises
 
-### then-catch
+#### then-catch
 - Promises can be handled using the Promise `then` and `catch` methods:
 ```js
 fetch('https://mydomain.com/api')
@@ -23,18 +23,18 @@ fetch('https://mydomain.com/api')
   }
 }
 ```
-- When the promise resolves successfully, the result is passed as an argument to the handler function passed in the `then` call.
+- When the promise resolves successfully, the result is passed as an argument to the handler function in the `then` call.
 - `then` calls can be chained; the previous handler returns another promise.
-- If the promise fails or there is any other error during the handling, the handler function passed in the `catch` call is called.
+- If the promise fails or there is any other error during the handling, the handler function passed in the `catch` is called.
 ---
-### async-await
+#### async-await
 - ECMAScript 2017 added a new syntax for handling Promise objects. 
 - The purpose of the addition was to make asynchronous code easier to write and to read afterwards by making async code look more like old-school synchronous code.
 - `async` keyword put in front of a function declaration makes the function return a Promise instead of returning the value directly 
 - `await` can be put in front of any async function call to pause your code on that line until the promise fulfills, then return the resulting value
 - Errors are handled as exceptions, that is using `try-catch` blocks
 
-### async-await example
+#### async-await example
 ```js
 fetchData = async () => {
   try {
@@ -51,7 +51,7 @@ fetchData = async () => {
 - asynchronous code is within a `try` block. If any failure occurs, it will be handled in the `catch` handler
 - __Note__: `await` only works inside `async` functions! Even though the code looks like synchronous it is still asynchronous.
 ---
-### Using async-await in React code
+#### Using async-await in React code
 - Both syntaxes are equally valid and usable, you can use either.
 - Note that the function passed to `useEffect` may not be `async`. 
 - If you need to call an async function with useEffect, pass it a sychronous function that calls your asynchronous function, e.g.
@@ -67,7 +67,7 @@ useEffect(() => {   // regular non-async function passed to useEffect
   }, []);
 ```
 ---
-###  Immediate invokation
+#### Immediate invokation
 - You can do the same as previously also using immediate invokation (calling) of the newly declared function:
 
 ```js

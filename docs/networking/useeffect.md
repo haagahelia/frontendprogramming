@@ -2,6 +2,7 @@
 title: 'useEffect hook'
 sidebar_position: 2
 ---
+### useEffect
 - The `useEffect` hook function can be used to perform side-effects in React function component. The side-effect can be for example, fetch request. The `useEffect` hook takes two arguments:
 ```js
 React.useEffect(callback, [dependencies])

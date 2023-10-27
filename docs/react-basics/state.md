@@ -2,6 +2,7 @@
 title: 'State'
 sidebar_position: 5
 ---
+### useState
 - **State** value can change during the lifecycle of the component. State is component specific "memory" and it triggers component re-render when its value is changed.
 - **State** is declared using the **`useState`** hook function. In React, **hook** functions are named using the convention of starting the function name with **use** followed by a descriptive term that explains what the hook does (in this case "State"). 
 - Example below creates state variable called `firstName` and function `setFirstName` is used to update its value.
@@ -92,7 +93,8 @@ return (
 }
 ```
 ---
-- **Note!** State updates are asynchronous and batched. In the Counter example, the new state depends on the previous value of the state. To make sure that the state is always updated correctly, you should pass a function that updates the state like shown in the following example.
+:::note
+State updates are asynchronous and batched. In the Counter example, the new state depends on the previous value of the state. To make sure that the state is always updated correctly, you should pass a function that updates the state like shown in the following example.
 
 ```jsx
 return (
@@ -102,8 +104,8 @@ return (
   </div>
 );
 ```
+:::
 
----
 ### State batching
 
 - State updates are batched to minimize re-renders for better performance.
@@ -149,9 +151,10 @@ function handleClick() {
 }
 ...
 ```
-**NOTE!** `flushSync` can have negative effect to performance. Use only when necessary.
+:::warning 
+`flushSync` can have negative effect to performance. Use only when necessary.
+:::
 
----
 ### JSX
 
 - **JSX** is Javascript syntax extension which is recommended to use with React.
@@ -163,7 +166,7 @@ function handleClick() {
 
 - We can embed javascript to JSX by wrapping it in the curly braces.
   After compilation, JSX expressions becomes regular JavaScript objects.
----
+
 ###  React Developer Tools
 
 - **React Developer Tools** is available as Chrome plugin, Firefox add-on or Edge extension. That can be used to debug your components.
@@ -172,7 +175,6 @@ function handleClick() {
 
 ![](./img/reactdevtools.png)
 
----
 ### Multiple states
 - If you need to have multiple state variables, you can just call `useState` hook function multiple times.
 ```js

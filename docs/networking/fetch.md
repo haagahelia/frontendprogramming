@@ -2,6 +2,7 @@
 title: 'Fetch'
 sidebar_position: 4
 ---
+### Fetch API
 - **Fetch API** can be used to handle web requests, and it is supported by modern browsers natively.
 - Fetch takes a URL as its first argument.
 - Fetch is an asynchronous operation; and it provides promises that make response handling easier.
