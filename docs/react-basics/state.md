@@ -21,7 +21,7 @@ setFirstName("Jim");
 
 - **Do Not** update state directly!
 
-:::danger:Wrong
+:::danger
 ```js
 firstName = "John";
 ```

@@ -31,7 +31,7 @@ npm install ag-grid-community ag-grid-react
 In the line `"ag-grid-community": "^30.2.0"` the `ag-grid-community` is the name of the installed package. The `"^30.2.0"` specifies the installed version. The `^` symbol inidcates that it allows to receive bug fixes and minor version updates. The major version updates are not allowed (For example, 31.0.0). The packages are automatically updated when you execute the `npm install` command. The installed versions are saved to the dependency lock file **package.lock.json** file. If the version is specified `"30.2.0"` it means that the project requires version 30.2.0 and updates are not received automatically. 
 :::
 
-#### Import AG-Grid component and stylesheets
+### Import AG-Grid component and stylesheets
 - To use the AG-Grid component in our TodoList component, we have to import it. We import the `AgGridReact` component and stylesheets. AG-Grid provides pre-defined styles (Bootstrap, Alpine, and Material Design) and we use the Material Design styling. Add the following imports to your `TodoList` component.
 
 ```js title="TodoList.jsx"
@@ -40,7 +40,7 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-material.css";
 ```
-#### Define columns
+### Define columns
 - Next, we have to define data grid columns. The columns are defined using a state, and the value is an array of column definition objects. Each column definition object has a mandatory property `field` that defines what data is shown in a column. For example, if we define `{field: 'date'}`, this column shows our `todo` object's `date` property value.
 
 ```js title="TodoList.jsx"
@@ -50,7 +50,7 @@ const [columnDefs, setColumnDefs] = useState([
   {field: 'date'}
 ]);
 ```
-#### Render AG-Grid
+### Render AG-Grid
 - Then, we render the `AgGridReact component`. The `rowData` prop defines where row data comes from and the value should be an array. In our case, it is the `todos` array state where our todo objects are stored. The `columnDefs` prop defines the column definition, and it is the `columnDefs` state that we just created before. Remove the `TodoTable` component because now we will use AG-Grid to show our data. You have to wrap the `AgGridReact` component inside `div` that defines the theme CSS class and grid size.
 ```js title="TodoList.jsx"
 return (
@@ -82,7 +82,7 @@ return (
 Now, your Todolist should look like the following screenshot and the todo table looks already more professional:
 ![Todolist](./img/todolist3.png)
 
-#### Column properties
+### Column properties
 - The column properties are used to define the column behavior. So far, we have only used the `field` property in our column definitions.
 - You can find all column properties at https://www.ag-grid.com/react-data-grid/column-properties/
 - By default, column sort is disabled. Set `sortable` property to `true` to enable sorting on a column.
@@ -98,7 +98,7 @@ const [columnDefs] = useState([
 ```
 - If you click any of the column headers, you can see that the column is now sorted. Column headers also contain a 'hamburger'-menu that opens the column filter.
 
-#### Styling cells
+### Styling cells
 - We can use `cellStyle` column property to define cell styling. The value of the property is a callback function that returns an object of css values.
 - In the example code below, the priority cell text color is red if the priority value is High.
 
@@ -111,7 +111,7 @@ const columns = [
   { field: "date", sortable: true, filter: true }
 ];
 ```
-#### Delete functionality
+### Delete functionality
 - Let’s implement the delete functionality, where the user can select a row, and when the delete button is pressed, the selected row is deleted.
 - First, we have to enable row selection and set mode to single selection by using the `rowSelection` grid prop.
 ```jsx title="TodoList.jsx"
