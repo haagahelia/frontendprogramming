@@ -3,12 +3,16 @@ title: 'MUI'
 sidebar_position: 5
 ---
 
+### Installation
+
 - MUI (https://mui.com/) provides component libraries and tools for React. We are going to use Material UI that is a library of React UI components that implements Google's Material Design (https://mui.com/material-ui/getting-started/). 
 - To start using Material UI, you have to install it to your project using the following npm command (use your Todolist project with AG-Grid):
 ```bash
 npm install @mui/material @emotion/react @emotion/styled
 ```
-- Frist, we will use the `Container` component, which is basic layout component, and it centers your app content horizontally. The maxWidth props defines the maximum width of our app, and we are using the largest value. We will also use the `CssBaseline` component that is used to fix inconsistencies across different browsers. Open the **App.jsx** file and do the following modifications:
+
+### Container
+- First, we will use the `Container` component, which is basic layout component, and it centers your app content horizontally. The maxWidth props defines the maximum width of our app, and we are using the largest value. We will also use the `CssBaseline` component that is used to fix inconsistencies across different browsers. Open the **App.jsx** file and do the following modifications:
 
 ```jsx {2-3,8-9,11} title="App.jsx"
 import "./App.css";
@@ -29,7 +33,7 @@ export default App;
 ```
 - Now, we are ready to use other UI components.
 
-#### Button
+### Button
 - Instead of using HTML button element, we can now use Material UI `Button` component (https://mui.com/material-ui/react-button/).
 - Open the **TodoList.jsx** file and add the following import:
 ```js title="TodoList.jsx"
@@ -73,7 +77,7 @@ import Button from '@mui/material/Button';
 - You can change the button color by using the `color` prop. You can find the examples in https://mui.com/material-ui/react-button/#color and change your Delete button color to red.
 - The `Button` component props are listed in https://mui.com/material-ui/api/button/.
 
-#### TextField
+### TextField
 - The Material UI provides `TextField` component (https://mui.com/material-ui/react-text-field/) that let user enter and edit text. We will use that in our Todolist app instead of HTML input elements.
 - To start use the `TextField` component, import it in the `TodoList` component.
 ```js title="TodoList.jsx"
