@@ -18,7 +18,7 @@ let arrB = arrA.map(x => x * 2);
 ---
 ### List handling
 - The following example creates a state that is an array of numbers.
-- Then we render an array of listitems in the return statement by using the `map` function.
+- In the `return` statement, the `map` function is used to iterate over the `numbers` array state, and for each item, it creates a `li` element with the content of the item. 
 - **Note!** `key` string attribute is needed in the lists. That helps React to identify which rows have changed. The `map` method has a second argument, that is running index and we use that in the following example.   
 ```jsx live
 function MyList() {
@@ -44,7 +44,7 @@ The use of index is not recommended in proper apps because it can cause bugs if 
 - The REST API to be used is **Reqres.in** fake API, and the following URL returns a list of fake users (https://reqres.in/api/users).
 
 ![Persons example](./img/persons.png)
-- We need an array to store list of persons; therefore, we create the state called `listItems` and initialize that to an empty array. Then, we use the `useEffect` hook to send a request once after the first render.
+- We need an array to store a list of persons; therefore, we create a state called `listItems` and initialize that to an empty array. Then, we use the `useEffect` hook to send a request once after the first render.
 ```js
 const [listItems, setListItems] = React.useState([]);
 

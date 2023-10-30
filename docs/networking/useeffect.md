@@ -3,32 +3,38 @@ title: 'useEffect hook'
 sidebar_position: 2
 ---
 ### useEffect
-- The `useEffect` hook function can be used to perform side-effects in React function component. The side-effect can be for example, fetch request. The `useEffect` hook takes two arguments:
+- The `useEffect` hook function can be used to perform side-effects in React function component. The side-effect can be for example, fetch request. 
+#### Syntax
+The `useEffect` hook function takes two arguments:
 ```js
 React.useEffect(callback, [dependencies])
 ```
-- Without the second argument, side-effect is automatically invoked each time after component has been rendered.
+where,
+- `callback` contains the code for the side effect you want to perform.
+- `dependencies` is an optional dependency array that contains values that `useEffect` hook depends on.
 
+#### Without dependency array
+- Without the dependency array, side-effect is automatically executed each time after component has been rendered.
 ```js
 React.useEffect(() => {
-  // Invoked after each re-render
+  // Code here is executed after each re-render
 });
 ```
+#### Using dependency array
 - We can pass an array as the second argument to the `useEffect` hook (dependency array).
 - In the following example, we pass `count` state to the `useEffect` hook. In that case, side-effect re-runs only if the `count` state value changes.
 
 ```js
-// This is executed only if the count state changes
 React.useEffect(() => {
-  // Do something here
+  // Code here is executed only if the count state changes
 }, [count]);
 ```
-
+#### Empty dependency array
 - You can also pass an empty array to `useEffect` hook. Then side-effect runs only after the **first** render. This is good for example, when we make calls to REST APIs.
 
 ```js
 React.useEffect(() => {
-  // Executed only after the first render
+  // Code here is executed only after the first render
 }, []);
 ```
 ---
@@ -64,10 +70,10 @@ function ChatRoom() {
 }
 ```
 ---
-### React hooks (useState, useEffect, etc.)
-- There are some general rules when using React hooks:
-  1.  Use hooks only at the top level of your component function
-  2.  Don’t use hooks inside the loops, if statements or nested functions
+### React hooks rules
+- There are some general rules when using React hooks (useState, useEffect, etc.):
+  1.  Use hooks only at the top level of your component function.
+  2.  Don’t use hooks inside the loops, if statements or nested functions.
 
 :::tip CORRECT
 ```js

@@ -86,13 +86,13 @@ const [lastName, setLastName] = React.useState('');
 - Form handling is a little bit different with React. HTML form will navigate to other page when it is submitted but we want to avoid that. Common case is that we want to invoke javascript function that has access to form data after the submission.
 - If we use the form element:
 ```html
-<form onSubmit={addTodo}>
+<form onSubmit={handleSubmit}>
   <input type="text" onChange={handleChange} value={text}/>
   <input type="submit" value="Add"/>
 </form>
 ```
-- Now, if an user submits the form it invokes `addTodo` function.
-- In the `addTodo` function we have to first call `event.preventDefault()` function. That function ignores the default behavior of the form and it is not submitted.
+- Now, if an user submits the form it invokes `handleSubmit` function.
+- In the `handleSubmit` function, we have to first call `event.preventDefault()` function. That function ignores the default behavior of the form and it is not submitted.
 ```js
 const addTodo = (event) => {
   event.preventDefault(); // ignores the default action 

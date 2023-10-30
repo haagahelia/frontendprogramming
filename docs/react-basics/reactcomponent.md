@@ -15,7 +15,8 @@ class HelloComponent extends React.Component {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<HelloComponent />);
 ```
-- Nowadays, the React components are created using the functions and this is the way we are using in this course.
+### Functional component
+- Nowadays, React components are created using functions, and this is how we create components in this course.
 ```jsx
 // React component
 function HelloComponent() {

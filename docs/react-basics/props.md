@@ -2,6 +2,7 @@
 title: 'Props'
 sidebar_position: 4
 ---
+### Basics
 - Parent component can pass data to its child component using the **props**. 
 - Props are passed to component in function arguments.
 - Props are JavaScript **objects** where keys are the prop names and the values are data you pass from a parent component to a child component.
@@ -141,7 +142,7 @@ function ChildComponent(props) {
   Why are they called `props`?
   - `props`is short for _properties_. It is just a name of a function parameter. You could call it anything but by convention the parameter name is `props`.
 
-### A tip for `props`
+### A tip for props
 - You can simplify the usage of `props` by defining variables for the properties received, especially if there are several. Object destructuring syntax provides a nice shorthand notation:
 ```html
   <ChildComponent text={'I am child number'} position={pos} />
