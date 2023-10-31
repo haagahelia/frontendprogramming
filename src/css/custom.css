@@ -33,3 +33,8 @@
   height: 250%;
   margin-top: -20px;
 }
+
+ul:hover {
+  background-color: #F4F6F6; /* Change the background color to highlight */
+  color: black; /* Change the text color */
+}
