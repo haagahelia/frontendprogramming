@@ -14,7 +14,7 @@ sidebar_position: 3
 ### Classes
 
 #### Class declaration
-- You can declare classes using the `class` keyword. The `constructor` method is a special method that gets called when a new instance of the class is created. It initializes the object's properties.
+You can declare classes using the `class` keyword. The `constructor` method is a special method that gets called when a new instance of the class is created. It initializes the object's properties.
 
 ```javascript
 class Shape { 
@@ -35,7 +35,7 @@ Classes were used in React to declare components before React version 16.8. Nowa
 
 #### Inheritance
 
-- You can achieve inheritance using the `extends` keyword. The following example demonstrates how to create a subclass `Circle` that inherits from the parent class `Shape`.
+You can achieve inheritance using the `extends` keyword. The following example demonstrates how to create a subclass `Circle` that inherits from the parent class `Shape`.
 
 ```javascript
 class Circle extends Shape { 
@@ -47,11 +47,18 @@ class Circle extends Shape {
 ```
  ### Variables
 
-**`let`** keyword. The scope of `let` variables is **block** (`{ }`) in which they are defined. Block scope is different from the function scope of variables declared with `var`, as let variables are scoped to the nearest block, statement, or expression.
+#### `let` keyword 
+
+The scope of `let` variables is **block** (`{ }`) in which they are defined. 
+- Block scope is different from the function scope of variables declared with `var`, as let variables are scoped to the nearest block, statement, or expression.
 ```	js
 let age = 24;
 ```
-**`const`** keyword (constants, block scope)
+#### `const` keyword
+The `const`` declaration declares block-scoped local constant variable. 
+- Constant variables must be initialized.
+- The value of a constant can't be changed using the assignment operator after initialization
+- If a constant is an object, its properties can be added, updated, or removed.
 ```js
 const PI = 3.141593;
 ````
@@ -61,7 +68,7 @@ Using `var` keyword is considered obsolete.
 
 ### String Interpolation (template literals)
 
-- Template literals can be used to concatenate strings easily and to get more readable syntax.
+Template literals can be used to concatenate strings easily and to get more readable syntax.
 
 ```js
 let person = { firstname: 'Jack', lastname: 'Russell' };
@@ -78,7 +85,7 @@ You must use backticks (``)	with template literals.
 
 ### Arrow functions
 
-- Arrow function expression is more compact way to declare functions.
+Arrow function expression is more compact way to declare functions.
 
 Syntax: `params => expression`
 
@@ -91,22 +98,34 @@ function(x) {
   return x + 1;
 }
 ```
-- In the case of multiple parameters, you have to use parenthesis.
+- The return value of the function is the value of the expression, 
+
+:::note
+_Expression_ is a valid unit of code that resolves to a value
+:::
+
+#### Multiple parameters
+In the case of multiple parameters, you have to use parenthesis.
 ```js
-(x, y) => x * y;
+(x, y) => x * y;.
 ```
-- If there are no parameters, you have to use empty parenthesis.
+- The parentheses can only be omitted if the function has a single parameter.
+
+#### No parameters
+If there are no parameters, you have to use empty parenthesis.
 ```js
 () => "Hello World";
 ```
-- If there are several statements in the function body, you need the curly braces and the `return` statement.
+#### Many statements in body
+If there are several statements in the function body, you need the curly braces and the `return` statement.
 ```js
 (x, y) => {
   console.log(x, y); 
   return x * y;
 }					
 ```
-- To call an arrow function, you can save function to a variable.
+#### Calling an arrow function
+To call an arrow function, you can save function to a variable.
 ```js
 const calc = (x, y) => x * y;
 
@@ -116,7 +135,7 @@ calc(5, 3); // Returns 15
 
 ### Object destructuring
 
-- You can use object destructuring to extract object properties and bind these to variables.
+You can use object destructuring to extract object properties and bind these to variables.
 
 ```js
 // Object destructuring assignment
@@ -132,7 +151,8 @@ const { latitude, longitude } = coords;
 - We will use object destructuring later with React component `props`.
 
 ### Array destructuring
-- You can use array destructuring to extract elements and bind these to variables.
+
+You can use array destructuring to extract array elements and bind these to variables.
 
 ```js
 // Array destructuring assignment
@@ -140,38 +160,45 @@ const myArray = ["first", "second", "third"];
 
 const [a, b, c] = myArray; // const a = "first", b = "second", c = "third";
 
-// used e.g. here
+```
+
+- We will use array destructuring later with React component states like shown in the example:
+```js
 const [address, setAddress] = useState('');
 ```
 
-- We will use array destructuring later with React component `states` like shown in the example above:
-
 ### Spread operator (...)
 
+Spread operator expands an iterable object into a list of arguments.
+
+- It can be used to concatenate arrays
+
 ```js
-// Spread operator expands an iterable object into a list of arguments.
-// can be used to concatenate arrays
 let arr1 = [1, 2, 3];
 let arr2 = [4, 5, 6];
 let arr3 = [...arr1, ...arr2]; // [1, 2, 3, 4, 5, 6]
-
-// can be used to make shallow copy of array or object
+```
+- It can be used to make shallow copy of array or object
+```js
 const newArray = [...arr3];
 const newPerson = {...person};
-
-// can be used to make a partial update on an object
+```
+- It can be used to make a partial update on an object
+```js
 const newPerson = {...person, firstname: 'William'};
 // 'William' overrides the previous value of 
 // firstname, other attributes remain as they were 
 ```
-### Property intializer shorthand
+### Property initializer shorthand
+Property initializerr shorthand is a shorter syntax for common task of defining object properties.
 ```js
 // Property initializer shorthand
 let length = 12;
 let width = 23;
 
 let dimensions = { length, width };
-// same as
+
+// same as in ES5
 let dimensions = {
   length: length,
   width: width
