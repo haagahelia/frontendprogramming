@@ -34,7 +34,7 @@
   margin-top: -20px;
 }
 
-ul:hover {
+ul:hover:not(.menu__list) {
   background-color: #F4F6F6; 
   color: black;
 }
