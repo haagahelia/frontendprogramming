@@ -88,7 +88,7 @@ The syntax:
   <ChildComponent />
 </ParentComponent>
 ```
-can be also written in the following vway:
+Can be also written in the following way:
 ```jsx
 <ParentComponent children={<ChildComponent />}>
 ```
