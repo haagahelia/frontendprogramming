@@ -14,6 +14,8 @@ Before we start to create React projects, it is important to understand how Java
 
 ---
 ### JavaScript modules / Export
+
+#### Named export
 - You can export an identifier by adding the keyword `export` in front of the declaration. This is so called **named export**, and module can have multiple named exports. Named exports are useful for exporting variables and functions. 
 ```js
 export const myPi = 3.14;
@@ -34,6 +36,7 @@ import { myPi, circleArea } from './mylib.js';
 console.log('The value of pi is', myPi);
 console.log(circleArea(1.0));
 ```
+#### Default export
 - Another way of exporting is to define a `default export` in the module. This is so called **default export** and you can have only one default export in module. In React, components are exported using the default export.
 
 ```js
