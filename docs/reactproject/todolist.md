@@ -128,9 +128,11 @@ button {
 Now, your todolist should look the following:
 ![Todolist](./img/todolist1.png)
 
-`***Tasks***: Try to implement the following features to your Todolist app.
+:::info[TASKS]
+Try to implement the following features to your Todolist app.
 1. Clear the input element after the Add button is pressed.
-2. Add validation that an `alert` is shown if the `desc` state value is empty.
+2. Add validation that an `alert` is shown if the `desc` state value is empty when new todo is added..
+:::
 ---
 ### Split components
 - Let’s split todolist example application into multiple components.

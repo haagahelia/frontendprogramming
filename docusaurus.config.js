@@ -113,6 +113,7 @@ const config = {
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
+        additionalLanguages: ['bash', 'json'],
       },
       markdown: {
         mermaid: true,
