@@ -10,7 +10,8 @@ sidebar_position: 2
 - React documentation: https://react.dev/
 
 #### React components
-React components are like lego blocks from which you can build a user interface. The following UI example consists of three react components:
+React components are like lego blocks from which you can build a user interface. The following UI example consists of four react components:
+- Root component (black)
 - Search component (red)
 - Table component (blue)
 - Table row component (green)
