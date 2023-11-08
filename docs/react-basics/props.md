@@ -21,9 +21,7 @@ root.render(<HelloComponent firstname="John" />);
 ```js
 function HelloComponent(props) {
   return (
-    <div>
-      Hello World {props.firstname} {props.lastname}
-    </div>
+    <div>Hello World {props.firstname} {props.lastname}</div>
   );
 }
 
@@ -37,6 +35,32 @@ function HelloComponent({ firstname, lastname }) {
   return (
     <div>
       Hello World {firstname} {lastname}
+    </div>
+  );
+}
+```
+### JSX
+- **JSX** is Javascript syntax extension which is recommended to use with React.
+- In the example above, we had the following `return` statement, and it contains JSX that looks very similar to HTML.
+- We can embed JavaScript expressions to JSX by wrapping them within the curly braces (`{}`).
+  After compilation, JSX expressions becomes regular JavaScript objects.
+
+```jsx
+return (
+  <div>Hello World {props.firstname} {props.lastname}</div>
+);
+```
+More JSX examples:
+```jsx live
+function HelloComponent() {
+  const name = "Mary";
+  const age = 20;
+  
+  return (
+    <div>
+      <p>Hello {name}</p>
+      <p>Is Mary older than 18? {age > 18 ? 'Yes' : 'No'}</p>
+      <p>3 + 5 equals {3 + 5}</p>
     </div>
   );
 }

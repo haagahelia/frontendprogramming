@@ -154,19 +154,6 @@ function handleClick() {
 :::warning 
 `flushSync` can have negative effect to performance. Use only when necessary.
 :::
-
-### JSX
-
-- **JSX** is Javascript syntax extension which is recommended to use with React.
-- In the counter example we had the following JSX expression:
-
-```jsx
-<p>You clicked {count} times</p>
-```
-
-- We can embed javascript to JSX by wrapping it in the curly braces.
-  After compilation, JSX expressions becomes regular JavaScript objects.
-
 ###  React Developer Tools
 
 - **React Developer Tools** is available as Chrome plugin, Firefox add-on or Edge extension. That can be used to debug your components.
