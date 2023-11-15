@@ -24,7 +24,7 @@ npx tsc
  #### Type inference
 - TypeScript will automatically define the type when you initialize a variable. In the following example, we declare variable `helloworld` and assign it to a string value. If we try to re-assign it with other type, we get an error.
 
- ![](./img/type_example.png)
+ ![](./img/type_example.PNG)
 
 - The most common primitive types are: `string`, `number` and `boolean`
 - See the different types: https://www.typescriptlang.org/docs/handbook/2/everyday-types.html
