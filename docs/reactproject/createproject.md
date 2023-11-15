@@ -12,7 +12,7 @@ npm create vite@latest
 ```
 - The command opens a project wizard where you can define a name of your project and framework. Select **React** framework and  **javascript** variant. SWC (Speedy Web Compiler) is a fast JavaScript and TypeScript compiler written in Rust. It is a faster alternative to Babel, which is normally used.
 
-  ![Vite project](./img/create_vite1.png)
+  ![Vite project](./img/create_vite1.PNG)
 
 - Next, you change the directory to your project folder and install the dependencies:
 ```bash
@@ -23,7 +23,7 @@ npm install
 ```bash
 npm run dev
 ```
-![Vite Project](./img/create_vite2.png)
+![Vite Project](./img/create_vite2.PNG)
 
 :::note
 You can stop the process by pressing **q** in the terminal
