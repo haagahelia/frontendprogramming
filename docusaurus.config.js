@@ -73,6 +73,7 @@ const config = {
         apiKey: '742137e5fcae295479213f2064afa9ac',
   
         indexName: 'frontendprogramming',
+        contextualSearch: false,
       },
       navbar: {
         title: 'Front End Programming',
