@@ -65,6 +65,15 @@ const config = {
         minHeadingLevel: 2,
         maxHeadingLevel: 5,
       },
+      algolia: {
+        // The application ID provided by Algolia
+        appId: 'MB3I4A58K3',
+
+        // Public API key: it is safe to commit it
+        apiKey: '742137e5fcae295479213f2064afa9ac',
+  
+        indexName: 'frontendprogramming',
+      },
       navbar: {
         title: 'Front End Programming',
         logo: {
