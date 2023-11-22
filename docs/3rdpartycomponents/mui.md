@@ -10,6 +10,10 @@ sidebar_position: 5
 ```bash
 npm install @mui/material @emotion/react @emotion/styled
 ```
+If you want to use icons, you should install the following library:
+```bash
+npm install @mui/icons-material
+```
 
 ### Container
 - First, we will use the `Container` component, which is basic layout component, and it centers your app content horizontally. The maxWidth props defines the maximum width of our app, and we are using the largest value. We will also use the `CssBaseline` component that is used to fix inconsistencies across different browsers. Open the **App.jsx** file and do the following modifications:
@@ -31,6 +35,7 @@ function App() {
 
 export default App;
 ```
+- MUI uses Google Roboto fonts and you can read the installation instructions in https://mui.com/material-ui/getting-started/installation/#roboto-font
 - Now, we are ready to use other UI components.
 
 ### Button
