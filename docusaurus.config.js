@@ -10,16 +10,28 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
+<<<<<<< HEAD
   url: 'https://juhahinkula.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/frontenddocu/',
+=======
+  url: 'https://haagahelia.github.io',
+  // Set the /<baseUrl>/ pathname under which your site is served
+  // For GitHub pages deployment, it is often '/<projectName>/'
+  baseUrl: '/frontendprogramming/',
+>>>>>>> e129e526e43c928deb148e9465e284e7da6bab62
   plugins: ['@docusaurus/theme-live-codeblock'],
  
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
+<<<<<<< HEAD
   organizationName: 'juhahinkula', // Usually your GitHub org/user name.
   projectName: 'frontenddocu', // Usually your repo name.
+=======
+  organizationName: 'haagahelia', // Usually your GitHub org/user name.
+  projectName: 'frontendprogramming', // Usually your repo name.
+>>>>>>> e129e526e43c928deb148e9465e284e7da6bab62
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -64,6 +76,16 @@ const config = {
       tableOfContents: {
         minHeadingLevel: 2,
         maxHeadingLevel: 5,
+      },
+      algolia: {
+        // The application ID provided by Algolia
+        appId: 'MB3I4A58K3',
+
+        // Public API key: it is safe to commit it
+        apiKey: '742137e5fcae295479213f2064afa9ac',
+  
+        indexName: 'frontendprogramming',
+        contextualSearch: false,
       },
       navbar: {
         title: 'Front End Programming',

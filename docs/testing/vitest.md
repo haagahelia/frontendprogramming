@@ -48,7 +48,7 @@ npm run test
 
 - There is also Vitest VSCode extension available that can be used to run test cases.
 
-![Vitest plugin](./img/vitest_plugin.png)
+![Vitest plugin](./img/vitest_plugin.PNG)
 
 ### Testing React components
 
@@ -125,7 +125,7 @@ test("renders App component", () => {
 
 - Now, you can run your first test case.
 
-![Test run](./img/vitest_run.png)
+![Test run](./img/vitest_run.PNG)
 
 - You can change the text in the header and see how failed test case is shown.
 
@@ -277,4 +277,4 @@ test("add todo", () => {
 - _"In computer science, code coverage is a percentage measure of the degree to which the source code of a program is executed when a particular test suite is run"_ - Wikipedia
 - You can run coverage test using the command `npm run coverage`
 
-![Coverage test](./img/coverage.png)
+![Coverage test](./img/coverage.PNG)

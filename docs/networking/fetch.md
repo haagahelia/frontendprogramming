@@ -34,7 +34,7 @@ fetch('https://mydomain.com/api')
 fetch('https://mydomain.com/api')
 .then(response => console.log(response))
 ```
- ![Response](./img/response.png)
+ ![Response](./img/response.PNG)
 
 ---
 ### Setting HTTP method & headers

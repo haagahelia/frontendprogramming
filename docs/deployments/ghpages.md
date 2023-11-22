@@ -7,11 +7,11 @@ sidebar_position: 3
 
 #### 1. Create a repository 
 - Create a repository to GitHub for your react app. In this example, I name my repository to ***reactapp***.
-![w:700](./img/newrepo2.png)
+![w:700](./img/newrepo2.PNG)
 
 #### 2. Push your code to Github 
 - Push your code to Github by using the commands from your Github repository.
-![w:700](./img/settings.png)
+![w:700](./img/settings.PNG)
 
 #### 3. Vite config 
 - Open you app's vite.config.js file and add the `base` property. The value is the name of your repository with leading and trailing slashes.
@@ -57,7 +57,7 @@ npm run deploy
 https://{username}.github.io/{repo_name}/
 ```
 - You can find the url from your repository's **Settings | Pages**
-![](./img/ghpages_url.png)
+![](./img/ghpages_url.PNG)
 
 Different cloud service providers have their own deployment processes
 For example,

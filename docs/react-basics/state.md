@@ -109,7 +109,6 @@ return (
 :::
 
 ### State batching
-
 - State updates are batched to minimize re-renders for better performance.
 - Before React 18 only state updates in the event handlers are batched.
 - In React 18+ all updates are batched.
@@ -157,7 +156,6 @@ function handleClick() {
 `flushSync` can have negative effect to performance. Use only when necessary.
 :::
 ###  React Developer Tools
-
 - **React Developer Tools** is available as Chrome plugin, Firefox add-on or Edge extension. That can be used to debug your components.
 - Install this extension to your browser. After the successful installation you can see two new tabs in the browser console (Components and Profiler).
 - React Developer Tools can be used to debug component's state and props values.
