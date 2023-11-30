@@ -84,7 +84,7 @@ const config = {
             label: 'Course Material',
           },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/haagahelia/frontendprogramming.git',
             label: 'GitHub',
             position: 'right',
           },
