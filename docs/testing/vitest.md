@@ -45,7 +45,6 @@ export default defineConfig({
 ```bash
 npm run test
 ```
-
 - There is also Vitest VSCode extension available that can be used to run test cases.
 
 ![Vitest plugin](./img/vitest_plugin.PNG)
@@ -80,45 +79,56 @@ export default defineConfig({
 - Now, we will create our first test case using the todolist that we have developed. If you follow this example, you should add 'My Todolist' header to your own App component. Our test cases renders the App component and check that there is 'My Todolist' text.
 - Create a new file called **_App.test.jsx_** and add the first test case.
 
-```js
+```js title="App.test.jsx"
 import App from "./App";
+import { test } from "vitest";
 
 test("renders header", () => {});
 ```
 - Import the `render` method from the React testing library. The `render` method can be used to render React component for testing.
 
-```js
-import { render } from "@testing-library/react";
+```js title="App.test.jsx"
 import App from "./App";
+import { test } from "vitest";
+// highlight-next-line
+import { render } from "@testing-library/react";
 
 test("renders App component", () => {
   // renders the App component for testing
+  // highlight-next-line
   render(<App />);
 });
 ```
 
 - Next, import the `screen` method from the React Testing Library.
 - The `screen` method returns an object that provides queries (i.e. `getByText`, `getByLabelText` etc.) that are bound to the whole rendered `document.body`. These queries can be used to find elements from the HTML document.
+- In the following example, we use `getByText()` query to find an element with specified text.
+- The forward slash (/) in **/My Todolist/i** to define a regular expression pattern, and the i-flag at the end stands for case-insensitive. This means it is looking for rendered content that contains the “Hello World” text in a case-insensitive matter. You can also use a full string match that is case-sensitive by passing a string as an argument to `getByText()` query.
 
-```js
-import { render } from "@testing-library/react";
+```jsx title="App.test.jsx"
 import App from "./App";
+import { test } from "vitest";
+import { render, screen } from "@testing-library/react";
 
 test("renders App component", () => {
   render(<App />);
+  // highlight-next-line
   const header = screen.getByText(/My Todolist/i);
 });
 ```
 - Then, we check if the header text exists in DOM using the `toBeInTheDocument()` matcher from the jest-dom library. We have to import `@testing-library/jest-dom/vitest` to extend Vitest mathcers. Then, you can use jest-dom matchers with Vitest.
+- The purpose of this test is to ensure that when the `App` component is rendered, it contains a header with the text "My Todolist". If the header is found, the test passes; otherwise, it will fail. 
 
-```js
+```jsx title="App.test.jsx"
+import App from "./App";
+import { test, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import '@testing-library/jest-dom/vitest';
-import App from "./App";
 
 test("renders App component", () => {
   render(<App />);
   const headline = screen.getByText(/My Todolist/i);
+  // highlight-next-line
   expect(headline).toBeInTheDocument();
 });
 ```
@@ -153,9 +163,12 @@ export default function TodoTable(props) {
 - Test case for the stateless `TodoTable` component. It adds one todo item to the table and check that it is rendered.
 - We use `getByRole` to find the table element and `toHaveTextContent` for assertion.
 
-```js
+```jsx
 ...
 import TodoTable from './TodoTable';
+import { test, expect } from "vitest";
+import { render, screen } from "@testing-library/react";
+
 ...
 test('renders todotable', () => {
   const row = [
@@ -173,11 +186,8 @@ test('renders todotable', () => {
 const table = screen.getByRole('table');
 expect(table).not.toHaveTextContent((/go to coffee/i);
 ```
-
 - If you assert element that is not present, it is recommended to use `queryBy*` methods instead of `getBy*`. The `getBy*` queries throws an error if no element is found.
-
 - React testing library provides `fireEvent` method that you can use for firing DOM events like button click
-
 - For example, to simulate button click:
 ```js
 import { render, screen, fireEvent } from "@testing-library/react";
@@ -189,9 +199,8 @@ fireEvent.click(button);
 ```
 - Let’s create a test where values are added to the description and date input elements and then the Add button is pressed. After that new todo item should be added to the table.
 - The functionality that we want to test is now in the `App` component therefore we will add a new test into the **App.test.js** file
-- See the **App.js** code in the next slide
 
-```js
+```jsx title="App.jsx"
 function App() {
   const [todo, setTodo] = useState({ desc: "", date: "" });
   const [todos, setTodos] = useState([]);
@@ -226,9 +235,9 @@ function App() {
 }
 ```
 
-- First, we will add new test case to the **App.test.js** file and we render the `App` component.
+- First, we will add new test case to the **App.test.jsx** file and we render the `App` component.
 
-```js
+```jsx
 test("add todo", () => {
   render(<App />);
 });
@@ -258,7 +267,7 @@ expect(table).toHaveTextContent(/go to coffee/i);
 ```
 - Below is the whole test case code:
 
-```js
+```jsx
 test("add todo", () => {
   render(<App />);
   const desc = screen.getByPlaceholderText("Description");
