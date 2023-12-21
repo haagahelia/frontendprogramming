@@ -139,9 +139,9 @@ test("renders App component", () => {
 
 - You can change the text in the header and see how failed test case is shown.
 
-- Let’s make one example test case for our TodoList app. We have one stateless `TodoTable` component that we want to create test.
+- Let’s make one example test case for our TodoList app that we created in the React Project section. We have stateless `TodoTable` component that we want to create a test case. Test case ensures that a new todo is displayed in the todo table.
 
-```js
+```jsx title="TodoTable.jsx"
 export default function TodoTable(props) {
   return (
     <div>
@@ -159,9 +159,8 @@ export default function TodoTable(props) {
   );
 }
 ```
-
-- Test case for the stateless `TodoTable` component. It adds one todo item to the table and check that it is rendered.
-- We use `getByRole` to find the table element and `toHaveTextContent` for assertion.
+- The following code show test case for the stateless `TodoTable` component. It adds one todo item to the table and check that it is displayed.
+- We use `getByRole()` to find the table element and `toHaveTextContent()` for assertion.
 
 ```jsx
 ...
@@ -179,7 +178,6 @@ test('renders todotable', () => {
   expect(table).toHaveTextContent((/go to coffee/i);
 });
 ```
-
 - You can also test for the opposite of a matcher using the `not` keyword.
 
 ```js
@@ -187,7 +185,7 @@ const table = screen.getByRole('table');
 expect(table).not.toHaveTextContent((/go to coffee/i);
 ```
 - If you assert element that is not present, it is recommended to use `queryBy*` methods instead of `getBy*`. The `getBy*` queries throws an error if no element is found.
-- React testing library provides `fireEvent` method that you can use for firing DOM events like button click
+- React testing library provides `fireEvent` method that you can use for firing DOM events, such as button click
 - For example, to simulate button click:
 ```js
 import { render, screen, fireEvent } from "@testing-library/react";
