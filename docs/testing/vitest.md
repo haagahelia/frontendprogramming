@@ -195,8 +195,8 @@ const button = screen.getByText("My Button");
 // Fire click event
 fireEvent.click(button);
 ```
-- Let’s create a test where values are added to the description and date input elements and then the Add button is pressed. After that new todo item should be added to the table.
-- The functionality that we want to test is now in the `App` component therefore we will add a new test into the **App.test.js** file
+- Let’s create a test where values are added to the description and date input elements and then the Add button is pressed. After that, a new todo item should be added to the table.
+- The functionality that we want to test is now in the `App` component; therefore, we will add a new test into the **App.test.js** file
 
 ```jsx title="App.jsx"
 function App() {
@@ -232,10 +232,8 @@ function App() {
   );
 }
 ```
-
 - First, we will add new test case to the **App.test.jsx** file and we render the `App` component.
-
-```jsx
+```jsx title="App.test.jsx"
 test("add todo", () => {
   render(<App />);
 });
@@ -243,29 +241,27 @@ test("add todo", () => {
 
 - Next, we can add value to the input elements by using the `fireEvent` method. Correct input element can be found using `getByPlaceholderText` query that jest-dom provides.
 
-```js
+```js title="App.test.jsx"
 const desc = screen.getByPlaceholderText("Description");
 fireEvent.change(desc, { target: { value: "Go to coffee" } });
 const date = screen.getByPlaceholderText("Date");
 fireEvent.change(date, { target: { value: "29.01.2023" } });
 ```
 
-- Finally, we can use `fireEvent` to click the Add button. Correct button is found by using `getByText` query (jest-dom)
+- Finally, we can use `fireEvent` to click the Add button. Correct button is found using the `getByText()` query (jest-dom)
 
-```js
+```js title="App.test.jsx"
 const button = screen.getByText("Add");
 fireEvent.click(button);
 ```
-
 - Now, the new todo item should be added to the table and we can use the following statements to assert that.
-
-```js
+```js title="App.test.jsx"
 const table = screen.getByRole("table");
 expect(table).toHaveTextContent(/go to coffee/i);
 ```
 - Below is the whole test case code:
 
-```jsx
+```jsx title="App.test.jsx"
 test("add todo", () => {
   render(<App />);
   const desc = screen.getByPlaceholderText("Description");
