@@ -94,7 +94,7 @@ const [lastName, setLastName] = React.useState('');
 - Now, if an user submits the form it invokes `handleSubmit` function.
 - In the `handleSubmit` function, we have to first call `event.preventDefault()` function. That function ignores the default behavior of the form and it is not submitted.
 ```js
-const addTodo = (event) => {
+const handleSubmit = (event) => {
   event.preventDefault(); // ignores the default action 
   // Do something with form data
 }
