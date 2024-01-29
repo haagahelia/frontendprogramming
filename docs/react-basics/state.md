@@ -71,27 +71,18 @@ function Counter() {
 ```
 ---
 ### Question
-- Change the counter app and render `Counter` component three times. How counter values are changed if you click any of the buttons? and Why?
+- Change the counter app and render `Counter` component three times. How counter values are changed if you click any of the buttons? Why?
 
-```jsx live
+```jsx
 function Counters(){
-  function Counter() {
-    const [count, setCount] = React.useState(0);
 
-    return (
-      <div>
-        <p>You clicked {count} times</p>
-        <button onClick={() => setCount(count + 1)}>+</button>
-      </div>
-    );
-  }
-
-return (
-  <div>
-    <Counter />
-    <Counter />
-    <Counter />
-  </div>);
+  return (
+    <div>
+      <Counter />
+      <Counter />
+      <Counter />
+    </div>
+  );
 }
 ```
 ---
