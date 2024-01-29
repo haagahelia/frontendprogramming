@@ -3,7 +3,7 @@ title: 'useEffect hook'
 sidebar_position: 2
 ---
 ### useEffect
-- The `useEffect` hook function can be used to perform side-effects in React function component. The side-effect can be for example, fetch request. 
+- The `useEffect` hook function can be used to perform side-effects in React function component. The side-effect can be for example, network request. 
 #### Syntax
 The `useEffect` hook function takes two arguments:
 ```js
