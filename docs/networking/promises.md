@@ -19,9 +19,7 @@ fetch('https://mydomain.com/api')
     .then(data => {                     // handle the latter Promise
         // process response
     })
-    .catch(error) { error => console.error(error) }   // handle failures
-  }
-}
+    .catch(error => console.error(error));   // handle failures
 ```
 - When the promise resolves successfully, the result is passed as an argument to the handler function in the `then` call.
 - `then` calls can be chained; the previous handler returns another promise.
