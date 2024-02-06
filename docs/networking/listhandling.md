@@ -75,7 +75,7 @@ return (
               <td>{person.first_name}</td>
               <td>{person.last_name}</td>
               <td>{person.email}</td>
-            </tr> }
+            </tr>) }
       </tbody>
     </table>
   </div>
