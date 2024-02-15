@@ -14,4 +14,3 @@ What you should consider when selecting third-party components:
 Sources to find third-party components:
 - Google
 - Awesome React: https://github.com/enaqx/awesome-react
-- JS Coach: https://github.com/enaqx/awesome-react
