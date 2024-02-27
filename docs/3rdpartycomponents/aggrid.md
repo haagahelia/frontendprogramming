@@ -20,25 +20,25 @@ npm install ag-grid-community ag-grid-react
 ```json title="package.json"
 "dependencies": {
   //highlight-next-line
-  "ag-grid-community": "^30.2.0",
+  "ag-grid-community": "^31.1.0",
   //highlight-next-line
-  "ag-grid-react": "^30.2.0",
+  "ag-grid-react": "^31.1.0",
   "react": "^18.2.0",
   "react-dom": "^18.2.0"
 },
 ```
 :::note
-In the line `"ag-grid-community": "^30.2.0"` the `ag-grid-community` is the name of the installed package. The `"^30.2.0"` specifies the installed version. The `^` symbol inidcates that it allows to receive bug fixes and minor version updates. The major version updates are not allowed (For example, 31.0.0). The packages are automatically updated when you execute the `npm install` command. The installed versions are saved to the dependency lock file **package.lock.json** file. If the version is specified `"30.2.0"` it means that the project requires version 30.2.0 and updates are not received automatically. 
+In the line `"ag-grid-community": "^31.1.0"` the `ag-grid-community` is the name of the installed package. The `"^31.1.0"` specifies the installed version. The `^` symbol inidcates that it allows to receive bug fixes and minor version updates. The major version updates are not allowed (For example, 32.0.0). The packages are automatically updated when you execute the `npm install` command. The installed versions are saved to the dependency lock file **package.lock.json** file. If the version is specified `"31.1.0"` it means that the project requires version 31.1.0 and updates are not received automatically. 
 :::
 
 ### Import AG-Grid component and stylesheets
-- To use the AG-Grid component in our TodoList component, we have to import it. We import the `AgGridReact` component and stylesheets. AG-Grid provides pre-defined styles (Bootstrap, Alpine, and Material Design) and we use the Material Design styling. Add the following imports to your `TodoList` component.
+- To use the AG-Grid component in our TodoList component, we have to import it. We import the `AgGridReact` component and stylesheets. AG-Grid provides pre-defined themes (https://www.ag-grid.com/react-data-grid/themes/) and we use the Material Design theme. Add the following imports to your `TodoList` component.
 
 ```js title="TodoList.jsx"
 import { AgGridReact } from "ag-grid-react";
 
 import "ag-grid-community/styles/ag-grid.css";
-import "ag-grid-community/styles/ag-theme-material.css";
+import "ag-grid-community/styles/ag-theme-material.css"; // Material Design theme
 ```
 ### Define columns
 - Next, we have to define data grid columns. The columns are defined using a state, and the value is an array of column definition objects. Each column definition object has a mandatory property `field` that defines what data is shown in a column. For example, if we define `{field: 'date'}`, this column shows our `todo` object's `date` property value.
@@ -85,18 +85,18 @@ Now, your Todolist should look like the following screenshot and the todo table 
 ### Column properties
 - The column properties are used to define the column behavior. So far, we have only used the `field` property in our column definitions.
 - You can find all column properties at https://www.ag-grid.com/react-data-grid/column-properties/
-- By default, column sort is disabled. Set `sortable` property to `true` to enable sorting on a column.
+- By default, column sort is enabled. Set `sortable` property to `false` to disable sorting on a column.
 - You can also get a column-based filter that filters rows using the spcified values. You can enble colmun filter by setting `filter` property to `true`.
 - Now, the `columndDef` look like the code below:
 
 ```js title="TodoList.jsx"
 const [columnDefs] = useState([
-  {field: 'desc', sortable: true, filter: true},
-  {field: 'priority', sortable: true, filter: true},
-  {field: 'date', sortable: true, filter: true}
+  {field: 'desc', sortable: false, filter: true},
+  {field: 'priority', filter: true},
+  {field: 'date', filter: true}
 ]);
 ```
-- If you click any of the column headers, you can see that the column is now sorted. Column headers also contain a 'hamburger'-menu that opens the column filter.
+- Now, column headers also contain a 'hamburger'-menu that opens the column filter. The description column is not anymore sortable.
 
 ### Styling cells
 - We can use `cellStyle` column property to define cell styling. The value of the property is a callback function that returns an object of css values.
