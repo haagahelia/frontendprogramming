@@ -119,8 +119,8 @@ const columns = [
   columnDefs={columns}
   rowData={todos}>
   //highlight-next-line
-  rowSelection="single"
-</AgGridReact>
+  rowSelection="single" 
+/>
 ```
 - We should be able to get the selected row, and therefore we need access to the ag-grid component’s API. The API provides a method called getSelectedNodes() that we can use to get the selected row index.
 - To get access to the Grid API, we can use the React `useRef` hook function (https://react.dev/reference/react/useRef). The React `ref` can be used to get direct access to a DOM element.
