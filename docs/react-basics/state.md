@@ -203,6 +203,22 @@ Here are some key differences:
 
 Variables can be used to data that doesn't impact component's output directly.
 
+#### ref
+
+If you need variable that persist between re-renders but it is not needed for rendering, you can use React `ref`. You can create a `ref` by calling the `useRef` hook function and pass initial value as an argument.
+
+For example,
+```js
+const myRef = useRef(0) // Call useRef hook in the top level of your component
+```
+
+The `useRef` hook function returns an object with a single property: `current`. That property can be used to access and set a value.
+```js
+myRef.current = 10;
+``` 
+
+See the example in React documentation: https://react.dev/reference/react/useRef#examples-value
+
 ---
 ### React state (Extra material)
 
