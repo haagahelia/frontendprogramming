@@ -123,7 +123,7 @@ const columns = [
 </AgGridReact>
 ```
 - We should be able to get the selected row, and therefore we need access to the ag-grid component’s API. The API provides a method called getSelectedNodes() that we can use to get the selected row index.
-- To get access to the Grid API, we can use the React `useRef` hook function (https://reactjs.org/docs/hooks-reference.html#useref).
+- To get access to the Grid API, we can use the React `useRef` hook function (https://react.dev/reference/react/useRef). The React `ref` can be used to get direct access to a DOM element.
 
 ```js title="TodoList.jsx"
 // Import useRef
