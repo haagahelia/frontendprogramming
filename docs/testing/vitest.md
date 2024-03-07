@@ -77,7 +77,7 @@ export default defineConfig({
 - `environment` - Defines the environment that will be used for testing (Node.js is default). We will use browser based environment **jsdom**.
 
 - Now, we will create our first test case using the todolist that we have developed. If you follow this example, you should add 'My Todolist' header to your own App component. Our test cases renders the App component and check that there is 'My Todolist' text.
-- Create a new file called **_App.test.jsx_** and add the first test case.
+- Create a new file called **_App.test.jsx_** in the `src` folder and add the first test case.
 
 ```js title="App.test.jsx"
 import App from "./App";
@@ -127,12 +127,11 @@ import '@testing-library/jest-dom/vitest';
 
 test("renders App component", () => {
   render(<App />);
-  const headline = screen.getByText(/My Todolist/i);
+  const header = screen.getByText(/My Todolist/i);
   // highlight-next-line
-  expect(headline).toBeInTheDocument();
+  expect(header).toBeInTheDocument();
 });
 ```
-
 - Now, you can run your first test case.
 
 ![Test run](./img/vitest_run.PNG)
