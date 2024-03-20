@@ -14,7 +14,7 @@ sidebar_position: 3
 ![w:700](./img/settings.PNG)
 
 #### 3. Vite config 
-- Open you app's vite.config.js file and add the `base` property. The value is the name of your repository with leading and trailing slashes.
+- Open you app's `vite.config.js` file and add the `base` property. The value is the name of your repository with leading and trailing slashes.
 ```js
 export default defineConfig({
   //highlight-next-line
@@ -25,8 +25,14 @@ export default defineConfig({
     environment: 'jsdom',
   },
 })
-
 ```
+
+- Open you app's `package.json` file and add the `homepage` property. Use your Github username and repository name.
+
+```json
+"homepage": "https://{username}.github.io/{repo-name}/"
+```
+
 #### 4. Install gh-pages 
 - Navigate to your app folder in your terminal and install ***gh-pages*** npm package as a development dependency (https://github.com/tschaub/gh-pages).
 
@@ -51,7 +57,7 @@ npm install gh-pages --save-dev
 ```bash
 npm run deploy
 ```
-- The format of your app URL is the following.
+- After the succesfull deployment, your app URL is the following.
 
 ```
 https://{username}.github.io/{repo_name}/
