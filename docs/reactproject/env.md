@@ -21,7 +21,7 @@ VITE_API_URL=https://testapi.com/students
 3. Then, you can use env variables in you code
 ```js
 fetch(import.meta.env.VITE_API_URL)
-.then(response => response.json)
+.then(response => response.json())
 ...
 ```
  - Storing the API URL in an environment variable separates configuration from code. This means that your application's code does not need to hardcode the API URL that might change. Instead, it can read the URL from the environment variable, making it more flexible and easier to maintain.
