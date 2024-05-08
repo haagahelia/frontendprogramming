@@ -18,7 +18,7 @@ sidebar_position: 3
 ```js
 export default defineConfig({
   //highlight-next-line
-  base: '/reactapp/',
+  base: '/{repo-name}/',
   plugins: [react()],
   test: {
     globals: true,
@@ -64,6 +64,11 @@ https://{username}.github.io/{repo_name}/
 ```
 - You can find the url from your repository's **Settings | Pages**
 ![](./img/ghpages_url.PNG)
+
+:::note 
+  GitHub Pages does not support React Router `browserRouter`. You can use `hashRouter` from the same library instead. 
+:::
+
 
 Different cloud service providers have their own deployment processes
 For example,
