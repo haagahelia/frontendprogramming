@@ -13,12 +13,12 @@ sidebar_position: 3
 - Push your code to Github by using the commands from your Github repository.
 ![w:700](./img/settings.PNG)
 
-#### 3. Vite config 
+#### 3. Project config 
 - Open you app's `vite.config.js` file and add the `base` property. The value is the name of your repository with leading and trailing slashes.
 ```js
 export default defineConfig({
   //highlight-next-line
-  base: '/reactapp/',
+  base: '/{repo-name}/',
   plugins: [react()],
   test: {
     globals: true,
@@ -32,6 +32,26 @@ export default defineConfig({
 ```json
 "homepage": "https://{username}.github.io/{repo-name}/"
 ```
+
+:::note[If the project uses React Router: Note 1 ]
+
+  GitHub Pages does not support React Router `browserRouter`. You can use `hashRouter` from the same library instead.
+
+:::
+
+:::note[If the project uses React Router: Note 2]
+
+  Since the application is configured to be deployed to a subdirectory (the `base` definition above), it is necessary to tell the router what the base path is. It can be defined by giving `createBrowserRouter`/`createHashRouter` a second parameter that defines the basename. Refer to [React Router createBrowserRouter documentation](https://reactrouter.com/en/main/routers/create-browser-router#basename) for more information.
+
+  Vite sets the base path in environment variable `BASE_URL`. You can define the second parameter using the environment variable  as follows to make routing work both on localhost and in the publishing environment:
+
+  ```js
+  {
+    basename: import.meta.env.BASE_URL
+  }
+  ```
+
+:::
 
 #### 4. Install gh-pages 
 - Navigate to your app folder in your terminal and install ***gh-pages*** npm package as a development dependency (https://github.com/tschaub/gh-pages).
