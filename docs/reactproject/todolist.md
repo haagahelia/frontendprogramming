@@ -186,22 +186,20 @@ In this phase, our React app's component tree is the following:
 
 ```jsx title="TodoTable.jsx"
 return (
-  <>
-    <table>
-      <tbody>
-        <tr>
-          <th>Date</th>
-          <th>Description</th>
+  <table>
+    <tbody>
+      <tr>
+        <th>Date</th>
+        <th>Description</th>
+      </tr>
+      {props.todos.map((item, index) => (
+        <tr key={index}>
+          <td>{item.date}</td>
+          <td>{item.description}</td>
         </tr>
-        {props.todos.map((item, index) => (
-          <tr key={index}>
-            <td>{item.date}</td>
-            <td>{item.description}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </>
+      ))}
+    </tbody>
+  </table>
 );
 ```
 ---

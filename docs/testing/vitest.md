@@ -143,7 +143,6 @@ test("renders App component", () => {
 ```jsx title="TodoTable.jsx"
 export default function TodoTable(props) {
   return (
-    <div>
       <table>
         <tbody>
           {props.todos.map((todo, index) => (
@@ -154,7 +153,6 @@ export default function TodoTable(props) {
           ))}
         </tbody>
       </table>
-    </div>
   );
 }
 ```
