@@ -149,6 +149,10 @@ function handleClick() {
 ###  React Developer Tools
 - **React Developer Tools** is available as Chrome plugin, Firefox add-on or Edge extension. That can be used to debug your components.
 - Install this extension to your browser. After the successful installation you can see two new tabs in the browser console (Components and Profiler).
+
+:::note
+At the beginning of the course, we are running our app from a local file:// URL, therefore we have to enable "Allow access to file URLs" on the Chrome Extensions settings page.
+
 - React Developer Tools can be used to debug component's state and props values.
 
 ![](./img/reactdevtools.png)
