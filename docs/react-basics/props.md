@@ -66,23 +66,7 @@ function HelloComponent() {
 }
 ```
 ---
-### PropTypes
 
-- You can use `props` type checking in React by using the `PropTypes`.
-
-```js
-import PropTypes from "prop-types";
-
-function HelloComponent(props) {
-  return <div>Hello World {props.firstname}</div>;
-}
-
-HelloComponent.propTypes = {
-  firstname: PropTypes.string, // string, number, bool, func etc.
-};
-```
-- Note! This works only in development mode.
----
 ### Example of using props
 Let's define two components. One of them (__parent__) renders the other (__child__) three times.
 ```js
