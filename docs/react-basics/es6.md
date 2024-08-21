@@ -206,5 +206,5 @@ let dimensions = {
 ```
 ---
 ### Further reading
-- http://es6-features.org/
+- https://www.geeksforgeeks.org/introduction-to-es6/
 
