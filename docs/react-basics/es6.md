@@ -55,7 +55,7 @@ The scope of `let` variables is **block** (`{ }`) in which they are defined.
 let age = 24;
 ```
 #### `const` keyword
-The `const`` declaration declares block-scoped local constant variable. 
+The `const` declaration declares block-scoped local constant variable. 
 - Constant variables must be initialized.
 - The value of a constant can't be changed using the assignment operator after initialization
 - If a constant is an object, its properties can be added, updated, or removed.
