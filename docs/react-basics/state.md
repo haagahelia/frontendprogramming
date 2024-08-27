@@ -107,8 +107,8 @@ return (
 ```jsx
 // State batching
 function App() {
-  const [count, setCount] = useState(0);
-  const [msg, setMsg] = useState("");
+  const [count, setCount] = React.useState(0);
+  const [msg, setMsg] = React.useState("");
 
   function handleClick() {
     setCount((prevCount) => prevCount + 1); // Does not re-render yet
@@ -119,7 +119,8 @@ function App() {
   return (
     <div>
       <p>You clicked {count} times</p>
-      <button onClick={handleClick}>Next</button>
+      <p>{msg}</p>
+      <button onClick={handleClick}>+</button>
     </div>
   );
 }
@@ -198,7 +199,7 @@ setName({ ...name, lastName: "Smith" });
 Here are some key differences:
 
 **State**
-- The value of state persist between re-renders
+- The value of state persists between re-renders
 - Component is re-rendered if state value changes.
 
 **Variable**
@@ -209,7 +210,7 @@ Variables can be used to data that doesn't impact component's output directly.
 
 #### ref
 
-If you need variable that persist between re-renders but it is not needed for rendering, you can use React `ref`. You can create a `ref` by calling the `useRef` hook function and pass initial value as an argument.
+If you need variable that persists between re-renders but it is not needed for rendering, you can use React `ref`. You can create a `ref` by calling the `useRef` hook function and pass initial value as an argument.
 
 For example,
 ```js

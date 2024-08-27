@@ -6,8 +6,12 @@ sidebar_position: 6
 ### Reading user input
 In this part, you will learn how to read user input in React components
 
-- You can use input element’s `onChange` event attribute and `value` attribute to read user input
-- The `onChange` is invoked in every keystroke and it calls `handleChange` function that saves user input to react state
+You can use input element’s `onChange` event attribute and `value` attribute to read user input into the state of the component. 
+
+In the following example
+
+- The `onChange` handler is invoked at every keystroke and it calls `handleChange` function that saves user input to react state
+- As the state changes, react updates the state value back to the input element by setting the `value` attribute of the element.
 
 ```jsx
 <input type="text" value={name} onChange={handleChange} />
@@ -36,7 +40,7 @@ function HelloName() {
    );
 }
 ```
-### Mutliple input elements
+### Multiple input elements
 - If you have multiple input elements it is not good idea to create own `onChange` listener function to all input elements.
 - We can handle all input fields using one common `onChange` listener function. To achieve that we will also use `name` attribute of the input elements.
 - The value of the `name` attribute should be exactly the same than name of the state where we store the value of the input element.
@@ -83,7 +87,7 @@ const [lastName, setLastName] = React.useState('');
 ---
 ### Forms
 - You can also use HTML `form` element.
-- Form handling is a little bit different with React. HTML form will navigate to other page when it is submitted but we want to avoid that. Common case is that we want to invoke javascript function that has access to form data after the submission.
+- Form handling is a little bit different with React. A HTML form will always navigate to another page when it is submitted but we want to avoid that. Common case is that we want to invoke javascript function that has access to form data after the submission.
 - If we use the form element:
 ```html
 <form onSubmit={handleSubmit}>
@@ -92,7 +96,7 @@ const [lastName, setLastName] = React.useState('');
 </form>
 ```
 - Now, if an user submits the form it invokes `handleSubmit` function.
-- In the `handleSubmit` function, we have to first call `event.preventDefault()` function. That function ignores the default behavior of the form and it is not submitted.
+- In the `handleSubmit` function, we have to first call `event.preventDefault()` function. That function ignores the default behavior of the form and it will not be submitted.
 ```js
 const handleSubmit = (event) => {
   event.preventDefault(); // ignores the default action 
