@@ -112,8 +112,3 @@ const handleSubmit = (event) => {
   // Do something with form data
 }
 ```
-:::note
-In this material we are using **controlled components**. A controlled component is a form element, such as an input field, whose value is controlled by the state of a React component. This means that the value of the input element is stored in the component's state, and any changes to the input element are reflected in the component's state. It easy to manipulate and validate user input when using controlled components.
-
-You can also use an **uncontrolled components** to handle form elements. In this case, React doesn't manage the value of an uncontrolled component, and you have to rely on traditional DOM methods to access and manipulate the input's value. Uncontrolled component can be used, if you have a simple use case that doesn't require managing the input value through React state.
-:::
