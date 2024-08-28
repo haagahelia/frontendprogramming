@@ -12,7 +12,7 @@ In the following example:
 
 - We need a state to manage the value of the input in a controlled component.
 ```js
-const [name, setName] = useState("");
+const [name, setName] = React.useState("");
 ```
 - The `onChange` handler is invoked at every keystroke and it calls `handleChange` function that saves user input to react state.
 - As the state changes, react updates the state value back to the input element by setting the `value` attribute of the element.
