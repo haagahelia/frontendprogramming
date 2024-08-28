@@ -8,11 +8,14 @@ In this part, you will learn how to read user input in React components
 
 You can use input element’s `onChange` event attribute and `value` attribute to read user input into the state of the component. 
 
-In the following example
+In the following example:
 
-- The `onChange` handler is invoked at every keystroke and it calls `handleChange` function that saves user input to react state
+- We need a state to manage the value of the input in a controlled component.
+```js
+const [name, setName] = useState("");
+```
+- The `onChange` handler is invoked at every keystroke and it calls `handleChange` function that saves user input to react state.
 - As the state changes, react updates the state value back to the input element by setting the `value` attribute of the element.
-
 ```jsx
 <input type="text" value={name} onChange={handleChange} />
 ```
@@ -40,6 +43,12 @@ function HelloName() {
    );
 }
 ```
+:::note
+In this material we are using **controlled components**. A controlled component is a form element, such as an input field, whose value is controlled by the state of a React component. This means that the value of the input element is stored in the component's state, and any changes to the input element are reflected in the component's state. It easy to manipulate and validate user input when using controlled components.
+
+You can also use an **uncontrolled components** to handle form elements. In this case, React doesn't manage the value of an uncontrolled component, and you have to rely on traditional DOM methods to access and manipulate the input's value. Uncontrolled component can be used, if you have a simple use case that doesn't require managing the input value through React state.
+:::
+
 ### Multiple input elements
 - If you have multiple input elements it is not good idea to create own `onChange` listener function to all input elements.
 - We can handle all input fields using one common `onChange` listener function. To achieve that we will also use `name` attribute of the input elements.
