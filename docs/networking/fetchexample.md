@@ -81,8 +81,13 @@ else {
 :::note
 In the NASA APOD example, we made a network request using the `useEffect` hook because we wanted to display the APOD image once after the component is rendered the first time. When a request requires some user input, such as pressing a button, you can trigger the request within the button's `onClick` event handler, and the `useEffect` hook is not needed. You should avoid using unnecessary `useEffect`s as it increases the complexity of the component.
 :::
+
+In proper React application you might use some data fetching library such as Tanstack Query or SWR. By using these, you can significantly enhance the performance, reliability, and maintainability of your React applications. They provide a lot of nice features like data caching, automatic refetching, error handling etc.
+
 ---
 ### Further reading
 - **Axios**: Axios is a popular JavaScript library that is used for making asynchronous HTTP requests to web servers and handling responses. https://axios-http.com/
-- **React Query**: *"React Query is often described as the missing data-fetching library for React, but in more technical terms, it makes fetching, caching, synchronizing and updating server state in your React applications a breeze."* 
+- **Tanstack Query**: *"Tanstack Query (formerly React Query) is often described as the missing data-fetching library for React, but in more technical terms, it makes fetching, caching, synchronizing and updating server state in your React applications a breeze."* 
 https://tanstack.com/query
+- ***SWR*** SWR (https://swr.vercel.app/) is similar to Tanstack Query.
+
