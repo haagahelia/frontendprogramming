@@ -36,10 +36,10 @@ function HelloName() {
   };
   
   return (
-    <div>
-      <div>Hello {name}</div>
+    <React.Fragment>
+      <h3>Hello {name}</h3>
       <input type="text" value={name} onChange={handleChange} />
-    </div>
+    </React.Fragment>
    );
 }
 ```
