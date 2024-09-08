@@ -123,7 +123,7 @@ button {
 }
 ```
 ---
-- The todolist is now in the center of screen because the `body` style contains the following setting `place-items: center;`. You can remove that line from the `index.css` file.
+- The todolist is currently centered on the screen due to the body style setting `place-items: center;`. To move the todolist to the top of the screen, change this value to `flex-start` in the `index.css` file.
 
 Now, your todolist should look the following:
 ![Todolist](./img/todolist1.png)
