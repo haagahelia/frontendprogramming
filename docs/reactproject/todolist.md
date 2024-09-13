@@ -133,9 +133,24 @@ Try to implement the following features to your Todolist app.
 1. Clear the input element after the Add button is pressed.
 2. Add validation that an `alert` is shown if the `desc` state value is empty when new todo is added..
 :::
+
+You can also add some styling to your table. For example, add the following styling to the `App.css` file:
+```css
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+table th,
+table td {
+  border: 1px solid black;
+  padding: 6px; 
+}
+```
 ---
 ### Split components
-- Let’s split todolist example application into multiple components.
+- Let's refactor the todolist example application by breaking it into multiple components. We'll use the todo item from the assignment, which also includes a due date.
 - We will add a new stateless component called `TodoTable` and separate it from the `TodoList` component.
 - Add a new file called **TodoTable.jsx** into the **src** folder. The starter code of the component is shown below.
 
@@ -181,7 +196,6 @@ In this phase, our React app's component tree is the following:
 ```jsx title="TodoList.jsx"
 <TodoTable todos={todos} />
 ```
-
 - Finally, we use `map` to render todos in the `TodoTable` component.
 
 ```jsx title="TodoTable.jsx"
@@ -189,13 +203,13 @@ return (
   <table>
     <tbody>
       <tr>
-        <th>Date</th>
         <th>Description</th>
+        <th>Date</th>
       </tr>
       {props.todos.map((item, index) => (
         <tr key={index}>
-          <td>{item.date}</td>
           <td>{item.description}</td>
+          <td>{item.date}</td>
         </tr>
       ))}
     </tbody>
@@ -207,8 +221,7 @@ return (
 
 - **Linters** in programming are tools designed to analyze source code and identify potential issues, coding style violations, and error
 - **ESLint** is popular linter for JavaScript and TypeScript. Vite is using ESLint by default.
-- You can find the ESLint configuration file `.eslintrc.cjs` from the root folder of your Vite project.
-- You can define ESLint rules in this file to specify coding standards and guidelines for your project. 
+- You can find the ESLint configuration file `.eslintrc.cjs` from the root folder of your Vite project. You can define ESLint rules in this file to specify coding standards and guidelines for your project. 
 - You might have seen that ESLint is giving a warning about missing `PropTypes`. We introduced PropTypes at the beginning of the course, but we haven't used them. React recommends using TypeScript instead of checking prop types at runtime.  
 
 - You can exclude the PropTypes check by adding the highlighted line in your `.eslintrc.cjs` file:
