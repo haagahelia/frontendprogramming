@@ -3,7 +3,7 @@ title: 'AG-Grid'
 sidebar_position: 4
 ---
 - **AG-Grid** (https://www.ag-grid.com/) is popular data grid component that can be used with several JavaScript libraries, such as React.
-- AG-grid provides a free community version (MIT license).
+- AG-grid provides a free community version that is free for everyone, including production use - no license required.
 - We have developed the Todolist app, and if you have done the assignments, you should now also have date field and delete functionality.
 - Let's add a third property to our Todolist that is a priority. Add the `priority` property to the `todo` state and add an input element that user can enter priority which is stored to the state. Then, your Todolist should look like the following screenshot:
 
@@ -14,15 +14,13 @@ sidebar_position: 4
 #### Install AG-Grid
 - First, you have to install the AG-Grid component in your project. The installation command can be found in the component's documentation. In this case in https://www.ag-grid.com/react-data-grid/getting-started/. The npm command is the following and you should execute it in your project folder:
 ```bash
-npm install ag-grid-community ag-grid-react
+npm install ag-grid-react
 ```
-- The installed packages are saved to the `package.json` file's `dependencies` section. The `package.json` file can be found in the root directory of project. It contains project information, dependencies and scripts for starting the project.  After the installation, open the `package.json` file and check that AG-Grid componets are found.
+- The installed packages are saved to the `package.json` file's `dependencies` section. The `package.json` file can be found in the root directory of project. It contains project information, dependencies and scripts for starting the project.  After the installation, open the `package.json` file and check that AG-Grid component is found.
 ```json title="package.json"
 "dependencies": {
   //highlight-next-line
-  "ag-grid-community": "^31.1.0",
-  //highlight-next-line
-  "ag-grid-react": "^31.1.0",
+  "ag-grid-react": "^32.1.0",
   "react": "^18.2.0",
   "react-dom": "^18.2.0"
 },
