@@ -1,6 +1,6 @@
 ---
 title: 'TypeScript'
-sidebar_position: 4
+sidebar_position: 1
 ---
 ### TypeScript - Basics
 - TypeScript is strongly typed programming language (https://www.typescriptlang.org/) that is based on JavaScript.
