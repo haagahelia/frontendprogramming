@@ -26,7 +26,7 @@ npm install ag-grid-react
 },
 ```
 :::note
-In the line `"ag-grid-community": "^31.1.0"` the `ag-grid-community` is the name of the installed package. The `"^31.1.0"` specifies the installed version. The `^` symbol inidcates that it allows to receive bug fixes and minor version updates. The major version updates are not allowed (For example, 32.0.0). The packages are automatically updated when you execute the `npm install` command. The installed versions are saved to the dependency lock file **package.lock.json** file. If the version is specified `"31.1.0"` it means that the project requires version 31.1.0 and updates are not received automatically. 
+In the line `"ag-grid-community": "^32.1.0"` the `ag-grid-community` is the name of the installed package. The `"^32.1.0"` specifies the installed version. The `^` symbol inidcates that it allows to receive bug fixes and minor version updates. The major version updates are not allowed (For example, 33.0.0). The packages are automatically updated when you execute the `npm install` command. The installed versions are saved to the dependency lock file **package.lock.json** file. If the version is specified `"32.1.0"` it means that the project requires version 32.1.0 and updates are not received automatically. 
 :::
 
 ### Import AG-Grid component and stylesheets
