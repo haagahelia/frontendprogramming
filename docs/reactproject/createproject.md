@@ -10,9 +10,9 @@ sidebar_position: 3
 ```bash
 npm create vite@latest
 ```
-- The command opens a project wizard where you can define a name of your project and framework. Select **React** framework and  **javascript** variant. SWC (Speedy Web Compiler) is a fast JavaScript and TypeScript compiler written in Rust. It is a faster alternative to Babel, which is normally used.
+- The command opens a project wizard where you can define a name of your project and framework. Select **React** framework and  **typescript** variant. SWC (Speedy Web Compiler) is a fast JavaScript and TypeScript compiler written in Rust. It is a faster alternative to Babel, which is normally used.
 
-  ![Vite project](./img/create_vite1.PNG)
+  ![Vite project](./img/create_vite1ts.PNG)
 
 - Next, you change the directory to your project folder and install the dependencies:
 ```bash
@@ -39,37 +39,44 @@ You can stop the process by pressing **q** in the terminal
 - Vite creates the following project structure
 - If you have a bigger app with multiple components and functionalities, it is better to create own folders for them. For example, /components, /api, etc.
 
-![Project structure](./img/vite_project.PNG)
+![Project structure](./img/vite_project_ts.PNG)
 
-#### App.jsx
-- The **App.jsx** file contains the React component that is displayed when you open the app in a web browser.
+#### App.tsx
+- The **App.tsx** file contains the React component that is displayed when you open the app in a web browser.
 - `import` statements are used to import libraries, react components, stylesheet and assets to the component.
 - `export` statement allows you to import component to another file by using the `import` statement
-```jsx title="App.jsx"
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+```jsx title="App.tsx"
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
 function App() {
-  return <div className="App"></div>;
+  const [count, setCount] = useState(0)
+  
+  return(
+    <>
+      ...
+    <>;
+  );
 }
 
-export default App;
+export default App
 ```
-#### Main.jsx
-- The **_main.jsx_** file imports the `App` component and renders it to **_index.html_** file’s `root` element. The **_index.html_** file can be found from the root folder of your project.
+#### Main.tsx
+- The **_main.tsx_** file imports the `App` component and renders it to **_index.html_** file’s `root` element. The **_index.html_** file can be found from the root folder of your project.
 
-```jsx title="main.jsx"
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import "./index.css";
+```jsx title="main.tsx"
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './App.tsx'
+import './index.css'
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
     <App />
-  </React.StrictMode>
-);
+  </StrictMode>,
+)
 ```
 :::note
 The `React.StrictMode` lets you find common bugs in your React app in the development phase. Due to strict mode, components will re-render extra time in the development mode to find bugs.
