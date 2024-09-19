@@ -166,7 +166,12 @@ return (
 ```
 - Finally, we set alignment using the `justifyContent` and `alignItems` props to center components horizontally and vertically.
 ```jsx
-<Stack direction="row" spacing={2} justifyContent="center" alignItems="center">    
+<Stack 
+  direction="row" 
+  spacing={2} 
+  justifyContent="center" 
+  alignItems="center"
+>    
 ```
 - Now, your Todolist UI should look the following:
 
