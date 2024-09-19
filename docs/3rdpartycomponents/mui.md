@@ -166,7 +166,12 @@ return (
 ```
 - Finally, we set alignment using the `justifyContent` and `alignItems` props to center components horizontally and vertically.
 ```jsx
-<Stack direction="row" spacing={2} justifyContent="center" alignItems="center">    
+<Stack 
+  direction="row" 
+  spacing={2} 
+  justifyContent="center" 
+  alignItems="center"
+>    
 ```
 - Now, your Todolist UI should look the following:
 
@@ -200,7 +205,12 @@ function App() {
 ```
 - Now, if you look the Todolist UI, it already looks nice but now you need some spacing between the app bar and text fields. You can use the `mt` prop of the `Stack` component to get top margin to your text fields and buttons. The Material UI provides custom props that you can use to change CSS properties https://mui.com/system/properties/#properties-reference-table
 ```jsx title="TodoList.jsx"
-<Stack mt={2} direction="row" spacing={2} justifyContent="center" alignItems="center">
+<Stack 
+  mt={2} direction="row" 
+  spacing={2} 
+  justifyContent="center" 
+  alignItems="center"
+>
 ```
 - Finally, your Todolist should look like the following screenshot:
 ![Todolist](./img/todolist7.png)
