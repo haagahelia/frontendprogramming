@@ -111,13 +111,13 @@ const columns = [
 ```
 ### Delete functionality
 - Let’s implement the delete functionality, where the user can select a row, and when the delete button is pressed, the selected row is deleted.
-- First, we have to enable row selection and set mode to single selection by using the `rowSelection` grid prop.
+- First, we have to enable row selection and set mode to single selection by using the `selection` grid prop.
 ```jsx title="TodoList.jsx"
 <AgGridReact
   columnDefs={columns}
   rowData={todos}>
   //highlight-next-line
-  rowSelection="single" 
+  selection="singleRow" 
 />
 ```
 - We should be able to get the selected row, and therefore we need access to the ag-grid component’s API. The API provides a method called `getSelectedNodes()` that we can use to get the selected row index.
@@ -140,7 +140,7 @@ function TodoList() {
   ref={gridRef}
   rowData={todos}
   columnDefs={columnDefs}
-  rowSelection="single"
+  selection="singleRow"
 />
 ```
 - The `AgGridReact` component's methods are in the Grid API (https://www.ag-grid.com/react-data-grid/grid-api/); therefore, we have to link our reference to the API. AG-Grid provides the `gridReady` event that is invoked when the grid has initialized and is ready for most api calls, but may not be fully rendered yet. We can use `onGridReady` event handler to get access to the grid API and store the grid API object for our reference. Then, we can use the `gridRef.current` to call methods that grid API provides.
@@ -151,7 +151,7 @@ function TodoList() {
   onGridReady={ params => gridRef.current = params.api }
   rowData={todos}
   columnDefs={columnDefs}
-  rowSelection="single"
+  selection="singleRow"
 />
 ```
 - Next, we add Delete button inside the `return` statement and when the button is pressed, it call `handleDelete` function.
@@ -179,7 +179,7 @@ return (
           onGridReady={ params => gridRef.current = params.api }
           rowData={todos}
           columnDefs={columnDefs}
-          rowSelection="single"
+          selection="singleRow"
         />
       </div>    
     </>
