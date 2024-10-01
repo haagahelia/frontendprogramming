@@ -2,7 +2,7 @@
 title: 'React Router'
 sidebar_position: 6
 ---
-- React Router (https://reacttraining.com/react-router/) is a collection of navigational components for React or React Native applications.
+- React Router (https://reactrouter.com) is a collection of navigational components for React or React Native applications.
 - Installation command for the React web apps:
 ```bash
 npm install react-router-dom localforage match-sorter sort-by
