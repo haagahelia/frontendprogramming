@@ -172,7 +172,7 @@ test('renders todotable', () => {
   ];
   render(<TodoTable todos={row} />);
   const table = screen.getByRole('table');
-  expect(table).toHaveTextContent((/go to coffee/i);
+  expect(table).toHaveTextContent(/go to coffee/i);
 });
 ```
 - You can also test for the opposite of a matcher using the `not` keyword.
