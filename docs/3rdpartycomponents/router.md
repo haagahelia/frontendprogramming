@@ -17,17 +17,17 @@ The required components:
 ```jsx
 // Home.jsx 
 export default function Home() {
-  return(<h1>Welcome to my app</h1>);
+  return(<h3>Welcome to my app</h3>);
 }
 
 // About.jsx
 export default function About() {
-  return(<h1>With my app you can...</h1>);
+  return(<h3>With my app you can...</h3>);
 }
 
 // Contact.jsx
 export default function Contact() {
-  return(<h1>Email: myapp@contact.com</h1>);
+  return(<h3>Email: myapp@contact.com</h3>);
 }
 ```
 - `App` component contains the application navigation. 
@@ -38,16 +38,18 @@ import { Link, Outlet } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
+    <>
       <nav>
         <Link to={"/"}>Home</Link>
         <Link to={"/about"}>About</Link>
         <Link to={"/contact"}>Contact</Link>
       </nav>
       <Outlet />
-    </div>
+    </>
   );
 }
+
+export default App;
 ```
 - First, we will create ***BrowserRouter*** in the root of the application (`main.jsx`) using the `createBrowserRouter` function. It takes an array of route objects as an argument.
 
