@@ -179,7 +179,7 @@ test('renders todotable', () => {
 
 ```js
 const table = screen.getByRole('table');
-expect(table).not.toHaveTextContent((/go to coffee/i);
+expect(table).not.toHaveTextContent(/go to coffee/i);
 ```
 - If you assert element that is not present, it is recommended to use `queryBy*` methods instead of `getBy*`. The `getBy*` queries throws an error if no element is found.
 - React testing library provides `fireEvent` method that you can use for firing DOM events, such as button click
