@@ -7,7 +7,6 @@ sidebar_position: 6
 ```bash
 npm install react-router-dom
 ```
----
 ### React Router example application
 - In the following example, we create routing for an app with three components ``Home``, ``About`` and ``Contact``. 
 - The router is rendered in the application root in `main.jsx`
@@ -64,7 +63,6 @@ const router = createBrowserRouter([
   },
 ]);
 ```
----
 - In the example code, we create the **root route** that renders our `App` component when user navigates to the `/`- endpoint.
 
 ```js title="main.jsx"
