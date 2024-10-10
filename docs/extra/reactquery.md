@@ -3,7 +3,7 @@ title: 'React Query'
 sidebar_position: 3
 ---
 ### Data Fetching Libraries
-- Using hte `useState` and `useEffect` hooks is good way to learn basics of data fetching in React components.
+- Using the `useState` and `useEffect` hooks is good way to learn basics of data fetching in React components.
 - There are good React libraries available for data fetching, for example:
   - **React Query** (Tanstack Query) (https://tanstack.com/query/latest)
   - **SWR** (https://swr.vercel.app/)
