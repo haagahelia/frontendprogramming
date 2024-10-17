@@ -101,7 +101,9 @@ sayHello("John", 20);
 ```
 - If there is no return value, you can use the `void` keyword:
 ```ts
-(name: string) => void
+function logMessage(message: string): void {
+  console.log(message);
+}
 ```
 #### Arrays
 - Arrays are declared with the following syntax:
