@@ -2,17 +2,18 @@
 title: 'AG-Grid'
 sidebar_position: 4
 ---
-- **AG-Grid** (https://www.ag-grid.com/) is popular data grid component that can be used with several JavaScript libraries, such as React.
-- AG-grid provides a free community version that is free for everyone, including production use - no license required.
+- **AG Grid** (https://www.ag-grid.com/) is popular data grid component that can be used with several JavaScript libraries, such as React.
+- AG Grid provides a free community version that is free for everyone, including production use - no license required.
+- AG Grid supports TypeScript Generics for row data, cell values and grid context.
 - We have developed the Todolist app, and if you have done the assignments, you should now also have date field and delete functionality.
 - Let's add a third property to our Todolist that is a priority. Add the `priority` property to the `todo` state and add an input element that user can enter priority which is stored to the state. Then, your Todolist should look like the following screenshot:
 
 ![Todolist](./img/todolist2.png)
 
-- Now, we will replace the HTML table with the AG-Grid component in our Todolist app. Then, we can easily get nice features such as sorting, filtering, etc. to our Todolist app.
+- Now, we will replace the HTML table with the AG Grid component in our Todolist app. Then, we can easily get nice features such as sorting, filtering, etc. to our Todolist app.
 - Move to your Todolist project folder using the command line.
-#### Install AG-Grid
-- First, you have to install the AG-Grid component in your project. The installation command can be found in the component's documentation. In this case in https://www.ag-grid.com/react-data-grid/getting-started/. The npm command is the following and you should execute it in your project folder:
+#### Install AG Grid
+- First, you have to install the AG Grid component in your project. The installation command can be found in the component's documentation. In this case in https://www.ag-grid.com/react-data-grid/getting-started/. The npm command is the following and you should execute it in your project folder:
 ```bash
 npm install ag-grid-react
 ```
@@ -30,7 +31,7 @@ In the line `"ag-grid-community": "^32.1.0"` the `ag-grid-community` is the name
 :::
 
 ### Import AG-Grid component and stylesheets
-- To use the AG-Grid component in our TodoList component, we have to import it. We import the `AgGridReact` component and stylesheets. AG-Grid provides pre-defined themes (https://www.ag-grid.com/react-data-grid/themes/) and we use the Material Design theme. Add the following imports to your `TodoList` component.
+- To use the AG Grid component in our TodoList component, we have to import it. We import the `AgGridReact` component and stylesheets. AG Grid provides pre-defined themes (https://www.ag-grid.com/react-data-grid/themes/) and we use the Material Design theme. Add the following imports to your `TodoList` component.
 
 ```js title="TodoList.jsx"
 import { AgGridReact } from "ag-grid-react";
@@ -49,7 +50,7 @@ const [columnDefs, setColumnDefs] = useState([
 ]);
 ```
 ### Display AG-Grid
-- Then, we display the `AgGridReact` component. The `rowData` prop defines where row data comes from and the value should be an array. In our case, it is the `todos` array state where our todo objects are stored. The `columnDefs` prop defines the column definition, and it is the `columnDefs` state that we just created before. Remove the `TodoTable` component because now we will use AG-Grid to show our data. You have to wrap the `AgGridReact` component inside `div` that defines the theme CSS class and grid size.
+- Then, we display the `AgGridReact` component. The `rowData` prop defines where row data comes from and the value should be an array. In our case, it is the `todos` array state where our todo objects are stored. The `columnDefs` prop defines the column definition, and it is the `columnDefs` state that we just created before. Remove the `TodoTable` component because now we will use AG Grid to show our data. You have to wrap the `AgGridReact` component inside `div` that defines the theme CSS class and grid size.
 ```jsx title="TodoList.jsx"
 return (
   <>
@@ -143,7 +144,7 @@ function TodoList() {
   rowSelection="single"
 />
 ```
-- The `AgGridReact` component's methods are in the Grid API (https://www.ag-grid.com/react-data-grid/grid-api/); therefore, we have to link our reference to the API. AG-Grid provides the `gridReady` event that is invoked when the grid has initialized and is ready for most api calls, but may not be fully rendered yet. We can use `onGridReady` event handler to get access to the grid API and store the grid API object for our reference. Then, we can use the `gridRef.current` to call methods that grid API provides.
+- The `AgGridReact` component's methods are in the Grid API (https://www.ag-grid.com/react-data-grid/grid-api/); therefore, we have to link our reference to the API. AG Grid provides the `gridReady` event that is invoked when the grid has initialized and is ready for most api calls, but may not be fully rendered yet. We can use `onGridReady` event handler to get access to the grid API and store the grid API object for our reference. Then, we can use the `gridRef.current` to call methods that grid API provides.
 ```jsx title="TodoList.jsx"
 <AgGridReact 
   ref={gridRef}
@@ -204,7 +205,7 @@ const handleDelete = () => {
   }
 };
 ```
-- Now, we have finalized our Todolist using the AG-Grid, and your Todolist should look like the following screenshot:
+- Now, we have finalized our Todolist using the AG Grid, and your Todolist should look like the following screenshot:
 
 ![Todolist](./img/todolist4.png)
 

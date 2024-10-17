@@ -58,34 +58,27 @@ export default TodoList;
 - The type of `todos` is an array of `Todo` objects (`Todo[]`), where `Todo` is an interface that defines the shape of a todo item.
 
 Next, we render the necessary elements to gather information and call the function that adds a new todo.
-- The `input` element is used to collect data from a user
-- The `addTodo` function is called when the `button` is pressed
+- The `input` element is used to collect data from a user.
+- The `addTodo` function is called when the `button` is pressed.
 
 ```tsx title="TodoList.tsx"
   return(
     <>
-      //highlight-next-line
       <input 
         placeholder="Description" 
-        onChange={handleChange} 
+        onChange={event => setTodo({...todo, description: event.target.value})} 
         value={todo.description} 
       />
-      //highlight-next-line
       <button onClick={addTodo}>Add</button>    
     </>
   );
 ```
 - The `addTodo` function adds a new todo object to the `todos` array state. We use spread notation (`…`) to add a new item at the beginning of the existing array.
-- The `handleChange` function store entered data to the todo object's `description` property.
-
+- The `onChange` handler updates the `todo` state with the typed value. The `event` type is inferred automatically by the TypeScript compiler, so it is not explicitly required.
+- When creating a separate function to handle input data, you need to define the type of the function parameter, as demonstrated in the following example:
 ```tsx title="TodoList.tsx"
 const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTodo({ description: event.target.value });
-};
-
-// Remember to call preventDefault() if using form
-const addTodo = () => {
-  setTodos([todo, ...todos]);
 };
 ```
 - The `event` is typed as `ChangeEvent<HTMLInputElement>`, indicating that this function handles change events from an HTML input element.
@@ -98,7 +91,7 @@ return (
   <>
     <input 
       placeholder="Description" 
-      onChange={handleChange} 
+      onChange={event => setTodo({...todo, description: event.target.value})} 
       value={todo.description} 
     />
     <button onClick={addTodo}>Add</button>
@@ -132,10 +125,6 @@ interface Todo {
 function TodoList() {
   const [todo, setTodo] = useState<Todo>({description: ''});
   const [todos, setTodos] = useState<Todo[]>([]);
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTodo({ description: event.target.value });
-  };
   
   const addTodo = () => {
     setTodos([...todos, todo]);
@@ -145,7 +134,7 @@ function TodoList() {
     <>
       <input 
         placeholder="Description" 
-        onChange={handleChange} 
+        onChange={event => setTodo({...todo, description: event.target.value})} 
         value={todo.description} 
       />
       <button onClick={addTodo}>Add</button>
@@ -233,7 +222,7 @@ table td {
 ```
 ---
 ### Split components
-- Let's refactor the todolist example application by breaking it into multiple components. We'll use the todo item from the assignment, which also includes a date.
+- Let's refactor the todolist example application by breaking it into multiple components.  **Note:** We'll use the todo item from the assignment, which also includes a date.
 - We will add a new stateless component called `TodoTable` and separate it from the `TodoList` component.
 - After splitting the components, our component tree is the following:
 
@@ -270,9 +259,9 @@ function TodoTable(props: TodoTableProps) {
 
 export default TodoTable;
 ```
-- You will notice that we have defined the same `Todo` interface in two files. Instead of doing that, it is better to create a separate file for defining interfaces and then import these interfaces into the files where they are needed. Create a new file called `interfaces.ts` in the `src` folder and define the interfaces there.
+- You will notice that we have defined the same `Todo` interface in two files. Instead of doing that, it is better to create a separate file for defining interfaces and then import these interfaces into the files where they are needed. Create a new file called `types.ts` in the `src` folder and define the interfaces there.
 
-```ts title="interfaces.ts"
+```ts title="types.ts"
 export interface Todo {
   description: string;
   date: string;
@@ -284,7 +273,7 @@ export interface TodoTableProps {
 ```
 - Then, we import the interface into the TodoTable component where they are needed.
 ```tsx title="TodoTable.tsx"
-import { TodoTableProps } from './interfaces';
+import { TodoTableProps } from './types';
 
 function TodoTable(props: TodoTableProps) {
   return (
@@ -294,11 +283,10 @@ function TodoTable(props: TodoTableProps) {
 
 export default TodoTable;
 ```
-- You can also remove `todo` definition in the `TodoList` component and import if from the `interfaces.ts` file.
-
+- Now, you can also remove `todo` interface definition in the `TodoList` component and import if from the `types.ts` file.
 - Next, we render table in the `TodoTable` component.
 ```tsx title="TodoTable.tsx"
-import { TodoTableProps } from "./interfaces";
+import { TodoTableProps } from "./types";
 
 function TodoTable(props: TodoTableProps) {
   return(
@@ -337,7 +325,11 @@ import TodoTable from "./TodoTable";
 ```jsx title="TodoList.tsx"
 return (
   <>
-    <input type="text" onChange={handleChange} value={desc} />
+    <input 
+      placeholder="Description" 
+      onChange={event => setTodo({...todo, description: event.target.value})} 
+      value={todo.description} 
+    />
     <button onClick={addTodo}>Add</button>
     //highlight-next-line
     <TodoTable todos={todos} />
