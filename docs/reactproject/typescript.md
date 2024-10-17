@@ -44,15 +44,37 @@ typeof age === "number" // true
 let a: unknown = 10;
 a = "It should be string";
 ```
-- If you want to exlude type checking, you can use `any` type. 
+- If you want to exlude type checking, you can use `any` type.
 ```ts
 let a: any = 10;
 ```
-- `unknown` vs `any`
-  - The `any` type allows to assign anything - The `any` type allows to operate anything.
-  - The `unknown` type allows to assign anything - The `unknown` type doesn't allow to operate anything (Needs type check).
- ![](./img/AnyUnknown.PNG)
+-  The `unknown` type is a safer alternative to `any`. It represents any value, but you cannot perform operations on it without first asserting its type. The code below demonstrates the difference between `any` and `unknown`.
 
+Using `unknown`:
+```ts
+let value: unknown;
+
+value = 42; // This is OK
+value = "hello"; // This is OK
+value = true; // This is OK
+
+// Type checking is required before using the value
+if (typeof value === "number") {
+    let num: number = value;
+}
+```
+Using `any`:
+```ts
+let value: any;
+
+value = 42; // This is OK
+value = "hello"; // This is OK
+value = true; // This is OK
+
+// Type checking is not required
+// This is OK, but potentially unsafe
+let num: number = value;
+```
 #### Functions
 - You can define the type of parameters and return value
 ```ts
