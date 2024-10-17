@@ -180,6 +180,7 @@ interface Person {
 ```
 npm create vite@latest
 ```
+- React provides `@types/react` and `@types/react-dom` packages that offer useful types for React. If you create Vite project using TypeScript, these packages are installed as development dependencies. There is also a configuration file `tsconfig.app.json` created in the Vite project for TypeScript, and it specifies the compiler options required to compile the project.
 ---
 #### Component props
 - You can define the type for the function component `props` (=function arguments)
@@ -242,7 +243,7 @@ interface HelloProps {
 ```
 ---
 #### Function components
-- You can also define the return type for your component and you will get an error if something else is returned.
+- You can also define the return type for your component and you will get an error if something else is returned. The `JSX.Element` is a type that represents a React element. It is the return type of a functional component in React. This type is used to ensure that the component returns a valid JSX element.
 ```tsx
 interface HelloProps {
   name: string;
@@ -282,9 +283,9 @@ interface IUser {
 }
 
 // useState hook
-  const [user, setUser] = useState<IUser | null>(null);
+const [user, setUser] = useState<IUser | null>(null);
 // or if nullish values are not accepted
-  const [user, setUser] = useState<IUser>({} as IUser);
+const [user, setUser] = useState<IUser>({} as IUser);
 
 ```
 - You can also explicitly define types. For example, if you want to initialize state with `null` or `undefined` value.
@@ -342,3 +343,4 @@ import { Person } from './interfaces';
 ---
 ### Further reading
 - React TypeScript Cheatsheets  https://react-typescript-cheatsheet.netlify.app/
+- React documentation https://react.dev/learn/typescript
