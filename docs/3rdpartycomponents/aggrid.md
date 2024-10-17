@@ -6,7 +6,7 @@ sidebar_position: 4
 - AG Grid provides a free community version that is free for everyone, including production use - no license required.
 - AG Grid supports TypeScript Generics for row data, cell values and grid context.
 - We have developed the Todolist app, and if you have done the assignments, you should now also have date field and delete functionality.
-- Let's add a third property to our Todolist that is a priority. Add the `priority` property to the `todo` state and add an input element that user can enter priority which is stored to the state. Then, your Todolist should look like the following screenshot:
+- Let's add a third property to our Todolist that is a priority. Add the `priority` property to the `todo` state and add an input element that user can enter priority which is stored to the state. Update also todo interfce. Then, your Todolist should look like the following screenshot:
 
 ![Todolist](./img/todolist2.png)
 
@@ -27,7 +27,7 @@ npm install ag-grid-react
 },
 ```
 :::note
-In the line `"ag-grid-community": "^32.1.0"` the `ag-grid-community` is the name of the installed package. The `"^32.1.0"` specifies the installed version. The `^` symbol inidcates that it allows to receive bug fixes and minor version updates. The major version updates are not allowed (For example, 33.0.0). The packages are automatically updated when you execute the `npm install` command. The installed versions are saved to the dependency lock file **package.lock.json** file. If the version is specified `"32.1.0"` it means that the project requires version 32.1.0 and updates are not received automatically. 
+In the line `"ag-grid-react": "^32.1.0"` the `ag-grid-react` is the name of the installed package. The `"^32.1.0"` specifies the installed version. The `^` symbol inidcates that it allows to receive bug fixes and minor version updates. The major version updates are not allowed (For example, 33.0.0). The packages are automatically updated when you execute the `npm install` command. The installed versions are saved to the dependency lock file **package.lock.json** file. If the version is specified `"32.1.0"` it means that the project requires version 32.1.0 and updates are not received automatically. 
 :::
 
 ### Import AG-Grid component and stylesheets
@@ -43,12 +43,30 @@ import "ag-grid-community/styles/ag-theme-material.css"; // Material Design them
 - Next, we have to define data grid columns. The columns are defined using a state, and the value is an array of column definition objects. Each column definition object has a mandatory property `field` that defines what data is shown in a column. For example, if we define `{field: 'date'}`, this column shows our `todo` object's `date` property value.
 
 ```js title="TodoList.jsx"
-const [columnDefs, setColumnDefs] = useState([
+const [columnDefs] = useState([
   {field: 'desc'},
   {field: 'priority'},
   {field: 'date'}
 ]);
 ```
+- We have to define type for the column definitions. AG Grid offers `ColDef` interface that can be used. Import the interface first:
+
+```ts
+import { ColDef } from "ag-grid-community";
+```
+
+- Then, we can use `ColDef` interface as shown in the code below.
+
+```js title="TodoList.jsx"
+const [columnDefs] = useState<ColDef<Todo>[]>([
+  {field: 'desc'},
+  {field: 'priority'},
+  {field: 'date'}
+]);
+```
+- `useState<ColDef<Todo>[]>` is a TypeScript generic that specifies the type of the state. Here, it indicates that `columnDefs` is an array of `ColDef` objects, where each `ColDef` is typed with the `Todo` interface.
+- `ColDef<Todo>` ensures that the column definitions are compatible with the `Todo` type, which means the fields specified in the column definitions (desc, priority, date) must exist in the `Todo` interface. The `ColDef` objects specify which fields from the `Todo` interface should be displayed in the grid:
+
 ### Display AG-Grid
 - Then, we display the `AgGridReact` component. The `rowData` prop defines where row data comes from and the value should be an array. In our case, it is the `todos` array state where our todo objects are stored. The `columnDefs` prop defines the column definition, and it is the `columnDefs` state that we just created before. Remove the `TodoTable` component because now we will use AG Grid to show our data. You have to wrap the `AgGridReact` component inside `div` that defines the theme CSS class and grid size.
 ```jsx title="TodoList.jsx"
@@ -63,7 +81,8 @@ return (
       onChange={e => setTodo({...todo, priority: e.target.value })} 
       value={todo.priority} /> 
     <input 
-      placeholder="Date" 
+      placeholder="Date"
+      type="date"
       onChange={e => setTodo({...todo, date: e.target.value })} 
       value={todo.date} />
     <button onClick={addTodo}>Add</button>
@@ -89,7 +108,7 @@ Now, your Todolist should look like the following screenshot and the todo table 
 - Now, the `columndDef` look like the code below:
 
 ```js title="TodoList.jsx"
-const [columnDefs] = useState([
+const [columnDefs] = useState<ColDef<Todo>[]>([
   {field: 'desc', sortable: false, filter: true},
   {field: 'priority', filter: true},
   {field: 'date', filter: true}
@@ -102,13 +121,13 @@ const [columnDefs] = useState([
 - In the example code below, the priority cell text color is red if the priority value is High.
 
 ```js title="TodoList.jsx"
-const columns = [
+const [columnDefs] = useState<ColDef<Todo>[]>([
   { field: "desc", sortable: true, filter: true },
   { field: "priority", sortable: true, filter: true, 
     //highlight-next-line
     cellStyle: params => params.value === "High" ? {color: 'red'} : {color: 'black'} },
   { field: "date", sortable: true, filter: true }
-];
+]);
 ```
 ### Delete functionality
 - Let’s implement the delete functionality, where the user can select a row, and when the delete button is pressed, the selected row is deleted.
