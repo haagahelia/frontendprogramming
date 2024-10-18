@@ -16,9 +16,9 @@ npm install @mui/icons-material
 ```
 
 ### Container
-- First, we will use the `Container` component, which is basic layout component, and it centers your app content horizontally. The maxWidth props defines the maximum width of our app, and we are using the largest value. We will also use the `CssBaseline` component that is used to fix inconsistencies across different browsers. Open the **App.jsx** file and do the following modifications:
+- First, we will use the `Container` component, which is basic layout component, and it centers your app content horizontally. The maxWidth props defines the maximum width of our app, and we are using the largest value. We will also use the `CssBaseline` component that is used to fix inconsistencies across different browsers. Open the **App.tsx** file and do the following modifications:
 
-```jsx {2-3,8-9,11} title="App.jsx"
+```jsx {2-3,8-9,11} title="App.tsx"
 import "./App.css";
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -40,12 +40,12 @@ export default App;
 
 ### Button
 - Instead of using HTML button element, we can now use Material UI `Button` component (https://mui.com/material-ui/react-button/).
-- Open the **TodoList.jsx** file and add the following import:
-```js title="TodoList.jsx"
+- Open the **TodoList.tsx** file and add the following import:
+```js title="TodoList.tsx"
 import Button from '@mui/material/Button';
 ```
 - Then, we change the HTML button elements to the `Button` component:
-```jsx {15-16} title="TodoList.jsx"
+```jsx {15-16} title="TodoList.tsx"
  return (
   <>
     <input 
@@ -65,7 +65,6 @@ import Button from '@mui/material/Button';
     <div className="ag-theme-material" style={{width: 700, height: 500}}>
       <AgGridReact 
         ref={gridRef}
-        onGridReady={ params => gridRef.current = params.api }
         rowData={todos}
         columnDefs={columnDefs}
         rowSelection="single"
@@ -85,12 +84,11 @@ import Button from '@mui/material/Button';
 ### TextField
 - The Material UI provides `TextField` component (https://mui.com/material-ui/react-text-field/) that let user enter and edit text. We will use that in our Todolist app instead of HTML input elements.
 - To start use the `TextField` component, import it in the `TodoList` component.
-```js title="TodoList.jsx"
+```js title="TodoList.tsx"
 import TextField from '@mui/material/TextField';
 ``` 
 - The `label` prop is used to set label for `TextField` components.
-- The
-```jsx {3-14} title="TodoList.jsx
+```jsx {3-14} title="TodoList.tsx
 return (
   <>
     <TextField 
@@ -110,7 +108,6 @@ return (
     <div className="ag-theme-material" style={{width: 700, height: 500}}>
       <AgGridReact 
         ref={gridRef}
-        onGridReady={ params => gridRef.current = params.api }
         rowData={todos}
         columnDefs={columnDefs}
         rowSelection="single"
@@ -126,12 +123,12 @@ return (
 ![Todolist](./img/todolist5.png)
 
 - It doesn't look good yet. To get some spacing between components and align these properly, we can use the layout component called `Stack`.
-- `Stack` is one dimensional layout component that we can use to set spaces between text fields and set alignments. To get started, add the following import to the TodoList.jsx file.
-```js title="TodoList.jsx"
+- `Stack` is one dimensional layout component that we can use to set spaces between text fields and set alignments. To get started, add the following import to the TodoList.tsx file.
+```js title="TodoList.tsx"
 import Stack from '@mui/material/Stack';
 ```
 - Next, we wrap the `Button` and `textField` components with the `Stack` component. The `Stack` component layout is using Flex and the default direction is column. We set direction to row using the component's `direction` prop. The `spacing` prop is used to set spacing between items inside the `Stack` component. You can read more about spacing and units in https://mui.com/material-ui/customization/spacing/.
-```jsx title="TodoList.jsx"
+```jsx title="TodoList.tsx"
 return (
   <>
     //highlight-next-line
@@ -155,7 +152,6 @@ return (
     <div className="ag-theme-material" style={{width: 700, height: 500}}>
       <AgGridReact 
         ref={gridRef}
-        onGridReady={ params => gridRef.current = params.api }
         rowData={todos}
         columnDefs={columnDefs}
         rowSelection="single"
@@ -178,15 +174,15 @@ return (
 ![Todolist](./img/todolist6.png)
 
 - Material Design app bar displays information and actions relating to the current screen. We can implement the app bar by using the Material UI `AppBar` component (https://mui.com/material-ui/react-app-bar/).
-- We will implement app bar in the `App` component. Add the following imports to your App.jsx file.
-```js title="App.jsx"
+- We will implement app bar in the `App` component. Add the following imports to your App.tsx file.
+```js title="App.tsx"
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 ```
 - Then, render the components in the `App` component. The `AppBar` component's `position` defines the positioning fo the app bar. When you set `position="static"`, the AppBar remains at the top of the screen and does not scroll with the content. You can see the possible values in https://mui.com/material-ui/api/app-bar/#AppBar-prop-position. The `Typography` component provides predefined text sizes, and we will use this in our toolbar text. variant props can be used to define text size:
 
-```jsx {5-11} title="App.jsx"
+```jsx {5-11} title="App.tsx"
 function App() {
   return (
     <Container maxWidth="xl">
@@ -204,7 +200,7 @@ function App() {
 }
 ```
 - Now, if you look the Todolist UI, it already looks nice but now you need some spacing between the app bar and text fields. You can use the `mt` prop of the `Stack` component to get top margin to your text fields and buttons. The Material UI provides custom props that you can use to change CSS properties https://mui.com/system/properties/#properties-reference-table
-```jsx title="TodoList.jsx"
+```jsx title="TodoList.tsx"
 <Stack 
   mt={2} 
   direction="row" 
