@@ -2,7 +2,7 @@
 title: 'Introduction'
 sidebar_position: 1
 ---
-So far, we have used HTML file for React coding. Now, we start to implement proper React apps.
+So far, we have been using HTML files for React coding. Now, we will begin implementing proper React applications. Additionally, we have been using JavaScript, but we will now start to use TypeScript. We will start with a quick introduction to TypeScript with React.
 
 There are multiple ways to create react app/project, such as:
 - Create-React-App
