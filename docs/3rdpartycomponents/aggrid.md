@@ -101,13 +101,13 @@ const [columnDefs] = useState([
 - In the example code below, the priority cell text color is red if the priority value is High.
 
 ```js title="TodoList.jsx"
-const columns = [
+const [columnDefs] = useState([
   { field: "desc", sortable: true, filter: true },
   { field: "priority", sortable: true, filter: true, 
     //highlight-next-line
     cellStyle: params => params.value === "High" ? {color: 'red'} : {color: 'black'} },
   { field: "date", sortable: true, filter: true }
-];
+]);
 ```
 ### Delete functionality
 - Let’s implement the delete functionality, where the user can select a row, and when the delete button is pressed, the selected row is deleted.
