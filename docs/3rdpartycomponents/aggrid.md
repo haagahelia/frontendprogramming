@@ -141,7 +141,7 @@ const [columnDefs] = useState<ColDef<Todo>[]>([
 />
 ```
 - We should be able to get the selected row, and therefore we need access to the ag-grid component’s API. The API provides a method called `getSelectedNodes()` that we can use to get the selected row index.
-- To get access to the Grid API, we can use the React `useRef` hook function (https://react.dev/reference/react/useRef). The React `ref` can be used to get direct access to a DOM element.
+- To get access to the Grid API, we can use the React `useRef` hook function (https://react.dev/reference/react/useRef). The React `ref` can be used to get direct access to a DOM element. We can use utilizd type `AgGridReact<Todo>` with the `useRef` hook (https://www.ag-grid.com/react-data-grid/typescript-generics/).
 
 ```js title="TodoList.tsx"
 // Import useRef
@@ -151,7 +151,7 @@ function TodoList() {
   const [todo, setTodo] = useState({ desc: '', date: '', priority: '' });
   const [todos, setTodos] = useState([]);
   //highlight-next-line
-  const gridRef = useRef();
+  const gridRef = useRef<AgGridReact<Todo>>(null);
 ```
 - By using `ref` prop we can make a reference to the `AgGridReact` component. It allows us to access it's methods directly.
 ```jsx title="TodoList.tsx"
@@ -163,18 +163,9 @@ function TodoList() {
   rowSelection="single"
 />
 ```
-- The `AgGridReact` component's methods are in the Grid API (https://www.ag-grid.com/react-data-grid/grid-api/); therefore, we have to link our reference to the API. AG Grid provides the `gridReady` event that is invoked when the grid has initialized and is ready for most api calls, but may not be fully rendered yet. We can use `onGridReady` event handler to get access to the grid API and store the grid API object for our reference. Then, we can use the `gridRef.current` to call methods that grid API provides.
-```jsx title="TodoList.tsx"
-<AgGridReact 
-  ref={gridRef}
-  //highlight-next-line
-  onGridReady={ params => gridRef.current = params.api }
-  rowData={todos}
-  columnDefs={columnDefs}
-  rowSelection="single"
-/>
-```
-- Next, we add Delete button inside the `return` statement and when the button is pressed, it call `handleDelete` function.
+- The `AgGridReact` component's methods are in the Grid API (https://www.ag-grid.com/react-data-grid/grid-api/). We can now access the api using the `gridRef.current?.api`. The `?` operator is known as the **optional chaining** operator. It allows you to safely access deeply nested properties without having to explicitly check if each reference in the chain is non-null or undefined. In some situations, you need to use AG Grid's `onGridReady` to verify that the grid has initialized and is ready for most API calls, but it may not be fully rendered yet.
+
+Next, we add Delete button inside the `return` statement and when the button is pressed, it call `handleDelete` function.
 ```jsx
 return (
     <>
@@ -196,7 +187,6 @@ return (
       <div className="ag-theme-material" style={{width: 700, height: 500}}>
         <AgGridReact 
           ref={gridRef}
-          onGridReady={ params => gridRef.current = params.api }
           rowData={todos}
           columnDefs={columnDefs}
           rowSelection="single"
@@ -209,15 +199,15 @@ return (
 ```js title="TodoList.tsx"
 const handleDelete = () => {
   setTodos(todos.filter((todo, index) => 
-      index != gridRef.current.getSelectedNodes()[0].id))
+      index != gridRef.current?.api.getSelectedNodes()[0].id))
 };
 ```
 - If you select a row in the grid and press the Delete button, the selected row is deleted from the grid. If you don't select any row and press the Delete button, you can see an error in the console. We also have to check that one row is selected before filtering.
 ```js title="TodoList.tsx"
 const handleDelete = () => {
-  if (gridRef.current.getSelectedNodes().length > 0) {
+  if (gridRef.current?.api.getSelectedNodes().length > 0) {
     setTodos(todos.filter((todo, index) => 
-      index != gridRef.current.getSelectedNodes()[0].id))
+      index != gridRef.current?.api.getSelectedNodes()[0].id))
   }
   else {
     alert('Select a row first!');
