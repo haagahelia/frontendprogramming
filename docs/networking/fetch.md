@@ -38,14 +38,19 @@ fetch('https://mydomain.com/api')
 
 ---
 ### Setting HTTP method & headers
-- The HTTP method and header can be passed as a second argument to `fetch`.
+- You can also pass second argument to `fetch` function that is an optional object containing options to configure the request.
+- By default, `fetch` sends GET request. You can use `method` property to use different request methods.
+- Request headers give the server information about the request, for example format of the request body. The `headers` property can be used to set request headers.
+- The request body is the payload of the request for example, the data that client is sending to the server. To set request body, you can use `body` property.
+
 ```js
 fetch('https://mydomain.com/api', {
   method: 'POST', 
   headers: { 
     'Accept': 'application/json', 
     'Content-Type': 'application/json', 
-  }
+  },
+  body: JSON.stringify({ message: 'Hello World!' })
 })
 .then(response => {
   // Handle response
