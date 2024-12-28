@@ -545,6 +545,15 @@ fetch('https://reqres.in/api/users')
 });
 ```
 
+If you want to separate network requests to own module, you can use `Promise` type.
+
+```ts
+export fetchUsers = (): Promise<ApiResponse> => {
+  fetch('https://reqres.in/api/users')
+  .then(response => return response.json())
+}
+```
+
 ### Further reading
 
 - React TypeScript Cheatsheets https://react-typescript-cheatsheet.netlify.app/
