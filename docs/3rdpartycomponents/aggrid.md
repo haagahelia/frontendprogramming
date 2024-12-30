@@ -3,6 +3,8 @@ title: "AG-Grid"
 sidebar_position: 4
 ---
 
+<!-- @format -->
+
 - **AG Grid** (https://www.ag-grid.com/) is popular data grid component that can be used with several JavaScript libraries, such as React.
 - AG Grid provides a free community version that is free for everyone, including production use - no license required.
 - AG Grid supports TypeScript Generics for row data, cell values and grid context.
@@ -69,14 +71,13 @@ import { ColDef } from "ag-grid-community"
 - Then, we can use `ColDef` interface as shown in the code below.
 
 ```js title="TodoList.tsx"
-const [columnDefs] =
-  useState <
-  ColDef <
-  Todo >
-  [] >
-  [{ field: "desc" }, { field: "priority" }, { field: "date" }]
-```
+const [columnDefs] = useState<ColDef<Todo>[]>([
+  { field: "desc" },
+  { field: "priority" },
+  { field: "date" },
+]);
 
+```
 - `useState<ColDef<Todo>[]>` is a TypeScript generic that specifies the type of the state. Here, it indicates that `columnDefs` is an array of `ColDef` objects, where each `ColDef` is typed with the `Todo` interface.
 - `ColDef<Todo>` ensures that the column definitions are compatible with the `Todo` type, which means the fields specified in the column definitions (desc, priority, date) must exist in the `Todo` interface. The `ColDef` objects specify which fields from the `Todo` interface should be displayed in the grid:
 
@@ -125,16 +126,11 @@ Now, your Todolist should look like the following screenshot and the todo table 
 - Now, the `columndDef` look like the code below:
 
 ```js title="TodoList.tsx"
-const [columnDefs] =
-  useState <
-  ColDef <
-  Todo >
-  [] >
-  [
-    { field: "desc", sortable: false, filter: true },
-    { field: "priority", filter: true },
-    { field: "date", filter: true },
-  ]
+const [columnDefs] = useState<ColDef<Todo>[]>([
+  { field: "desc", sortable: false, filter: true },
+  { field: "priority", filter: true },
+  { field: "date", filter: true },
+]);
 ```
 
 - Now, column headers also contain a 'hamburger'-menu that opens the column filter. The description column is not anymore sortable.
@@ -145,23 +141,18 @@ const [columnDefs] =
 - In the example code below, the priority cell text color is red if the priority value is High.
 
 ```js title="TodoList.tsx"
-const [columnDefs] =
-  useState <
-  ColDef <
-  Todo >
-  [] >
-  [
-    { field: "desc", sortable: true, filter: true },
-    {
-      field: "priority",
-      sortable: true,
-      filter: true,
-      //highlight-next-line
-      cellStyle: (params) =>
-        params.value === "High" ? { color: "red" } : { color: "black" },
-    },
-    { field: "date", sortable: true, filter: true },
-  ]
+const [columnDefs] = useState<ColDef<Todo>[]>([
+  { field: "desc", sortable: true, filter: true },
+  {
+    field: "priority",
+    sortable: true,
+    filter: true,
+    //highlight-next-line
+    cellStyle: (params) =>
+      params.value === "High" ? { color: "red" } : { color: "black" },
+  },
+  { field: "date", sortable: true, filter: true },
+]);
 ```
 
 ### Delete functionality
