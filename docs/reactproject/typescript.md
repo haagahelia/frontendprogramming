@@ -484,25 +484,24 @@ interface ApiResponse {
 - Now, we can create the component
 
 ```ts
-import { useState, useEffect } from 'react';
-import styles from './UserGrid.module.css';
-import { User, ApiResponse } from '../../types/UserTypes';
+import { useState, useEffect } from "react"
+import { User, ApiResponse } from "../types/UserTypes"
 
-export const UserGrid = () => {
-  const [users, setUsers] = useState<User[]>([]);
+export default function UserList() {
+  const [users, setUsers] = useState<User[]>([])
 
   useEffect(() => {
-    fetch('https://reqres.in/api/users')
-      .then(response => response.json())
-      .then(data: ApiResponse => {
-        setUsers(data.data);
-      })
-      .catch((err) => {
-        console.error("Error in fetch");
-      });
-  }, []);
+    fetch("https://reqres.in/api/users")
+      .then((response) => {
+        if (!response.ok) throw new Error(`Error in fetch: ${response.status}`)
 
- return (
+        return response.json()
+      })
+      .then((responseData: ApiResponse) => setUsers(responseData.data))
+      .catch((err) => console.error(err))
+  }, [])
+
+  return (
     <table>
       <thead>
         <tr>
@@ -513,9 +512,14 @@ export const UserGrid = () => {
         </tr>
       </thead>
       <tbody>
-        {users.map(user => (
+        {users.map((user) => (
           <tr key={user.id}>
-            <td><img src={user.avatar} alt={`${user.first_name} ${user.last_name}`}/></td>
+            <td>
+              <img
+                src={user.avatar}
+                alt={`${user.first_name} ${user.last_name}`}
+              />
+            </td>
             <td>{user.first_name}</td>
             <td>{user.last_name}</td>
             <td>{user.email}</td>
@@ -523,6 +527,7 @@ export const UserGrid = () => {
         ))}
       </tbody>
     </table>
+  )
 }
 ```
 
@@ -532,17 +537,19 @@ export const UserGrid = () => {
 const [users, setUsers] = useState<User[]>([])
 ```
 
-- he response data is typed using the `ApiResponse` interface:
+- The response data is typed using the `ApiResponse` interface:
 
 ```ts
-fetch('https://reqres.in/api/users')
-  .then(response => response.json())
-  .then(data: ApiResponse => {
-      setUsers(data.data);
-})
-.catch((err) => {
-  console.error("Error in fetch");
-})
+useEffect(() => {
+  fetch("https://reqres.in/api/users")
+    .then((response) => {
+      if (!response.ok) throw new Error(`Error in fetch: ${response.status}`)
+
+      return response.json()
+    })
+    .then((responseData: ApiResponse) => setUsers(responseData.data))
+    .catch((err) => console.error(err))
+}, [])
 ```
 
 You can also create a separate API module and define fetch function with `Promise` return type.
