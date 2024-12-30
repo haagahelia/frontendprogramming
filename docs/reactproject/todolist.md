@@ -292,11 +292,13 @@ function TodoTable(props: TodoTableProps) {
   return(
     <>
       <table>
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Date</th>
+          </tr>
+        </thead>
         <tbody>
-        <tr>
-          <th>Description</th>
-          <th>Date</th>
-        </tr>
           {props.todos.map((todo, index) => (
             <tr key={index}>
               <td>{todo.description}</td>
