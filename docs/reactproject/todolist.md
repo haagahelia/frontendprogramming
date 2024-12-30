@@ -62,6 +62,10 @@ Next, we render the necessary elements to gather information and call the functi
 - The `addTodo` function is called when the `button` is pressed.
 
 ```tsx title="TodoList.tsx"
+  const addTodo = () => {
+    setTodos([...todos, todo]);
+  };
+  
   return(
     <>
       <input 
