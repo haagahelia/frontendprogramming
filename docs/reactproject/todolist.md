@@ -201,11 +201,13 @@ In this phase, our React app's component tree is the following:
 ```jsx title="TodoTable.jsx"
 return (
   <table>
-    <tbody>
+    <thead>
       <tr>
         <th>Description</th>
         <th>Date</th>
       </tr>
+    </thead>
+    <tbody>
       {props.todos.map((item, index) => (
         <tr key={index}>
           <td>{item.description}</td>
