@@ -54,7 +54,7 @@ import "ag-grid-community/styles/ag-theme-material.css" // Material Design theme
 
 - Next, we have to define data grid columns. The columns are defined using a state, and the value is an array of column definition objects. Each column definition object has a mandatory property `field` that defines what data is shown in a column. For example, if we define `{field: 'date'}`, this column shows our `todo` object's `date` property value.
 
-```js title="TodoList.tsx"
+```ts title="TodoList.tsx"
 const [columnDefs] = useState([
   { field: "desc" },
   { field: "priority" },
@@ -70,7 +70,7 @@ import { ColDef } from "ag-grid-community"
 
 - Then, we can use `ColDef` interface as shown in the code below.
 
-```js title="TodoList.tsx"
+```ts title="TodoList.tsx"
 const [columnDefs] = useState<ColDef<Todo>[]>([
   { field: "desc" },
   { field: "priority" },
@@ -85,7 +85,7 @@ const [columnDefs] = useState<ColDef<Todo>[]>([
 
 - Then, we display the `AgGridReact` component. The `rowData` prop defines where row data comes from and the value should be an array. In our case, it is the `todos` array state where our todo objects are stored. The `columnDefs` prop defines the column definition, and it is the `columnDefs` state that we just created before. Remove the `TodoTable` component because now we will use AG Grid to show our data. You have to wrap the `AgGridReact` component inside `div` that defines the theme CSS class and grid size.
 
-```jsx title="TodoList.tsx"
+```tsx title="TodoList.tsx"
 return (
   <>
     <input
@@ -125,7 +125,7 @@ Now, your Todolist should look like the following screenshot and the todo table 
 - You can also get a column-based filter that filters rows using the spcified values. You can enble colmun filter by setting `filter` property to `true`.
 - Now, the `columndDef` look like the code below:
 
-```js title="TodoList.tsx"
+```ts title="TodoList.tsx"
 const [columnDefs] = useState<ColDef<Todo>[]>([
   { field: "desc", sortable: false, filter: true },
   { field: "priority", filter: true },
@@ -140,7 +140,7 @@ const [columnDefs] = useState<ColDef<Todo>[]>([
 - We can use `cellStyle` column property to define cell styling. The value of the property is a callback function that returns an object of css values.
 - In the example code below, the priority cell text color is red if the priority value is High.
 
-```js title="TodoList.tsx"
+```ts title="TodoList.tsx"
 const [columnDefs] = useState<ColDef<Todo>[]>([
   { field: "desc", sortable: true, filter: true },
   {
@@ -172,7 +172,7 @@ const [columnDefs] = useState<ColDef<Todo>[]>([
 - We should be able to get the selected row, and therefore we need access to the ag-grid component’s API. The API provides a method called `getSelectedNodes()` that we can use to get the selected row index.
 - To get access to the Grid API, we can use the React `useRef` hook function (https://react.dev/reference/react/useRef). The React `ref` can be used to get direct access to a DOM element. We can use utilized type `AgGridReact<Todo>` with the `useRef` hook (https://www.ag-grid.com/react-data-grid/typescript-generics/).
 
-```js title="TodoList.tsx"
+```ts title="TodoList.tsx"
 // Import useRef
 import { useRef, useState } from 'react'
 
@@ -199,7 +199,7 @@ function TodoList() {
 
 Next, we add Delete button inside the `return` statement and when the button is pressed, it call `handleDelete` function.
 
-```jsx
+```tsx
 return (
   <>
     <input
@@ -246,7 +246,7 @@ const handleDelete = () => {
 
 - If you select a row in the grid and press the Delete button, the selected row is deleted from the grid. If you don't select any row and press the Delete button, you can see an error in the console. We also have to check that one row is selected before filtering.
 
-```js title="TodoList.tsx"
+```ts title="TodoList.tsx"
 const handleDelete = () => {
   if (gridRef.current?.api.getSelectedNodes().length > 0) {
     setTodos(
