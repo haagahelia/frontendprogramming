@@ -42,10 +42,10 @@ In the line `"ag-grid-react": "^32.1.0"` the `ag-grid-react` is the name of the 
 - To use the AG Grid component in our TodoList component, we have to import it. We import the `AgGridReact` component and stylesheets. AG Grid provides pre-defined themes (https://www.ag-grid.com/react-data-grid/themes/) and we use the Material Design theme. Add the following imports to your `TodoList` component.
 
 ```js title="TodoList.tsx"
-import { AgGridReact } from "ag-grid-react";
+import { AgGridReact } from "ag-grid-react"
 
-import "ag-grid-community/styles/ag-grid.css";
-import "ag-grid-community/styles/ag-theme-material.css"; // Material Design theme
+import "ag-grid-community/styles/ag-grid.css"
+import "ag-grid-community/styles/ag-theme-material.css" // Material Design theme
 ```
 
 ### Define columns
@@ -57,13 +57,13 @@ const [columnDefs] = useState([
   { field: "desc" },
   { field: "priority" },
   { field: "date" },
-]);
+])
 ```
 
 - We have to define type for the column definitions. AG Grid offers `ColDef` interface that can be used. Import the interface first:
 
 ```ts
-import { ColDef } from "ag-grid-community";
+import { ColDef } from "ag-grid-community"
 ```
 
 - Then, we can use `ColDef` interface as shown in the code below.
@@ -74,7 +74,7 @@ const [columnDefs] =
   ColDef <
   Todo >
   [] >
-  [{ field: "desc" }, { field: "priority" }, { field: "date" }];
+  [{ field: "desc" }, { field: "priority" }, { field: "date" }]
 ```
 
 - `useState<ColDef<Todo>[]>` is a TypeScript generic that specifies the type of the state. Here, it indicates that `columnDefs` is an array of `ColDef` objects, where each `ColDef` is typed with the `Todo` interface.
@@ -110,7 +110,7 @@ return (
     </div>
     //highlight-end
   </>
-);
+)
 ```
 
 Now, your Todolist should look like the following screenshot and the todo table looks already more professional:
@@ -134,7 +134,7 @@ const [columnDefs] =
     { field: "desc", sortable: false, filter: true },
     { field: "priority", filter: true },
     { field: "date", filter: true },
-  ];
+  ]
 ```
 
 - Now, column headers also contain a 'hamburger'-menu that opens the column filter. The description column is not anymore sortable.
@@ -161,7 +161,7 @@ const [columnDefs] =
         params.value === "High" ? { color: "red" } : { color: "black" },
     },
     { field: "date", sortable: true, filter: true },
-  ];
+  ]
 ```
 
 ### Delete functionality
@@ -238,7 +238,7 @@ return (
       />
     </div>
   </>
-);
+)
 ```
 
 - Finally, we implement the `handleDelete` function. We can use the grid API's `getSelectedNodes` method, which returns an array of selected rows. We are using the single selection mode; therefore, it only returns one row. The row index can be get from the row object's `id` property. We use the JavaScript `filter` function to filter selected row from the `todos` state. The `filter` function creates a new array containing elements from the original array that meet a specific condition. It does not modify the original array but returns a new array with the filtered elements.
@@ -249,8 +249,8 @@ const handleDelete = () => {
     todos.filter(
       (todo, index) => index != gridRef.current?.api.getSelectedNodes()[0].id
     )
-  );
-};
+  )
+}
 ```
 
 - If you select a row in the grid and press the Delete button, the selected row is deleted from the grid. If you don't select any row and press the Delete button, you can see an error in the console. We also have to check that one row is selected before filtering.
@@ -262,11 +262,11 @@ const handleDelete = () => {
       todos.filter(
         (todo, index) => index != gridRef.current?.api.getSelectedNodes()[0].id
       )
-    );
+    )
   } else {
-    alert("Select a row first!");
+    alert("Select a row first!")
   }
-};
+}
 ```
 
 - Now, we have finalized our Todolist using the AG Grid, and your Todolist should look like the following screenshot:
