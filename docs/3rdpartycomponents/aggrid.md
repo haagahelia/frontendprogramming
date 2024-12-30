@@ -29,26 +29,34 @@ npm install ag-grid-react
 ```json title="package.json"
 "dependencies": {
   //highlight-next-line
-  "ag-grid-react": "^32.1.0",
+  "ag-grid-react": "^33.0.3",
   "react": "^18.2.0",
   "react-dom": "^18.2.0"
 },
 ```
 
 :::note
-In the line `"ag-grid-react": "^32.1.0"` the `ag-grid-react` is the name of the installed package. The `"^32.1.0"` specifies the installed version. The `^` symbol inidcates that it allows to receive bug fixes and minor version updates. The major version updates are not allowed (For example, 33.0.0). The packages are automatically updated when you execute the `npm install` command. The installed versions are saved to the dependency lock file **package.lock.json** file. If the version is specified `"32.1.0"` it means that the project requires version 32.1.0 and updates are not received automatically.
+In the line `"ag-grid-react": "^33.0.3"` the `ag-grid-react` is the name of the installed package. The `"^33.0.3"` specifies the installed version. The `^` symbol inidcates that it allows to receive bug fixes and minor version updates. The major version updates are not allowed (For example, 34.0.0). The packages are automatically updated when you execute the `npm install` command. The installed versions are saved to the dependency lock file **package.lock.json** file. If the version is specified `"33.0.3"` it means that the project requires version 33.0.3 and updates are not received automatically.
 :::
 
-### Import AG-Grid component and stylesheets
+### Import AG-Grid component and register modules
 
-- To use the AG Grid component in our TodoList component, we have to import it. We import the `AgGridReact` component and stylesheets. AG Grid provides pre-defined themes (https://www.ag-grid.com/react-data-grid/themes/) and we use the Material Design theme. Add the following imports to your `TodoList` component.
+- To use the AG Grid component in our TodoList component, we have to import it. We import the `AgGridReact` component. Add the following imports to your `TodoList` component.
 
-```js title="TodoList.tsx"
+```ts title="TodoList.tsx"
 import { AgGridReact } from "ag-grid-react"
-
-import "ag-grid-community/styles/ag-grid.css"
-import "ag-grid-community/styles/ag-theme-material.css" // Material Design theme
 ```
+
+- Next, register the `AllCommunityModule` to access all Community features.
+
+```ts
+import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community'; 
+
+// Register all Community features
+ModuleRegistry.registerModules([AllCommunityModule]);
+```
+
+- You can find all modules that ag-grid provides in https://www.ag-grid.com/react-data-grid/modules/.
 
 ### Define columns
 
@@ -106,8 +114,11 @@ return (
     />
     <button onClick={addTodo}>Add</button>
     //highlight-start
-    <div className="ag-theme-material" style={{ width: 700, height: 500 }}>
-      <AgGridReact rowData={todos} columnDefs={columnDefs} />
+    <div style={{ width: 700, height: 500 }}>
+      <AgGridReact 
+        rowData={todos} 
+        columnDefs={columnDefs} 
+      />
     </div>
     //highlight-end
   </>
@@ -116,6 +127,8 @@ return (
 
 Now, your Todolist should look like the following screenshot and the todo table looks already more professional:
 ![Todolist](./img/todolist3.png)
+
+- The default theme for the grid is Quartz, and you can use the Theme API to switch themes. All built-in themes are available at https://www.ag-grid.com/react-data-grid/themes/.
 
 ### Column properties
 
@@ -132,7 +145,6 @@ const [columnDefs] = useState<ColDef<Todo>[]>([
   { field: "date", filter: true },
 ]);
 ```
-
 - Now, column headers also contain a 'hamburger'-menu that opens the column filter. The description column is not anymore sortable.
 
 ### Styling cells
@@ -234,11 +246,11 @@ return (
 
 - Finally, we implement the `handleDelete` function. We can use the grid API's `getSelectedNodes` method, which returns an array of selected rows. We are using the single selection mode; therefore, it only returns one row. The row index can be get from the row object's `id` property. We use the JavaScript `filter` function to filter selected row from the `todos` state. The `filter` function creates a new array containing elements from the original array that meet a specific condition. It does not modify the original array but returns a new array with the filtered elements.
 
-```js title="TodoList.tsx"
+```ts title="TodoList.tsx"
 const handleDelete = () => {
   setTodos(
     todos.filter(
-      (todo, index) => index != gridRef.current?.api.getSelectedNodes()[0].id
+      (todo, index) => index !== Number(gridRef.current?.api.getSelectedNodes()[0].id)
     )
   )
 }
@@ -251,7 +263,7 @@ const handleDelete = () => {
   if (gridRef.current?.api.getSelectedNodes().length > 0) {
     setTodos(
       todos.filter(
-        (todo, index) => index != gridRef.current?.api.getSelectedNodes()[0].id
+        (todo, index) => index !== Number(gridRef.current?.api.getSelectedNodes()[0].id)
       )
     )
   } else {
