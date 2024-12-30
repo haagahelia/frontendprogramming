@@ -41,28 +41,28 @@ npx tsc
 - You can also set explicit type to a variable:
 
 ```ts
-let name: string;
-let age: number;
+let name: string
+let age: number
 ```
 
 - You can check the type using the `typeof`:
 
 ```ts
-typeof name === "string"; // true
-typeof age === "number"; // true
+typeof name === "string" // true
+typeof age === "number" // true
 ```
 
 - If the type is not known when you write code, you can use `unknown` type.
 
 ```ts
-let a: unknown = 10;
-a = "It should be string";
+let a: unknown = 10
+a = "It should be string"
 ```
 
 - If you want to exlude type checking, you can use `any` type.
 
 ```ts
-let a: any = 10;
+let a: any = 10
 ```
 
 - The `unknown` type is a safer alternative to `any`. It represents any value, but you cannot perform operations on it without first asserting its type. The code below demonstrates the difference between `any` and `unknown`.
@@ -70,30 +70,30 @@ let a: any = 10;
 Using `unknown`:
 
 ```ts
-let value: unknown;
+let value: unknown
 
-value = 42; // This is OK
-value = "hello"; // This is OK
-value = true; // This is OK
+value = 42 // This is OK
+value = "hello" // This is OK
+value = true // This is OK
 
 // Type checking is required before using the value
 if (typeof value === "number") {
-  let num: number = value;
+  let num: number = value
 }
 ```
 
 Using `any`:
 
 ```ts
-let value: any;
+let value: any
 
-value = 42; // This is OK
-value = "hello"; // This is OK
-value = true; // This is OK
+value = 42 // This is OK
+value = "hello" // This is OK
+value = true // This is OK
 
 // Type checking is not required
 // This is OK, but potentially unsafe
-let num: number = value;
+let num: number = value
 ```
 
 #### Functions
@@ -102,7 +102,7 @@ let num: number = value;
 
 ```ts
 function calc(x: number, y: number): number {
-  return x * y;
+  return x * y
 }
 ```
 
@@ -111,25 +111,25 @@ function calc(x: number, y: number): number {
 
 ```ts
 function sayHello(name: string, age?: number): string {
-  if (!age) return `Hello ${name}`;
+  if (!age) return `Hello ${name}`
 
-  return `Hello ${name}, you are ${age} year(s) old`;
+  return `Hello ${name}, you are ${age} year(s) old`
 }
 ```
 
 - Now, you can call function in the following ways:
 
 ```ts
-sayHello("John");
+sayHello("John")
 // or
-sayHello("John", 20);
+sayHello("John", 20)
 ```
 
 - If there is no return value, you can use the `void` keyword:
 
 ```ts
 function logMessage(message: string): void {
-  console.log(message);
+  console.log(message)
 }
 ```
 
@@ -138,31 +138,31 @@ function logMessage(message: string): void {
 - Arrays are declared with the following syntax:
 
 ```ts
-const arr: type[];
+const arr: type[]
 ```
 
 - For example:
 
 ```ts
-let names: string[];
-names = ["John", "Lisa", "Mike"];
+let names: string[]
+names = ["John", "Lisa", "Mike"]
 
 // You can also use Array() constructor
-let nums: number[] = new Array(10);
-nums[0] = 4;
+let nums: number[] = new Array(10)
+nums[0] = 4
 ```
 
 - You can also combibe more complex types
 - Unions:
 
 ```ts
-type MyStates = "awake" | "sleep" | "eating";
+type MyStates = "awake" | "sleep" | "eating"
 ```
 
 - Generics:
 
 ```ts
-type NumArray = Array<number>;
+type NumArray = Array<number>
 ```
 
 #### Structural types
@@ -172,14 +172,14 @@ type NumArray = Array<number>;
 
 ```ts
 interface Person {
-  name: string;
-  age: number;
+  name: string
+  age: number
 }
 
 type Point = {
-  x: number;
-  y: number;
-};
+  x: number
+  y: number
+}
 ```
 
 - See the difference between types and interfaces: https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces
@@ -190,13 +190,13 @@ type Point = {
 
 ```ts
 interface Person {
-  name: string;
-  age: number;
+  name: string
+  age: number
   address: {
-    street: string;
-    number: number;
-    zip: number;
-  };
+    street: string
+    number: number
+    zip: number
+  }
 }
 ```
 
@@ -204,15 +204,15 @@ interface Person {
 
 ```ts
 interface Address {
-  street: string;
-  number: number;
-  zip: number;
+  street: string
+  number: number
+  zip: number
 }
 
 interface Person {
-  name: string;
-  age: number;
-  address: Address;
+  name: string
+  age: number
+  address: Address
 }
 ```
 
@@ -236,8 +236,8 @@ npm create vite@latest
 
 ```tsx
 interface HelloProps {
-  name: string;
-  age: number;
+  name: string
+  age: number
 }
 
 function Hello({ name, age }: HelloProps) {
@@ -245,10 +245,10 @@ function Hello({ name, age }: HelloProps) {
     <div>
       Hello {name}, you are {age} years old!
     </div>
-  );
+  )
 }
 
-export default Hello;
+export default Hello
 ```
 
 - Now, if you pass value that doesn't match to defined type, you will get an error.
@@ -259,8 +259,8 @@ export default Hello;
 
 ```tsx
 interface HelloProps {
-  name: string;
-  age?: number;
+  name: string
+  age?: number
 }
 
 function Hello({ name, age }: HelloProps) {
@@ -269,27 +269,27 @@ function Hello({ name, age }: HelloProps) {
       Hello {name}
       {age && <>, you are {age} years old!</>}
     </div>
-  );
+  )
 }
 
-export default Hello;
+export default Hello
 ```
 
 - If the props value is a function, the definition is following:
 
 ```ts
 interface HelloProps {
-  name: string;
-  age?: number;
-  myFunc: () => void; // no parmeters and return value
+  name: string
+  age?: number
+  myFunc: () => void // no parmeters and return value
 }
 ```
 
 ```ts
 interface HelloProps {
-  name: string;
-  age?: number;
-  myFunc: (msg: string) => void; // function parmeters
+  name: string
+  age?: number
+  myFunc: (msg: string) => void // function parmeters
 }
 ```
 
@@ -301,8 +301,8 @@ interface HelloProps {
 
 ```tsx
 interface HelloProps {
-  name: string;
-  age: number;
+  name: string
+  age: number
 }
 
 function Hello({ name, age }: HelloProps): JSX.Element {
@@ -310,10 +310,10 @@ function Hello({ name, age }: HelloProps): JSX.Element {
     <div>
       Hello {name}, you are {age} years old!
     </div>
-  );
+  )
 }
 
-export default Hello;
+export default Hello
 ```
 
 ---
@@ -323,13 +323,13 @@ export default Hello;
 - Type interference works with useState hooks function. For example, if you declare following state:
 
 ```ts
-const [isReady, setReady] = useState(false);
+const [isReady, setReady] = useState(false)
 ```
 
 - Now, if you update the state using wrong type, you will get an error:
 
 ```ts
-setReady(10);
+setReady(10)
 ```
 
 ![](./img/ts_error2.png)
@@ -339,27 +339,27 @@ setReady(10);
 ```ts
 // declare interface
 interface IUser {
-  firstname: string;
-  lastname: string;
-  age: number;
+  firstname: string
+  lastname: string
+  age: number
 }
 
 // useState hook
-const [user, setUser] = useState<IUser | null>(null);
+const [user, setUser] = useState<IUser | null>(null)
 // or if nullish values are not accepted
-const [user, setUser] = useState<IUser>({} as IUser);
+const [user, setUser] = useState<IUser>({} as IUser)
 ```
 
 - You can also explicitly define types. For example, if you want to initialize state with `null` or `undefined` value.
 
 ```ts
-const [value, setValue] = useState<string | undefined>(undefined);
+const [value, setValue] = useState<string | undefined>(undefined)
 ```
 
 - Specifying type for array state
 
 ```ts
-const [values, setValues] = useState<Array<string>>([]);
+const [values, setValues] = useState<Array<string>>([])
 ```
 
 ---
@@ -375,13 +375,13 @@ const [values, setValues] = useState<Array<string>>([]);
 
 ```ts
 const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  setPerson({ ...person, [event.target.id]: event.target.value });
-};
+  setPerson({ ...person, [event.target.id]: event.target.value })
+}
 
 const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  event.preventDefault();
+  event.preventDefault()
   // Do something with data
-};
+}
 ```
 
 - The whole `Form` component source code: https://github.com/juhahinkula/reactts/blob/main/src/Form.tsx
@@ -391,22 +391,22 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 ```ts
 // interfaces.ts
 export interface Address {
-  street: string;
-  number: number;
-  zip: number;
+  street: string
+  number: number
+  zip: number
 }
 
 export interface Person {
-  name: string;
-  age: number;
-  address: Address;
+  name: string
+  age: number
+  address: Address
 }
 ```
 
 - Then you can import interfaces to modules where these are used:
 
 ```ts
-import { Person } from "./interfaces";
+import { Person } from "./interfaces"
 ```
 
 ---
@@ -457,11 +457,11 @@ The response data looks the following:
 
 ```ts
 interface User {
-  id: number;
-  email: string;
-  first_name: string;
-  last_name: string;
-  avatar: string;
+  id: number
+  email: string
+  first_name: string
+  last_name: string
+  avatar: string
 }
 ```
 
@@ -469,15 +469,15 @@ interface User {
 
 ```ts
 interface ApiResponse {
-  page: number;
-  per_page: number;
-  total: number;
-  total_pages: number;
-  data: User[];
+  page: number
+  per_page: number
+  total: number
+  total_pages: number
+  data: User[]
   support: {
-    url: string;
-    text: string;
-  };
+    url: string
+    text: string
+  }
 }
 ```
 
@@ -523,13 +523,13 @@ export const UserGrid = () => {
         ))}
       </tbody>
     </table>
-};
+}
 ```
 
 - The `User`interface is used to type the state variable `users`:
 
 ```ts
-const [users, setUsers] = useState<User[]>([]);
+const [users, setUsers] = useState<User[]>([])
 ```
 
 - he response data is typed using the `ApiResponse` interface:
@@ -542,15 +542,22 @@ fetch('https://reqres.in/api/users')
 })
 .catch((err) => {
   console.error("Error in fetch");
-});
+})
 ```
 
-If you want to separate network requests to own module, you can use `Promise` type.
+You can also create a separate API module and define fetch function with `Promise` return type.
+Then you just Handle response in the component.
 
 ```ts
-export fetchUsers = (): Promise<ApiResponse> => {
-  fetch('https://reqres.in/api/users')
-  .then(response => return response.json())
+import { ApiResponse } from "../types/UserTypes"
+
+export const fetchUsers = (): Promise<ApiResponse> => {
+  return fetch("https://reqres.in/api/users").then((response) => {
+    if (!response.ok) {
+      throw new Error(`Error in fetch: ${response.status}`)
+    }
+    return response.json()
+  })
 }
 ```
 
