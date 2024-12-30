@@ -338,16 +338,16 @@ setReady(10)
 
 ```ts
 // declare interface
-interface IUser {
+interface User {
   firstname: string
   lastname: string
   age: number
 }
 
 // useState hook
-const [user, setUser] = useState<IUser | null>(null)
+const [user, setUser] = useState<User | null>(null)
 // or if nullish values are not accepted
-const [user, setUser] = useState<IUser>({} as IUser)
+const [user, setUser] = useState<User>({} as User)
 ```
 
 - You can also explicitly define types. For example, if you want to initialize state with `null` or `undefined` value.
