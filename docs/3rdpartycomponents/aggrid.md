@@ -64,9 +64,9 @@ ModuleRegistry.registerModules([AllCommunityModule]);
 
 ```ts title="TodoList.tsx"
 const [columnDefs] = useState([
-  { field: "desc" },
+  { field: "description" },
   { field: "priority" },
-  { field: "date" },
+  { field: "duedate" },
 ])
 ```
 
@@ -80,9 +80,9 @@ import { ColDef } from "ag-grid-community"
 
 ```ts title="TodoList.tsx"
 const [columnDefs] = useState<ColDef<Todo>[]>([
-  { field: "desc" },
+  { field: "description" },
   { field: "priority" },
-  { field: "date" },
+  { field: "duedate" },
 ]);
 
 ```
@@ -98,8 +98,8 @@ return (
   <>
     <input
       placeholder="Description"
-      onChange={(e) => setTodo({ ...todo, desc: e.target.value })}
-      value={todo.desc}
+      onChange={(e) => setTodo({ ...todo, description: e.target.value })}
+      value={todo.description}
     />
     <input
       placeholder="Priority"
@@ -109,8 +109,8 @@ return (
     <input
       placeholder="Date"
       type="date"
-      onChange={(e) => setTodo({ ...todo, date: e.target.value })}
-      value={todo.date}
+      onChange={(e) => setTodo({ ...todo, duedate: e.target.value })}
+      value={todo.duedate}
     />
     <button onClick={addTodo}>Add</button>
     //highlight-start
@@ -140,9 +140,9 @@ Now, your Todolist should look like the following screenshot and the todo table 
 
 ```ts title="TodoList.tsx"
 const [columnDefs] = useState<ColDef<Todo>[]>([
-  { field: "desc", sortable: false, filter: true },
+  { field: "description", sortable: false, filter: true },
   { field: "priority", filter: true },
-  { field: "date", filter: true },
+  { field: "duedate", filter: true },
 ]);
 ```
 - Now, column headers also contain a 'hamburger'-menu that opens the column filter. The description column is not anymore sortable.
@@ -154,7 +154,7 @@ const [columnDefs] = useState<ColDef<Todo>[]>([
 
 ```ts title="TodoList.tsx"
 const [columnDefs] = useState<ColDef<Todo>[]>([
-  { field: "desc", sortable: true, filter: true },
+  { field: "description", sortable: true, filter: true },
   {
     field: "priority",
     sortable: true,
@@ -163,7 +163,7 @@ const [columnDefs] = useState<ColDef<Todo>[]>([
     cellStyle: (params) =>
       params.value === "High" ? { color: "red" } : { color: "black" },
   },
-  { field: "date", sortable: true, filter: true },
+  { field: "duedate", sortable: true, filter: true },
 ]);
 ```
 
@@ -189,7 +189,7 @@ const [columnDefs] = useState<ColDef<Todo>[]>([
 import { useRef, useState } from 'react'
 
 function TodoList() {
-  const [todo, setTodo] = useState({ desc: '', date: '', priority: '' });
+  const [todo, setTodo] = useState({ description: '', duedate: '', priority: '' });
   const [todos, setTodos] = useState([]);
   //highlight-next-line
   const gridRef = useRef<AgGridReact<Todo>>(null);
@@ -216,7 +216,7 @@ return (
   <>
     <input
       placeholder="Description"
-      onChange={(e) => setTodo({ ...todo, desc: e.target.value })}
+      onChange={(e) => setTodo({ ...todo, description: e.target.value })}
       value={todo.desc}
     />
     <input
@@ -226,8 +226,8 @@ return (
     />
     <input
       placeholder="Date"
-      onChange={(e) => setTodo({ ...todo, date: e.target.value })}
-      value={todo.date}
+      onChange={(e) => setTodo({ ...todo, duedate: e.target.value })}
+      value={todo.duedate}
     />
     <button onClick={addTodo}>Add</button>
     //highlight-next-line
