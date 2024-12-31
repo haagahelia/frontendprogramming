@@ -55,7 +55,6 @@ import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
 // Register all Community features
 ModuleRegistry.registerModules([AllCommunityModule]);
 ```
-
 - You can find all modules that ag-grid provides in https://www.ag-grid.com/react-data-grid/modules/.
 
 ### Define columns
@@ -69,7 +68,6 @@ const [columnDefs] = useState([
   { field: "duedate" },
 ])
 ```
-
 - We have to define type for the column definitions. AG Grid offers `ColDef` interface that can be used. Import the interface first:
 
 ```ts
