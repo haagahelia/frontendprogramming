@@ -17,27 +17,33 @@ sidebar_position: 4
 npm install ag-grid-react
 ```
 - The installed packages are saved to the `package.json` file's `dependencies` section. The `package.json` file can be found in the root directory of project. It contains project information, dependencies and scripts for starting the project.  After the installation, open the `package.json` file and check that AG-Grid component is found.
+
 ```json title="package.json"
 "dependencies": {
   //highlight-next-line
-  "ag-grid-react": "^32.1.0",
+  "ag-grid-react": "^33.0.3",
   "react": "^18.2.0",
   "react-dom": "^18.2.0"
 },
 ```
 :::note
-In the line `"ag-grid-community": "^32.1.0"` the `ag-grid-community` is the name of the installed package. The `"^32.1.0"` specifies the installed version. The `^` symbol inidcates that it allows to receive bug fixes and minor version updates. The major version updates are not allowed (For example, 33.0.0). The packages are automatically updated when you execute the `npm install` command. The installed versions are saved to the dependency lock file **package.lock.json** file. If the version is specified `"32.1.0"` it means that the project requires version 32.1.0 and updates are not received automatically. 
+In the line `"ag-grid-react": "^33.0.3"` the `ag-grid-react` is the name of the installed package. The `"^33.0.3"` specifies the installed version. The `^` symbol inidcates that it allows to receive bug fixes and minor version updates. The major version updates are not allowed (For example, 34.0.0). The packages are automatically updated when you execute the `npm install` command. The installed versions are saved to the dependency lock file **package.lock.json** file. If the version is specified `"33.0.3"` it means that the project requires version 33.0.3 and updates are not received automatically.
 :::
 
 ### Import AG-Grid component and stylesheets
-- To use the AG-Grid component in our TodoList component, we have to import it. We import the `AgGridReact` component and stylesheets. AG-Grid provides pre-defined themes (https://www.ag-grid.com/react-data-grid/themes/) and we use the Material Design theme. Add the following imports to your `TodoList` component.
-
+- To use the AG-Grid component in our TodoList component, we have to import it. We import the `AgGridReact` component.
 ```js title="TodoList.jsx"
 import { AgGridReact } from "ag-grid-react";
-
-import "ag-grid-community/styles/ag-grid.css";
-import "ag-grid-community/styles/ag-theme-material.css"; // Material Design theme
 ```
+- Next, register the `AllCommunityModule` to access all Community features.
+```ts
+import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community'; 
+
+// Register all Community features
+ModuleRegistry.registerModules([AllCommunityModule]);
+```
+- You can find all modules that ag-grid provides in https://www.ag-grid.com/react-data-grid/modules/.
+
 ### Define columns
 - Next, we have to define data grid columns. The columns are defined using a state, and the value is an array of column definition objects. Each column definition object has a mandatory property `field` that defines what data is shown in a column. For example, if we define `{field: 'date'}`, this column shows our `todo` object's `date` property value.
 
@@ -67,7 +73,7 @@ return (
       value={todo.date} />
     <button onClick={addTodo}>Add</button>
       //highlight-start
-    <div className="ag-theme-material" style={{width: 700, height: 500}}>
+    <div style={{width: 700, height: 500}}>
       <AgGridReact 
         rowData={todos}
         columnDefs={columnDefs}
@@ -173,7 +179,7 @@ return (
       <button onClick={addTodo}>Add</button>
       //highlight-next-line
       <button onClick={handleDelete}>Delete</button>
-      <div className="ag-theme-material" style={{width: 700, height: 500}}>
+      <div style={{width: 700, height: 500}}>
         <AgGridReact 
           ref={gridRef}
           onGridReady={ params => gridRef.current = params.api }
