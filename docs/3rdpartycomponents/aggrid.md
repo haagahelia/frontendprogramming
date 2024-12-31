@@ -84,7 +84,9 @@ return (
 )  
 ```
 Now, your Todolist should look like the following screenshot and the todo table looks already more professional:
-![Todolist](./img/todolist3.png)
+![Todolist](./img/todolist3.png).
+
+- The default theme for the grid is Quartz, and you can use the Theme API to switch themes. All built-in themes are available at https://www.ag-grid.com/react-data-grid/themes/.
 
 ### Column properties
 - The column properties are used to define the column behavior. So far, we have only used the `field` property in our column definitions.
