@@ -33,12 +33,12 @@ npx tsc
 
 ![](./img/type_example.png)
 
-- The most common primitive types are: `string`, `number` and `boolean`
+- The most common primitive types are: `string`, `number` and `boolean`.
 - See the different types: https://www.typescriptlang.org/docs/handbook/2/everyday-types.html
 
 ---
 
-- You can also set explicit type to a variable:
+- You can set explicit type to a variable:
 
 ```ts
 let name: string
