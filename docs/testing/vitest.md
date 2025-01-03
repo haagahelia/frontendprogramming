@@ -150,7 +150,6 @@ export default function TodoTable(props: TodoTableProps) {
   return (
     <div>
       <table id="todotable">
-
         <tbody>
         {
         props.todos.map((todo: Todo, index: number) => 
