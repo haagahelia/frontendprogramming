@@ -5,7 +5,7 @@ sidebar_position: 2
 
 #### Jest
 
-- **Jest** is one of the most popular testing library for JavaScript (https://jestjs.io/).
+- **Jest** is one of the most popular testing library for JavaScript (https://jestjs.io/). It works with projects using TypeScript.
 - Jest is not fully supported by Vite but it is good to know some basics of Jest.
 - For example, if we have a simple function:
 
