@@ -1,4 +1,8 @@
+![Github Pages](https://github.com/haagahelia/frontendprogramming/actions/workflows/deploy.yml/badge.svg)
+
 # Front End Programming
+
+Haaga-Helia Front End Programming course material.
 
 This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
