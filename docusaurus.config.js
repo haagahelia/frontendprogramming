@@ -10,15 +10,18 @@ const config = {
   favicon: 'img/favicon.ico',
 
   url: 'https://haagahelia.github.io',
+  baseUrl: '/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/frontendprogramming/',
+  projectName: 'haagahelia.github.io',
+  organizationName: 'haagahelia',
+  trailingSlash: false,
   plugins: ['@docusaurus/theme-live-codeblock', '@docusaurus/theme-mermaid'],
  
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'haagahelia', // Usually your GitHub org/user name.
-  projectName: 'frontendprogramming', // Usually your repo name.
+  // organizationName: 'haagahelia', // Usually your GitHub org/user name.
+  // projectName: 'frontendprogramming', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
