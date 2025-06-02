@@ -20,11 +20,15 @@ type User = {
 }
 ```
 We need an array to store a list of users; therefore, we create a state called `users` and initialize that to an empty array. Then, we use the `useEffect` hook to send a request once after the first render.
+
+Reqres.in requires an API key to be included in the request headers, which you can get for free. To add headers to your request, use the second argument of the `fetch` function and specify the `headers` property. You can find header in https://reqres.in/signup.
 ```ts
 const [users, setUsers] = useState<User[]>([]);
 
 useEffect(() => {
-  fetch('https://reqres.in/api/users')
+  fetch('https://reqres.in/api/users', {
+    headers: { 'x-api-key': 'reqres-free-v1' }
+  })
   .then(response => {
     if (!response.ok)
       throw new Error("Error in fetch: " + response.statusText);
@@ -125,15 +129,17 @@ export type ApiResponse = {
 We can define the `responseData` with the `ApiResponse` type to ensure type safety:
 ```ts
 useEffect(() => {
-  fetch("https://reqres.in/api/users")
-    .then((response) => {
-      if (!response.ok) throw new Error(`Error in fetch: ${response.status}`)
+  fetch("https://reqres.in/api/users", {
+    headers: { 'x-api-key': 'reqres-free-v1' }
+  })
+  .then((response) => {
+    if (!response.ok) throw new Error(`Error in fetch: ${response.status}`)
 
-      return response.json()
-    })
-    //highlight-next-line
-    .then((responseData: ApiResponse) => setUsers(responseData.data))
-    .catch((err) => console.error(err))
+    return response.json()
+  })
+  //highlight-next-line
+  .then((responseData: ApiResponse) => setUsers(responseData.data))
+  .catch((err) => console.error(err))
 }, [])
 ```
 Additionally, we can create own module to handle REST API functions. This approach is beneficial when the same request needs to be made in multiple components, as it avoids code duplication. It also simplifies REST API testing which is commonly made by mocking.
@@ -167,7 +173,10 @@ Then, in the `userApi.ts` module, handle the API request logic:
 import { ApiResponse } from "./types";
 
 export const fetchUsers = (): Promise<ApiResponse> => {
-  return fetch("https://reqres.in/api/users").then((response) => {
+  return fetch("https://reqres.in/api/users", {
+    headers: { 'x-api-key': 'reqres-free-v1' }
+  })
+  .then((response) => {
     if (!response.ok) {
       throw new Error(`Error in fetch: ${response.status}`);
     }
