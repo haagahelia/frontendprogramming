@@ -39,6 +39,15 @@ useEffect(() => {
   .catch(err => console.error(err))
 }, [])
 ```
+
+:::warning
+Including API keys directly in your frontend code, like this is not recommended, as it exposes sensitive credentials. Even environment variables in frontend builds (like `VITE_API_KEY`) are still visible to users.
+
+Use instead a backend proxy Create a small backend server (e.g., with Node.js/Express). This server can securely store the API key and make the request to the external API. Your frontend then makes requests to your own backend, which adds the API key securely.
+
+You can also use frameworks such as Next.js where you can make network requests in server side.
+:::
+
 Now, if you open the developer console in your browser and navigate to the **Network** tab, you can see the requests made by the component. You will find the `users` request triggered by our component. The response payload is also displayed in the console. You might notice that the `users` request is executed twice. This behavior is due to `React.StrictMode` that is enabled in the `main.tsx` file. `React.StrictMode` invokes certain lifecycle methods twice during development to help identify potential issues. This behavior is specific to the development environment and will not occur in the production build of your application.
 
 ![Network console](./img/networking.png)
