@@ -15,7 +15,7 @@ When you first time navigate to the assignment URL, you will be prompted to auth
 
 Then, You will see a list of names. Choose your full name from the list and Click "Join classroom".
 
-If your name isn’t listed, let your instructor know. Don’t choose someone else’s name!
+If your name isn’t listed, let your teacher know. Don’t choose someone else’s name!
 :::
 
 1. **Accept the Assignment**
