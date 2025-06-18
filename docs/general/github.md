@@ -59,6 +59,7 @@ git push
 Once:
 - Your code is pushed to GitHub and
 - The linter passes
+- Finally, **Mark assignment as done** in the Moodle.
 
 :::note
 You must push your code **before the deadline**, and the **linter must pass** for the submission to be valid. Late or failed-linting submissions will not be graded.
