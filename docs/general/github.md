@@ -7,7 +7,8 @@ sidebar_position: 5
 We'll use **GitHub Classroom** to manage your assignments. Please follow these instructions carefully for each submission. 
 
 :::note
-**This step must be done once at the start of the course**
+**This step must be done once at the start of the course.**
+
 A **roster** is a list of names for the students who participate in a course. We use that to link students names and GitHub accounts.
 
 When you first time navigate to the assignment URL, you will be prompted to authorize GitHub Classroom to access your classroom repositories. Click "Authorize GitHub" to continue.
