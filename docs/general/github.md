@@ -36,8 +36,7 @@ Replace the URL with your actual repo link.
 3. **Work on Your Code**
 - Install dependecies.
 - Follow the instructions in the README.md.
-- Edit the files as needed for the assignment.
-- Save your work.
+- Edit the files as needed for the assignment. Save your work.
 
  4. **Run the Linter Locally (Optional but Recommended)**
 - Before pushing, you can check your code using:
