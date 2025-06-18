@@ -2,16 +2,27 @@
 title: 'Github Classroom'
 sidebar_position: 5
 ---
-## Submitting assignments in Github Classroom
+## Submitting assignments
 
-We'll use GitHub Classroom to manage your assignments. Please follow these instructions carefully for each submission. 
+We'll use **GitHub Classroom** to manage your assignments. Please follow these instructions carefully for each submission. 
+
+:::NOTE [Roster]
+**This step must be done once at the start of the course**
+A roster is a list of names for the students who participate in a course. We use that to link students names and GitHub accounts.
+
+When you first time navigate to the assignment URL, you will be prompted to authorize GitHub Classroom to access your classroom repositories. Click "Authorize GitHub" to continue.
+
+Then, You will see a list of names. Choose your full name from the list and Click "Join classroom".
+
+If your name isn’t listed, let your instructor know. Don’t choose someone else’s name!
+:::
 
 1. **Accept the Assignment**
 - Go to the assignment link provided by your teacher (e.g., posted in Moodle or Teams).
 - Click the link and sign in with your GitHub account.
 - GitHub will create a private repository just for you.
 
-Example repo name: `frontend-assignment-1-username`
+Example repository name: `frontend-assignment-1-username`
 
  2. **Clone Your Repository**
 - Open a terminal or your code editor (e.g., VS Code), then:
@@ -41,9 +52,8 @@ git commit -m "Your comments"
 git push
 ```
 - This will trigger a GitHub Actions workflow.
-- Make Sure the Linter Workflow Passes
-- Go to your repository on GitHub and click the "Actions" tab.
-- You should see a workflow running. It must complete successfully (green checkmark).
+- Make Sure the Linter Workflow Passes.
+- Go to your repository on GitHub and click the "Actions" tab. You should see a workflow running. It must complete successfully (green checkmark).
 
  6. **Submission Complete**
 Once:
@@ -53,6 +63,8 @@ Once:
 :::NOTE
 You must push your code **before the deadline**, and the **linter must pass** for the submission to be valid. Late or failed-linting submissions will not be graded.
 :::
+
+You can also watch Github's video about GitHub classroom assignment [here](https://www.youtube.com/watch?v=ObaFRGp_Eko).
 
 ---
 ### Submitting assignments in Github
