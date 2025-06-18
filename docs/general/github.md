@@ -6,7 +6,7 @@ sidebar_position: 5
 
 We'll use **GitHub Classroom** to manage your assignments. Please follow these instructions carefully for each submission. 
 
-:::NOTE
+:::note
 **This step must be done once at the start of the course**
 A **roster** is a list of names for the students who participate in a course. We use that to link students names and GitHub accounts.
 
@@ -60,7 +60,7 @@ Once:
 - Your code is pushed to GitHub and
 - The linter passes
 
-:::NOTE
+:::note
 You must push your code **before the deadline**, and the **linter must pass** for the submission to be valid. Late or failed-linting submissions will not be graded.
 :::
 
