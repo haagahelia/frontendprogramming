@@ -10,18 +10,22 @@ Install Vitest using the following npm command. The `-D` flag is used to install
 npm install -D vitest
 ```
 ### Configuration
-Configuration of Vitest is unified with Vite and it is made in the **vite.config.ts** file's `test` property.
+Configuration of Vitest is unified with Vite and it is made in the **vite.config.ts** file's `test` property. The `defineConfig` is now imported from `vitest/config`. It's similar to Vite's `defineConfig` but specifically for Vitest and it contains `test` property:
 ```ts title="vite.config.ts"
-import { defineConfig } from "vite";
+// highlight-next-line
+import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
+  // highlight-start
   test: {
     // vitest configuration
   },
+  // highlight-end
 });
 ```
+The `test` is configuration section where you can specify Vitest-specific settings like: test environment, setup files, global test settings.
 
 ### Running tests
 You can run vitest in the project where it is installed using the npx. Or we can add the follwing npm scripts in the `package.json` file:
@@ -72,7 +76,7 @@ export default defineConfig({
 - `environment` - Defines the environment that will be used for testing (Node.js is default). We will use browser based environment **jsdom**.
 
 ### Creating tests
-Now, we will create our first test case using the todo list app that we have developed. If you follow this example, you should add 'My Todolist' header to your own App component. Our test cases renders the App component and check that there is 'My Todolist' text.
+Now, we will create our first test case using the todo list app that we have developed. Our test cases renders the App component and check that there is "My Todos" text.
 
 Create a new file called `App.test.tsx` in the `src` folder and add the first test case.
 
@@ -108,12 +112,12 @@ import { render, screen } from "@testing-library/react";
 test("renders App component", () => {
   render(<App />);
   // highlight-next-line
-  const header = screen.getByText(/My Todolist/i);
+  const header = screen.getByText(/My Todos/i);
 });
 ```
 Then, we check if the header text exists in DOM using the `toBeInTheDocument()` matcher from the jest-dom library. We have to import `@testing-library/jest-dom/vitest` to extend Vitest mathcers. Then, you can use jest-dom matchers with Vitest.
 
-The purpose of this test is to ensure that when the `App` component is rendered, it contains a header with the text "My Todolist". If the header is found, the test passes; otherwise, it will fail. 
+The purpose of this test is to ensure that when the `App` component is rendered, it contains a header with the text "My Todos". If the header is found, the test passes; otherwise, it will fail. 
 
 ```tsx title="App.test.tsx"
 import App from "./App";
@@ -124,7 +128,7 @@ import '@testing-library/jest-dom/vitest';
 
 test("renders App component", () => {
   render(<App />);
-  const header = screen.getByText(/My Todolist/i);
+  const header = screen.getByText(/My Todos/i);
   // highlight-next-line
   expect(header).toBeInTheDocument();
 });
@@ -138,21 +142,28 @@ You can change the text in the header and see how failed test case is shown.
 Let’s make one example test case for our todo list app that we created in the React Project section. We have stateless `TodoTable` component that we want to create a test case. Test case ensures that a new todo is displayed in the todo table.
 
 ```tsx title="TodoTable.tsx"
-import { TodoTableProps } from "./types"
+import type { TodoTableProps, Todo } from "./types"
 
 export default function TodoTable(props: TodoTableProps) {
   return (
     <div>
       <table id="todotable">
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Priority</th>
+          </tr>
+        </thead>
         <tbody>
-        {
-        props.todos.map((todo: Todo, index: number) => 
-          <tr key={index}>
-            <td>{todo.date}</td>
-            <td>{todo.description}</td>
-          </tr>)
-        }
-        </tbody>
+          {props.todos.map((todo: Todo, index: number) => (
+            <tr key={index}>
+              <td>{todo.description}</td>
+              <td>{todo.date}</td>
+              <td>{todo.priority}</td>
+            </tr>
+          ))}
+        </tbody>  
       </table>    
     </div>
   )
@@ -166,10 +177,11 @@ import TodoTable from './TodoTable';
 import { test, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import '@testing-library/jest-dom/vitest';
+import type { Todo } from './types';
 
 test('renders todotable', () => {
-  const row = [
-    {description: 'Go to coffee', date: '24.01.2025'}
+  const row: Todo[] = [
+    {description: 'Go to coffee', date: '24.01.2025', priority: 'low'}
   ];
 
   render(<TodoTable todos={row} />);
@@ -198,120 +210,127 @@ fireEvent.click(button);
 ```
 Let’s create a test where values are added to the description and date input elements and then the Add button is pressed. After that, a new todo item should be added to the table.
 
-The functionality that we want to test is now in the `App` component; therefore, we will add a new test into the **App.test.ts** file.
+The functionality that we want to test is now in the `TodoList` component; therefore, we will add a new test file **Todolist.test.tsx**.
 
-```tsx title="App.tsx"
-import { useState }  from 'react';
-import './App.css';
+```tsx title="TodoList.tsx"
+import { useState } from 'react';
+import type { Todo } from './types';
 import TodoTable from './TodoTable';
-import { Todo } from './types';
 
-function App() {
-  const [todo, setTodo] = useState<Todo>({description: '', date: ''});
+function TodoList() {
+  const [todo, setTodo] = useState<Todo>({description: '', date: '', priority: 'low'});
   const [todos, setTodos] = useState<Todo[]>([]);
-
+  
   const addTodo = () => {
-    setTodos([...todos, todo]);
-    setTodo({description: '', date: ''});
-  }
+    if (!todo.description || !todo.duedate) {
+      alert('Please fill in all fields');
+      return;
+    }
 
-  const inputChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTodo({...todo, [event.target.name]: event.target.value});
-  } 
+    setTodos([todo, ...todos]);
+    setTodo({description: '', date: '', priority: 'low'});
+  };
 
-  return (
-    <div className="App">
-      <h3>My Todolist</h3>
+  return(
+    <>
+      <h3>My Todos</h3>  
       <input 
-        type="text" 
         placeholder="Description" 
-        name="description" 
+        onChange={event => setTodo({...todo, description: event.target.value})} 
         value={todo.description} 
-        onChange={inputChanged} />
+      />
       <input 
-        type="text" 
-        placeholder="Date" 
-        name="date" 
+        placeholder="Date"
+        type="date" 
+        onChange={event => setTodo({...todo, date: event.target.value})} 
         value={todo.date} 
-        onChange={inputChanged} />
-      <button onClick={addTodo}>Add</button>
-      <TodoTable todos={todos} />
-    </div>
+      />
+      <select
+        title="Priority"
+        onChange={event => setTodo({...todo, priority: event.target.value as 'low' | 'medium' | 'high'})} 
+        value={todo.priority} 
+      >
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+      <button onClick={addTodo}>Add</button>  
+      <TodoTable todos={todos} /> 
+     </>
   );
+
 }
 
-export default App;
+export default TodoList;
 ```
-First, we will add new test case to the **App.test.tsx** file and we render the `App` component.
-```tsx title="App.test.tsx"
+First, we will add new test case to the **TodoList.test.tsx** file and we render the `TodoList` component.
+```tsx title="TodoList.test.tsx"
+import TodoList from "./TodoList";
+import { test } from "vitest";
+import { render } from "@testing-library/react";
+
 test("add todo", () => {
-  render(<App />);
+  render(<TodoList />);
 });
+
 ```
 To avoid rendering the component multiple times and encountering issues with finding elements, you should ensure that each test case is isolated. You can use the `cleanup` function from `@testing-library/react` to unmount components between tests. The `afterEach` is a function provided by Vitest. It allows you to run a code after each test case. This is useful for cleaning the state between tests to ensure that each test runs in isolation.
 
-```tsx title="App.test.tsx"
-import App from "./App";
-import { test, expect, afterEach } from "vitest";
-import { render, screen, fireEvent, cleanup } from "@testing-library/react";
-import '@testing-library/jest-dom/vitest';
+```tsx title="TodoList.test.tsx"
+import TodoList from "./TodoList";
+import { test, afterEach } from "vitest";
+import { render, cleanup } from "@testing-library/react";
 
-// Clean up after each test case
 afterEach(() => {
   cleanup();
 });
 
-...continue
+test("add todo", () => {
+  render(<TodoList />);
+});
 ```
 Next, we can add value to the input elements by using the `fireEvent` method. Correct input element can be found using `getByPlaceholderText` query that jest-dom provides.
 
-```js title="App.test.tsx"
+```js title="TodoList.test.tsx"
 const desc = screen.getByPlaceholderText("Description");
 fireEvent.change(desc, { target: { value: "Go to coffee" } });
 const date = screen.getByPlaceholderText("Date");
-fireEvent.change(date, { target: { value: "29.01.2025" } });
+fireEvent.change(date, { target: { value: "20.11.2025" } });
 ```
 
 Finally, we can use `fireEvent` to click the Add button. Correct button is found using the `getByText()` query (jest-dom)
 
-```ts title="App.test.tsx"
+```ts title="TodoList.test.tsx"
 const button = screen.getByText("Add");
 fireEvent.click(button);
 ```
 Now, the new todo item should be added to the table and we can use the following statements to assert that.
-```ts title="App.test.tsx"
-const table = screen.getByRole("table");
-expect(table).toHaveTextContent(/go to coffee/i);
+```ts title="TodoList.test.tsx"
+expect(screen.getByRole("table")).toHaveTextContent(/go to coffee/i);
 ```
-Below is the whole `App.test.tsx` code:
-```tsx title="App.test.tsx"
-import App from "./App";
-import { test, expect, afterEach } from "vitest";
-import { render, screen, fireEvent, cleanup } from "@testing-library/react";
+Below is the whole `TodoList.test.tsx` code:
+```tsx title="TodoList.test.tsx"
+import TodoList from "./TodoList";
+import { test, afterEach, expect } from "vitest";
+import { render, screen, cleanup, fireEvent } from "@testing-library/react";
 import '@testing-library/jest-dom/vitest';
 
-afterEach(() => {
-  cleanup();
-});
-
-test("renders App component", () => {
-  render(<App />);
-  const header = screen.getByText(/My Todolist/i);
-  expect(header).toBeInTheDocument();
-});
-
 test("add todo", () => {
-  render(<App />);
+  render(<TodoList />);
+
   const desc = screen.getByPlaceholderText("Description");
   fireEvent.change(desc, { target: { value: "Go to coffee" } });
   const date = screen.getByPlaceholderText("Date");
-  fireEvent.change(date, { target: { value: "29.01.2025" } });
-
+  fireEvent.change(date, { target: { value: "20.11.2025" } });
+  
   const button = screen.getByText("Add");
   fireEvent.click(button);
 
-  const table = screen.getByRole("table");
-  expect(table).toHaveTextContent(/go to coffee/i);  
+  expect(screen.getByRole("table")).toHaveTextContent(/go to coffee/i);
+});
+
+afterEach(() => {
+  cleanup();
 });
 ```
 ---

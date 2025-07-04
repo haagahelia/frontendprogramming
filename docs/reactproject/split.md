@@ -91,7 +91,7 @@ In Vite's TypeScript configuration is the setting `verbatimModuleSyntax: true` w
 
 Next, we render table in the `TodoTable` component.
 ```tsx title="TodoTable.tsx"
-import type { TodoTableProps } from './types'
+import type { TodoTableProps, Todo } from './types'
 
 function TodoTable(props: TodoTableProps) {
   return(
@@ -105,7 +105,7 @@ function TodoTable(props: TodoTableProps) {
         </tr>
       </thead>
       <tbody>
-        {props.todos.map((todo, index) => (
+        {props.todos.map((todo: Todo, index: number) => (
           <tr key={index}>
             <td>{todo.description}</td>
             <td>{todo.priority}</td>
