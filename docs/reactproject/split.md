@@ -67,7 +67,7 @@ export type TodoTableProps = {
 ```
 Then, we import the type into the `TodoTable` component where they are needed.
 ```tsx title="TodoTable.tsx"
-import { TodoTableProps } from './types';
+import type { TodoTableProps } from './types';
 
 function TodoTable(props: TodoTableProps) {
   return (
@@ -77,11 +77,21 @@ function TodoTable(props: TodoTableProps) {
 
 export default TodoTable;
 ```
-Now, you can also remove `Todo` type definition in the `TodoList` component and import if from the `types.ts` file.
+Now, you can also remove `Todo` type definition in the `TodoList` component and import it from the `types.ts` file.
+
+:::note[Type-only imports] 
+You might notice that we use the `type` keyword when importing types.
+```ts
+import type { TodoTableProps } from './types';
+```
+This is so called **type-only imports**. This tells TypeScript explicitly that `TodoTableProps` is a type that should only be used at compile time and not included in the runtime JavaScript output.
+
+In Vite's TypeScript configuration is the setting `verbatimModuleSyntax: true` which requires type-only imports for types.
+:::
 
 Next, we render table in the `TodoTable` component.
 ```tsx title="TodoTable.tsx"
-import { TodoTableProps } from './types'
+import type { TodoTableProps } from './types'
 
 function TodoTable(props: TodoTableProps) {
   return(
