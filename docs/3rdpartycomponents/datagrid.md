@@ -40,7 +40,7 @@ export type Todo = {
 Import `uuid` to the `TodoList` component and generate unique id when new todo is added:
 ```tsx title="TodoList.tsx"
 import { useState } from 'react';
-import { Todo } from './types';
+import type { Todo } from './types';
 import TodoTable from './TodoTable';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
