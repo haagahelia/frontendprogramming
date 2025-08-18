@@ -97,7 +97,7 @@ TypeScript will now perform type checking on the props passed to the `Greeting` 
 You can access props as an argument in the component function. For example, using the `props` keyword as shown in the previous example. You can display the value of the props by wrapping them inside curly brackets, for example `{props.firstName}` (= JSX, coming later).
 
 ```js
-function Greeting(props) {
+function Greeting(props: GreetingProps) {
   return(
     // highlight-next-line
     <h4>Hello {props.firstName}</h4>
@@ -119,7 +119,7 @@ type GreetingProps = {
   lastName: string;
 }
 
-function Greeting(props) {
+function Greeting(props: GreetingProps) {
   return(
     <h4>Hello {props.firstName} {props.lastName}</h4>
   )
@@ -128,7 +128,7 @@ function Greeting(props) {
 The common way is to use object destructuring on the `props` object:
 ```js
 // Destructing the props object --> {firstName, lastName}
-function Greeting({ firstName, lastName }) {
+function Greeting({ firstName, lastName }: GreetingProps) {
   return (
     <h4>Hello {firstName} {lastHame}</h4>
   );
