@@ -82,7 +82,7 @@ Now, you can also remove `Todo` type definition in the `TodoList` component and 
 :::note[Type-only imports] 
 You might notice that we use the `type` keyword when importing types.
 ```ts
-import type { TodoTableProps } from './types';
+import type { TodoTableProps, Todo } from './types';
 ```
 This is so called **type-only imports**. This tells TypeScript explicitly that `TodoTableProps` is a type that should only be used at compile time and not included in the runtime JavaScript output.
 

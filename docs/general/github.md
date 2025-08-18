@@ -33,8 +33,13 @@ cd frontend-assignment-1-username
 ```
 Replace the URL with your actual repo link.
 
-3. **Work on Your Code**
 - Install dependecies.
+```bash
+npm install
+```
+
+3. **Work on Your Code**
+
 - Follow the instructions in the README.md.
 - Edit the files as needed for the assignment. Save your work.
 
