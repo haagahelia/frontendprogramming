@@ -151,7 +151,7 @@ If we use the form element:
   <input 
     name="message"
     value={message}
-    onChange={handleChange} />s
+    onChange={handleChange} />
   <input type="submit" value="Add"/>
 </form>
 ```

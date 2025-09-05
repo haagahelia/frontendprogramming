@@ -303,7 +303,7 @@ setUser({ firstName: "Jim", lastName: "Doe" });
 ```
 When updating a single property within an object stored in React state, you must use the object spread syntax. React does not automatically merge updates to object state. The spread syntax (`...`) allows you to copy the existing properties of the object and then update only the property you want to change.
 ```ts
-setUser({ ...name, lastName: "Doe" });
+setUser({ ...user, lastName: "Doe" });
 // New value is now firstName: John, lastName: Doe
 ```
 The following code demonstrates how to manage object state in a React component using TypeScript. It defines a `User` type with `firstName` and `lastName` properties. The `useState` hook initializes the `user` state with a default object. The component displays a greeting based on the `firstName` and includes a button that updates the `firstName` property of the user state to 'John' using the object spread syntax.
