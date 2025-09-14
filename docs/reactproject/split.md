@@ -4,7 +4,7 @@ sidebar_position: 5
 ---
 Let's refactor the todolist example application by breaking it into multiple components.  
 :::note 
-In this part, we  use the todolist from the assignment, which also includes a date field and delete functionality.
+In this part, we  use the todolist, which also includes a date field. You should Add `Due date` to your todolist.
 ![Todolist](./img/todolist2.png)
 :::
 We will add a new stateless component called `TodoTable` and separate it from the `TodoList` component. After splitting the components, our component tree is the following:
