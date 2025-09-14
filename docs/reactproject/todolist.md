@@ -349,5 +349,38 @@ Implement the following features to your Todolist app:
 2. Add validation that an `alert` is shown if the `description` value is empty when new todo is added.
 :::
 
-Next, we will refactor our todo list app and split table to own stateless component.
+#### Delete functionality
 
+To implement a delete functionality we will add a `<button>` in each row for deleting that todo.
+
+```jsx
+<tbody>
+  {
+    todos.map((todo, index) => (
+      <tr key={index}>
+        <td>{todo.description}</td>
+        <td>{todo.duedate}</td>
+        <td>{todo.priority}</td>
+        <td>
+          <button onClick={() => handleDelete(index)}>Delete</button>
+        </td>
+      </tr>
+    ))
+  }
+</tbody>
+```
+
+The `onClick` prop assigns a function to run when the button is clicked.
+`() => handleDelete(index)` is an arrow function that calls the `handleDelete` function, passing the current todo's `index` as an argument. This allows the app to know which todo to remove from the list when the button is clicked.
+
+Next, we create `handleDelete` to remove the todo by index.
+
+```ts
+const handleDelete = (indexToDelete: number) => {
+  setTodos(todos.filter((_, index) => index !== indexToDelete));
+};
+```
+
+The `filter` creates a new array containing only items that match the condition. The `index !== indexToDelete` keeps all items except the one at indexToDelete.
+
+Next, we will refactor our todo list app and split table to own stateless component.
