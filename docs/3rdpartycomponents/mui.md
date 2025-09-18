@@ -181,7 +181,7 @@ The `label` prop is used to set label for `TextField` components.
       <Button variant="contained" onClick={addTodo}>
         Add
       </Button> 
-      <TodoTable todos={todos} handleDelete={deleteTodo} />
+      <TodoTable todos={todos} handleDelete={deleteTodo} /> 
     </>
   );
 ```
@@ -189,25 +189,22 @@ Material UI has three different text field variants (styles): Standard, Outlined
 
 The `TextField` component props are listed in https://mui.com/material-ui/api/text-field/.
 
-Next, we will replace the `select` element with a Material UI component. The Material UI `TextField` component can also handle select functionality by using its `select` prop. See examples at https://mui.com/material-ui/react-text-field/#select.
+### Select
 
+Next, we will replace the `select` element with a Material UI  `Select` component. 
 ```tsx title="TodoList.tsx"
-<TextField
-  title="Priority"
-  select
+<Select
+  sx={{ minWidth: 100 }}
+  autoWidth={false}
+  label="Priority"
   defaultValue="low"
-  slotProps={{
-    select: {
-      native: true,
-    },
-  }}
   onChange={event => setTodo({...todo, priority: event.target.value as 'low' | 'medium' | 'high'})} 
   value={todo.priority} 
 >
-  <option key="low" value="low">Low</option>
-  <option key="medium" value="medium">Medium</option>
-  <option key="high" value="high">High</option>
-</TextField>
+  <MenuItem key="low" value="low">Low</MenuItem>
+  <MenuItem key="medium" value="medium">Medium</MenuItem>
+  <MenuItem key="high" value="high">High</MenuItem>
+</Select>
 ```
 Now, your UI should look like the following:
 
@@ -231,21 +228,18 @@ return(
           onChange={event => setTodo({...todo, description: event.target.value})} 
           value={todo.description} 
         />
-        <TextField
-          title="Priority"
-          select
-          slotProps={{
-            select: {
-              native: true,
-            },
-          }}
+        <Select
+          sx={{ minWidth: 100 }}
+          autoWidth={false}
+          label="Priority"
+          defaultValue="low"
           onChange={event => setTodo({...todo, priority: event.target.value as 'low' | 'medium' | 'high'})} 
           value={todo.priority} 
         >
-          <option key="low" value="low">Low</option>
-          <option key="medium" value="medium">Medium</option>
-          <option key="high" value="high">High</option>
-        </TextField>
+          <MenuItem key="low" value="low">Low</MenuItem>
+          <MenuItem key="medium" value="medium">Medium</MenuItem>
+          <MenuItem key="high" value="high">High</MenuItem>
+        </Select>
         <TextField 
           label="Date"
           onChange={event => setTodo({...todo, date: event.target.value})} 
