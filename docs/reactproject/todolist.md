@@ -5,7 +5,7 @@ sidebar_position: 4
 ### Create Todolist project
 We will create a simple todolist app where the user enters tasks and all tasks are listed in a table.
 
-Create a new React App using **Vite** (Select React and JavaScript).
+Create a new React App using **Vite** (Select React and TypeScript).
 
 ```bash
 npm create vite@latest

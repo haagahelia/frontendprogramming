@@ -127,7 +127,7 @@ function App() {
         <input 
           value={person.firstName} 
           onChange={ event => setPerson({...person, firstName: event.target.value}) } />
-      </label>><br/>
+      </label><br/>
      <label>
         Last name:
         <input 
