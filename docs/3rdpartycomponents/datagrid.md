@@ -76,8 +76,8 @@ import { DataGrid } from '@mui/x-data-grid';
 Columns are defined using objects and the type of objects is `GridColDef`, that is interface provided by `DataGrid` (https://mui.com/x/api/data-grid/). The required `field` property is used to define where the field get its value. For example, the column with field `description` will display the value stored in `todo.description`.
 
 ```ts
-// Import GirdColDef
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
+// Import GirdColDef type
+import type { GridColDef } from '@mui/x-data-grid';
 
 // Define columns
 const columns: GridColDef[] = [

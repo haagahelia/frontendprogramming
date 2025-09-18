@@ -267,7 +267,7 @@ Now, your Todolist inputs and button should look the following:
 
 ![Todolist](./img/todolist6.png)
 
-#### Validation
+### Validation
 Form validation is a important part of front end development. The Material UI `TextField` component includes props that can be used in validation. For instance, if the description field in our Todolist app is mandatory, we can utilize the `required` prop of the `TextField` component. This will mark the field as required by displaying a `*`.
 
 ```tsx
