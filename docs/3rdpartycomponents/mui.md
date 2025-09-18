@@ -181,7 +181,7 @@ The `label` prop is used to set label for `TextField` components.
       <Button variant="contained" onClick={addTodo}>
         Add
       </Button> 
-      <TodoTable todos={todos} handleDelete={deleteTodo} /> 
+      <TodoTable todos={todos} handleDelete={deleteTodo} />
     </>
   );
 ```
@@ -189,22 +189,25 @@ Material UI has three different text field variants (styles): Standard, Outlined
 
 The `TextField` component props are listed in https://mui.com/material-ui/api/text-field/.
 
-### Select
+Next, we will replace the `select` element with a Material UI component. The Material UI `TextField` component can also handle select functionality by using its `select` prop. See examples at https://mui.com/material-ui/react-text-field/#select.
 
-Next, we will replace the `select` element with a Material UI  `Select` component. 
 ```tsx title="TodoList.tsx"
-<Select
-  sx={{ minWidth: 100 }}
-  autoWidth={false}
+<TextField
   label="Priority"
+  select
   defaultValue="low"
+  slotProps={{
+    select: {
+      native: true,
+    },
+  }}
   onChange={event => setTodo({...todo, priority: event.target.value as 'low' | 'medium' | 'high'})} 
   value={todo.priority} 
 >
-  <MenuItem key="low" value="low">Low</MenuItem>
-  <MenuItem key="medium" value="medium">Medium</MenuItem>
-  <MenuItem key="high" value="high">High</MenuItem>
-</Select>
+  <option key="low" value="low">Low</option>
+  <option key="medium" value="medium">Medium</option>
+  <option key="high" value="high">High</option>
+</TextField>
 ```
 Now, your UI should look like the following:
 
@@ -228,18 +231,21 @@ return(
           onChange={event => setTodo({...todo, description: event.target.value})} 
           value={todo.description} 
         />
-        <Select
-          sx={{ minWidth: 100 }}
-          autoWidth={false}
+        <TextField
           label="Priority"
-          defaultValue="low"
+          select
+          slotProps={{
+            select: {
+              native: true,
+            },
+          }}
           onChange={event => setTodo({...todo, priority: event.target.value as 'low' | 'medium' | 'high'})} 
           value={todo.priority} 
         >
-          <MenuItem key="low" value="low">Low</MenuItem>
-          <MenuItem key="medium" value="medium">Medium</MenuItem>
-          <MenuItem key="high" value="high">High</MenuItem>
-        </Select>
+          <option key="low" value="low">Low</option>
+          <option key="medium" value="medium">Medium</option>
+          <option key="high" value="high">High</option>
+        </TextField>
         <TextField 
           label="Date"
           onChange={event => setTodo({...todo, date: event.target.value})} 
@@ -267,7 +273,7 @@ Now, your Todolist inputs and button should look the following:
 
 ![Todolist](./img/todolist6.png)
 
-### Validation
+#### Validation
 Form validation is a important part of front end development. The Material UI `TextField` component includes props that can be used in validation. For instance, if the description field in our Todolist app is mandatory, we can utilize the `required` prop of the `TextField` component. This will mark the field as required by displaying a `*`.
 
 ```tsx
