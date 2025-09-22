@@ -122,6 +122,55 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 ![Router example](./img/react_router_example_browser.png)
 
+### Outlet context
+
+React Router's outlet context is a feature that allows you to pass data from a parent route to its nested child routes using the `<Outlet />` component. This is useful in applications with nested routing, where you want to share information (like user data, permissions, or layout state) with deeply nested components without prop-drilling.
+
+How it works:
+- In your parent route component, you render <Outlet context={someValue} />.
+- In your child route component, you use the `useOutletContext()` hook to access the value.
+
+For example, in the previous example, the `userName` state defined in the `App` component is passed to all nested routes using the `context` prop of the `<Outlet />` component. This allows any child component rendered by a route to access the `userName` value directly using the `useOutletContext()` hook.
+
+```tsx
+import './App.css'
+import { Link, Outlet } from 'react-router'
+import { useState } from 'react'
+
+function App() {
+  const [userName, setUserName] = useState("Lisa Smith");
+
+  return (
+    <>
+      <nav>
+        <Link to={"/"}>Home | </Link>
+        <Link to={"/about"}>About | </Link>
+        <Link to={"/contact"}>Contact</Link>
+      </nav>
+      <Outlet context={userName} />
+    </>
+  )
+}
+
+export default App
+```
+To access the value passed through the outlet context, use the `useOutletContext()` hook inside any child component rendered by a nested route. This hook retrieves the context value provided by the parent route's `<Outlet />`. For example, in the `Home` component, you can display the `userName` received from the parent:
+
+```tsx
+import { useOutletContext } from "react-router";
+
+
+export default function Home() {
+  const userName: string = useOutletContext();
+
+  return(
+    <>
+      <p>Welcome {userName}</p>
+    </>
+  );
+}
+```
+
 ### Error handling
 Navigation to a path that does not exist causes an error, and the React Router default error component is rendered:
 

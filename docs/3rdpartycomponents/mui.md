@@ -195,7 +195,7 @@ Next, we will replace the `select` element with a Material UI component. The Mat
 <TextField
   label="Priority"
   select
-  slotProps={{
+    slotProps={{
     select: {
       native: true,
     },
