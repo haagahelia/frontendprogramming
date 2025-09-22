@@ -122,6 +122,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 ![Router example](./img/react_router_example_browser.png)
 
+:::note
+You can also use **declarative mode** when defining the router. Then you define your routes directly in your component tree using `<Routes>` and `<Route>` components, rather than creating a router object in code. 
+
+Read more in https://reactrouter.com/start/declarative/routing
+:::
+
 ### Outlet context
 
 React Router's outlet context is a feature that allows you to pass data from a parent route to its nested child routes using the `<Outlet />` component. This is useful in applications with nested routing, where you want to share information (like user data, permissions, or layout state) with deeply nested components without prop-drilling.
