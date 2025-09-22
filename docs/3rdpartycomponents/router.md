@@ -133,7 +133,7 @@ Read more in https://reactrouter.com/start/declarative/routing
 React Router's outlet context is a feature that allows you to pass data from a parent route to its nested child routes using the `<Outlet />` component. This is useful in applications with nested routing, where you want to share information (like user data, permissions, or layout state) with deeply nested components without prop-drilling.
 
 How it works:
-- In your parent route component, you render <Outlet context={someValue} />.
+- In your parent route component, you render `<Outlet context={someValue} />`.
 - In your child route component, you use the `useOutletContext()` hook to access the value.
 
 For example, in the previous example, the `userName` state defined in the `App` component is passed to all nested routes using the `context` prop of the `<Outlet />` component. This allows any child component rendered by a route to access the `userName` value directly using the `useOutletContext()` hook.
