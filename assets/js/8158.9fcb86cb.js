@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkfrontendcourse=self.webpackChunkfrontendcourse||[]).push([[8158],{8158:(e,r,c)=>{c.r(r),c.d(r,{DocSearchModal:()=>s.a1});var s=c(3219)}}]);
