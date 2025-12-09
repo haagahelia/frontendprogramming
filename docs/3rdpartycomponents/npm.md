@@ -27,6 +27,19 @@ In our React projects, the list of dependencies can be really big, and often you
 ```bash
 npm list --depth=0
 ```
+### Security
+
+npm can identify security vulnerabilities in your dependencies. To check for vulnerabilities in your project, run:
+```bash
+npm audit
+```
+This command scans your dependencies and displays any known security issues. To automatically fix vulnerabilities use:
+```bash
+npm audit fix
+```
+It's recommended to regularly run `npm audit` to keep your dependencies secure and up to date. Read more in the [npm audit documentation](https://docs.npmjs.com/cli/v11/commands/npm-audit).
+
+
 ---
 ### Further reading
 - Npm Getting started:  https://docs.npmjs.com/getting-started
