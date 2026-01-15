@@ -11,11 +11,14 @@ In brief:
   - A module exports the variables and functions that it offers to be used outside the file.
   - Another module that uses the services of another module imports them from the module.
 
-### JavaScript modules / Export
+### Exporting and importing
 
-#### Named export
+#### Named exports
+
 You can export an identifier by adding the keyword `export` in front of the declaration. This is so called **named export**, and module can have multiple named exports. Named exports are useful for exporting variables and functions. 
 ```js
+// mylib.js
+
 export const myPi = 3.14;
 
 export function circleArea(r) {
@@ -27,37 +30,98 @@ Alternatively, you can export all the items you want to export in a single expor
 export { myPi, circleArea };
 ```
 The exported items can be imported into other files. The imported features can be used just like they were defined inside the same file.
-:::note 
-Imported variables are always considered `const`, no matter how they were declared.
-:::
+
 ```js
 import { myPi, circleArea } from './mylib.js';
 
 console.log('The value of pi is', myPi);
 console.log(circleArea(1.0));
 ```
-#### Default export
-Another way of exporting is to define a `default export` in the module. This is so called **default export** and you can have only one default export in module. In React, components are exported using the default export.
-```js
-const myPi = 3.14;
-const area = r => myPi * r * r;
-const circumference = r => 2 * myPi * r;
-export default { area, circumference }; // an object with two attributes
-```
-You can import the default like this: 
-```js
-import c from './mydefault.js' // default export is assigned to c
 
-console.log(c.area(4));
-console.log(c.circumference(4));
-```
-### JavaScript modules / Import
-You can import everything from a module by importing the module as an object. The exported items are accessible as properties of the module object.
+:::note 
+Imported variables are always considered `const`, no matter how they were declared.
+:::
+
+### Import everything as a module object
+
+You can import everything from a module without listing the identifiers by importing the module as an object. The exported items are accessible as properties of the module object.
+
 ```js
 import * as c from './mylib.js';
+
 console.log('The value of pi is', c.myPi);
 console.log(c.circleArea(1.0));
 ```
----
+
+### Renaming exports and imports
+
+You can rename exports and imports using the `as` keyword.
+
+```js
+// renaming exports
+const myPi = 3.14;
+
+function circleArea(r) {
+  return myPi*r*r;
+} 
+
+export { myPi as piValue, circleArea as areaOfCircle };
+```
+
+```js
+// renaming imports
+import { piValue as pi, areaOfCircle as area } from './mylib.js';
+  
+console.log('The value of pi is', pi);
+console.log(area(1.0));
+```
+
+#### Default exports
+
+Another way of exporting is to define a **default export** in the module. You can have only one default export in a module. In React, components are exported using the default export.
+
+```js
+// Hello.js
+
+export default function Hello() {
+  return <h1>Hello, world!</h1>;
+}
+```
+You can import the default export like this:
+```js
+import Hello from './Hello.js' // default export is assigned to Hello
+```
+Note that there are no curly braces around the default import.
+
+You can also export other things as default, for example an object with multiple attributes:
+```js
+// mydefault.js
+function area(r) {
+  return Math.PI * r * r;
+}
+
+function circumference(r) {
+  return 2 * Math.PI * r;
+}
+
+export default { area, circumference }; // an object with two attributes
+```
+
+You can import the default like this: 
+```js
+import circle from './mydefault.js' // default export is assigned to circle
+
+console.log(circle.area(4));
+console.log(circle.circumference(4));
+```
+
+
+:::note
+The default import syntax is actually shorthand for this:
+```js
+import { default as circle } from './mydefault.js'
+``` 
+:::
+
 ### Further Reading
 - MDN - JavaScript modules: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
