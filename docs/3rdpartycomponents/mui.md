@@ -22,7 +22,9 @@ The installed packages are saved to the `package.json` file's `dependencies` sec
 },
 ```
 :::note
-In the line `"@mui/material": "^6.4.7"` the `@mui/material` is the name of the installed package. The `"^6.4.7"` specifies the installed version. The `^` symbol inidcates that it allows to receive bug fixes and minor version updates. The major version updates are not allowed (For example, 7.0.0). The packages are automatically updated when you execute the `npm install` command. The installed versions are saved to the dependency lock file **package.lock.json** file. If the version is specified `"6.4.7"` it means that the project requires version 6.4.7 and updates are not received automatically.
+In the line `"@mui/material": "^6.4.7"` the `@mui/material` is the name of the installed package. The `"^6.4.7"` specifies the installed version. The `^` symbol indicates that it allows to receive bug fixes and minor version updates. The major version updates are not allowed (For example, 7.0.0). 
+
+The packages are automatically updated when you execute the `npm install` command. The installed versions are saved to the dependency lock file **package.lock.json** file. If the version is specified `"6.4.7"` it means that the project requires version 6.4.7 and updates are not received automatically.
 :::
 
 If you want to use icons, you should install the following library:
@@ -34,12 +36,14 @@ Material UI uses Google Roboto fonts and you can read the installation instructi
 We won't use Vite's default styling anymore. Remove the `css`-file imports from the `App.tsx` and `main.tsx` files.
 
 ### Container
-First, we will use the `Container` component, which is basic layout component, and it centers your app content horizontally. The maxWidth props defines the maximum width of our app, and we are using the largest value. We will also use the `CssBaseline` component that is used to fix inconsistencies across different browsers. Open the **App.tsx** file and do the following modifications:
+First, we will use the `Container` component, which is basic layout component, and it centers your app content horizontally. The maxWidth props defines the maximum width of our app, and we are using the largest value. We will also use the `CssBaseline` component that is used to fix inconsistencies across different browsers. 
+
+Open the **App.tsx** file and do the following modifications:
 
 ```jsx {2-3,8-9,11} title="App.tsx"
 import Container from '@mui/material/Container'
 import CssBaseline from '@mui/material/CssBaseline'
-import TodoList from ''./TodoList'
+import TodoList from './TodoList'
 
 function App() {
   return (
@@ -224,7 +228,7 @@ Next, we wrap the `Button` and `textField` components with the `Stack` component
 return(
     <>
       //highlight-next-line
-      <Stack direction="row" mt={2} spacing={2}>
+      <Stack direction="row" spacing={2}>
         <TextField 
           label="Description" 
           onChange={event => setTodo({...todo, description: event.target.value})} 
@@ -259,20 +263,53 @@ return(
     </>
   );
   ```
-Finally, we set alignment using the `justifyContent` and `alignItems` props to center components horizontally and vertically.
+Finally, we set some top margin with prop `mt` and center the components horizontally and vertically with props `justifyContent` and `alignItems`. The component specific style definitions are done in an `sx` prop to make the styling values theme-aware,
+ 
 ```tsx
 <Stack
   direction="row"
   spacing={2}
-  justifyContent="center"
-  alignItems="center"
+  sx={{ 
+    mt: 2, 
+    justifyContent: "center", 
+    alignItems: "center" 
+  }}
 >
 ```
 Now, your Todolist inputs and button should look the following:
 
 ![Todolist](./img/todolist6.png)
 
-#### Validation
+### The sx prop
+MUI components accept the `sx` prop for styling. It uses the MUI System, so you can set CSS-like properties in a JS object and use theme-aware values. This is the recommended way to do one-off component styling without creating a separate CSS file.
+
+Key ideas:
+- `sx` accepts a style object (or an array of objects).
+- Many properties support theme spacing, e.g. `mt: 2` maps to theme spacing units. 
+- You can use responsive values with breakpoints.
+
+```tsx
+<Stack
+  direction="row"
+  spacing={2}
+  sx={{
+    mt: 2,            // margin-top in theme units
+    px: 2,            // x-axis padding in theme units
+    gap: 2,           // flex gap in theme units
+    bgcolor: "background.paper",  // background-color as a theme palette token
+    py: { xs: 1, sm: 2 }, // responsive padding on y-axis
+  }}
+>
+  ...
+</Stack>
+```
+See the documentation for more information, e.g.
+- sx-prop: https://mui.com/system/getting-started/the-sx-prop/
+- system properties and their relation to theme: https://mui.com/system/properties/.
+- spacing props: https://mui.com/system/spacing/ 
+
+
+### Validation
 Form validation is a important part of front end development. The Material UI `TextField` component includes props that can be used in validation. For instance, if the description field in our Todolist app is mandatory, we can utilize the `required` prop of the `TextField` component. This will mark the field as required by displaying a `*`.
 
 ```tsx
@@ -360,7 +397,12 @@ function App() {
 Now, if you look the Todolist UI, it already looks nice but now you need some spacing between the app bar and text fields. You can use the `mt` prop of the `Stack` component to get top margin to your text fields and buttons. The Material UI provides custom props that you can use to change CSS properties https://mui.com/system/properties/#properties-reference-table
 
 ```jsx title="TodoList.jsx"
-<Stack mt={2} direction="row" spacing={2} justifyContent="center" alignItems="center">
+<Stack direction="row" spacing={2} 
+  sx={{ 
+    mt: 2, 
+    justifyContent: "center", 
+    alignItems: "center" 
+  }}>
 ```
 Finally, your Todolist should look like the following screenshot:
 
