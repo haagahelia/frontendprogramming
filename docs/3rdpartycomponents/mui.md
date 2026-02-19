@@ -43,7 +43,7 @@ Open the **App.tsx** file and do the following modifications:
 ```jsx {2-3,8-9,11} title="App.tsx"
 import Container from '@mui/material/Container'
 import CssBaseline from '@mui/material/CssBaseline'
-import TodoList from ''./TodoList'
+import TodoList from './TodoList'
 
 function App() {
   return (
@@ -228,11 +228,7 @@ Next, we wrap the `Button` and `textField` components with the `Stack` component
 return(
     <>
       //highlight-next-line
-      <Stack direction="row" spacing={2}
-        sx={{ 
-          mt: 2 
-        }}
-      >
+      <Stack direction="row" spacing={2}>
         <TextField 
           label="Description" 
           onChange={event => setTodo({...todo, description: event.target.value})} 
@@ -267,7 +263,8 @@ return(
     </>
   );
   ```
-Finally, we set alignment using the `justifyContent` and `alignItems` props to center components horizontally and vertically.
+Finally, we set some top margin with prop `mt` and center the components horizontally and vertically with props `justifyContent` and `alignItems`. The component specific style definitions are done in an `sx` prop to make the styling values theme-aware,
+ 
 ```tsx
 <Stack
   direction="row"
@@ -283,7 +280,36 @@ Now, your Todolist inputs and button should look the following:
 
 ![Todolist](./img/todolist6.png)
 
-#### Validation
+### The sx prop
+MUI components accept the `sx` prop for styling. It uses the MUI System, so you can set CSS-like properties in a JS object and use theme-aware values. This is the recommended way to do one-off component styling without creating a separate CSS file.
+
+Key ideas:
+- `sx` accepts a style object (or an array of objects).
+- Many properties support theme spacing, e.g. `mt: 2` maps to theme spacing units. 
+- You can use responsive values with breakpoints.
+
+```tsx
+<Stack
+  direction="row"
+  spacing={2}
+  sx={{
+    mt: 2,            // margin-top in theme units
+    px: 2,            // x-axis padding in theme units
+    gap: 2,           // flex gap in theme units
+    bgcolor: "background.paper",  // background-color as a theme palette token
+    py: { xs: 1, sm: 2 }, // responsive padding on y-axis
+  }}
+>
+  ...
+</Stack>
+```
+See the documentation for more information, e.g.
+- sx-prop: https://mui.com/system/getting-started/the-sx-prop/
+- system properties and their relation to theme: https://mui.com/system/properties/.
+- spacing props: https://mui.com/system/spacing/ 
+
+
+### Validation
 Form validation is a important part of front end development. The Material UI `TextField` component includes props that can be used in validation. For instance, if the description field in our Todolist app is mandatory, we can utilize the `required` prop of the `TextField` component. This will mark the field as required by displaying a `*`.
 
 ```tsx
