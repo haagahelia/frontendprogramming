@@ -146,7 +146,7 @@ const deleteTodo = (id: string) => {
   setTodos(todos.filter(todo => id !== todo.id));
 };
 ```
-By default, columns are assumend to show strings in `DataGrid`. You can define column type to be `action`. The `action` column type is used to define a column that contains action buttons or icons.
+By default, columns are assumend to show strings in `DataGrid`. You can define column type to be `actions`. The `actions` column type is used to define a column that contains action buttons or icons.
 
 ```ts title="TodoTable.tsx"
 const columns: GridColDef[] = [
@@ -156,11 +156,16 @@ const columns: GridColDef[] = [
   {
     field: 'actions',
     type: 'actions',
+    headerName: 'Actions',
     // action buttons
   },
 ]
 ```
-If the column type is `actions`, you need to provide a `getActions` function that returns an array of actions available for each row (`React.ReactElement<GridActionsCellItemProps>[]`).  The type of the `params` that is passed to `getActions` funcion is `GridRowParams`. Import `GridRowParams` from `@mui/x-data-grid`. 
+If the column type is `actions`, you need to provide a `renderCell` prop that returns an array of actions available for each row (`React.ReactElement<GridActionsCellItemProps>[]`).  
+
+If the column type is `actions`, you need to provide a `renderCell` function that returns `GridActionsCell` component with `GridActionsCellItem` elements as children. The `renderCell` method allows you to customize cell rendering to display components like buttons or icons instead of plain text (see https://mui.com/x/react-data-grid/column-definition/#rendering-cells).
+
+The type of the `params` that is passed to `renderCell` function is `GridRenderCellParams`. Import `GridRenderCellParams` from `@mui/x-data-grid`. 
 ```ts title="TodoTable.tsx"
 const columns: GridColDef[] = [
   { field: 'description', headerName: 'Description', width: 300 },
@@ -169,15 +174,18 @@ const columns: GridColDef[] = [
   {
     field: 'actions',
     type: 'actions',
+    headerName: 'Actions',
     //highlight-start
-    getActions: (params: GridRowParams) => [
+    renderCell: (params: GridRenderCellParams) => [
       // actions
     ]
     //highlight-end
   },
 ]
 ```
-The `params` that is passed to `getActions` function contains `row` property that is the row model of the row that the current cell belongs to. You can use that to access row values (https://mui.com/x/api/data-grid/grid-row-params/).
+The `params` object passed to `renderCell` function includes:
+- `row` property: Contains the row model for accessing values from the current row.
+- `id` property: Provides the grid row id, which can be used for row deletion.
 
 Next, we will implement the actions. Import the delete icon from `mui/x-data-grid`.
 ```ts
@@ -185,7 +193,11 @@ import DeleteIcon from '@mui/icons-material/Delete';
 ```
 You can explore the icons available in the Material Icons library here: https://mui.com/material-ui/material-icons/.
 
-Next, import and display `GridActionsCellItem` to implement actions. The `icon` prop specifies the icon to display, and the `onClick` event handler defines the function to execute when the action is clicked. In our case, we call `handleDelete` function and pass todo `id` as an argument.
+Next, import and display `GirdActionsCell` and `GridActionsCellItem` to implement actions. The `icon` prop specifies the icon to display, and the `onClick` event handler defines the function to execute when the action is clicked. In our case, we call `handleDelete` function and pass todo `id` as an argument.
+
+
+https://react.dev/learn/passing-props-to-a-component#forwarding-props-with-the-jsx-spread-syntax
+
 ```ts title="TodoTable.tsx"
 const columns: GridColDef[] = [
   { field: 'description', headerName: 'Description', width: 300 },
@@ -194,20 +206,37 @@ const columns: GridColDef[] = [
   {
     field: 'actions',
     type: 'actions',
-    getActions: (params: GridRowParams) => [
+    headerName: 'Actions',
+    renderCell: (params: GridRenderCellParams) => [
       //highlight-start
-      <GridActionsCellItem 
-        icon={<DeleteIcon />} 
-        onClick={() => props.handleDelete(params.row.id)} 
-        label="Delete" />,
-        //highlight-end
+      <GridActionsCell {...params}>
+        <GridActionsCellItem 
+          icon={<DeleteIcon />} 
+          onClick={() => props.handleDelete(params.id as string)} 
+          label="Delete" />
+      </GridActionsCell>
+    //highlight-end
     ]
   },
 ]
 ```
+
+The `{...params}` in `GridActionsCell` is so called **forwarding props** that is standard pattern in React. It forwards props to the `GridActionsCellItem` components without listing each of their names. You can read more in React documentation [here](https://react.dev/learn/passing-props-to-a-component#forwarding-props-with-the-jsx-spread-syntax).
+
 Now, you can see delete icon in each row and when you click it, the row is deleted:
 
 ![Todolist](./img/todolist_delete.png)
+
+If you want to show actions in row menu you can use `showInMenu` prop:
+
+```jsx
+<GridActionsCellItem 
+  icon={<DeleteIcon />}
+  onClick={() => props.handleDelete(params.id as string)}
+  label="Delete"
+  showInMenu
+/>
+```
 
 You can read more about `DataGrid` column types in https://mui.com/x/react-data-grid/column-definition/#column-types.
 
