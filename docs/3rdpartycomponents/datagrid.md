@@ -146,7 +146,7 @@ const deleteTodo = (id: string) => {
   setTodos(todos.filter(todo => id !== todo.id));
 };
 ```
-By default, columns are assumend to show strings in `DataGrid`. You can define column type to be `actions`. The `actions` column type is used to define a column that contains action buttons or icons.
+By default, columns are shown as strings in `DataGrid`. You can define column type to be `actions`. The `actions` column type is used to define a column that contains action buttons or icons.
 
 ```ts title="TodoTable.tsx"
 const columns: GridColDef[] = [
