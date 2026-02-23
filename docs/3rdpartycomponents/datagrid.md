@@ -161,8 +161,6 @@ const columns: GridColDef[] = [
   },
 ]
 ```
-If the column type is `actions`, you need to provide a `renderCell` prop that returns an array of actions available for each row (`React.ReactElement<GridActionsCellItemProps>[]`).  
-
 If the column type is `actions`, you need to provide a `renderCell` function that returns `GridActionsCell` component with `GridActionsCellItem` elements as children. The `renderCell` method allows you to customize cell rendering to display components like buttons or icons instead of plain text (see https://mui.com/x/react-data-grid/column-definition/#rendering-cells).
 
 The type of the `params` that is passed to `renderCell` function is `GridRenderCellParams`. Import `GridRenderCellParams` from `@mui/x-data-grid`. 
