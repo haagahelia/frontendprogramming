@@ -339,7 +339,7 @@ afterEach(() => {
 
 You can run coverage test using the command: 
 ```
-npm run coverage`
+npm run coverage
 ```
 Vitest is using v8 (https://v8.dev/) to support coverage testing. When you start the coverage test, it will prompt you to install the v8 package automatically.
 
