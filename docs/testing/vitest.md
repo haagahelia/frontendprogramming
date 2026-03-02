@@ -335,9 +335,12 @@ afterEach(() => {
 ---
 ### Coverage testing
 
-- _"In computer science, code coverage is a percentage measure of the degree to which the source code of a program is executed when a particular test suite is run"_ - Wikipedia
-- You can run coverage test using the command `npm run coverage`
+ _"In computer science, code coverage is a percentage measure of the degree to which the source code of a program is executed when a particular test suite is run"_ - Wikipedia
 
+You can run coverage test using the command: 
+```
+npm run coverage`
+```
 Vitest is using v8 (https://v8.dev/) to support coverage testing. When you start the coverage test, it will prompt you to install the v8 package automatically.
 
 ![Coverage test](./img/coverage.PNG)
