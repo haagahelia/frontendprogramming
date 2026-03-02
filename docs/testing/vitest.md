@@ -172,7 +172,6 @@ export default function TodoTable(props: TodoTableProps) {
 The following code show test case for the stateless `TodoTable` component. It adds one todo item to the table and check that it is displayed. We use `getByRole()` to find the `table` element and `toHaveTextContent()` for assertion.
 
 ```tsx title="TodoTable.test.tsx"
-...
 import TodoTable from './TodoTable';
 import { test, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
@@ -338,6 +337,8 @@ afterEach(() => {
 
 - _"In computer science, code coverage is a percentage measure of the degree to which the source code of a program is executed when a particular test suite is run"_ - Wikipedia
 - You can run coverage test using the command `npm run coverage`
+
+Vitest is using v8 (https://v8.dev/) to support coverage testing. When you start the coverage test, it will prompt you to install the v8 package automatically.
 
 ![Coverage test](./img/coverage.PNG)
 
