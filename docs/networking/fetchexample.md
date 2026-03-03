@@ -63,7 +63,7 @@ Then, we will use conditional rendering. We will check the `media_type` and rend
 if (data?.media_type === "image") {
   return (
     <>
-      <p>Explanation: {data.explanation}</p>
+      <p>Explanation: {data?.explanation}</p>
       <img alt="APOD image" src={data.url} />
     </>
   );
@@ -72,7 +72,9 @@ else {
   return (
     <>
       <p>Explanation: {data?.explanation}</p>
-      <iframe width="520" height="415" src={data?.url}></iframe>
+      <video controls width="500" height="500">
+        <source src={data?.url} type="video/mp4" />
+      </video> 
     </>
   );
 }
@@ -82,8 +84,14 @@ Or using inline conditional rendering
 return (
   <>
     <p>Explanation: {data?.explanation}</p>
-    { data?.media_type === 'video' && <iframe width="520" height="415" src={data.url}></iframe> }          
-    { data?.media_type === 'image' && <img  alt="APOD image" src={data.url} /> }
+    { data?.media_type === 'video' &&      { 
+        <video controls width="500" height="500">
+          <source src={data?.url} type="video/mp4" />
+        </video> 
+    }        
+    { data?.media_type === 'image' && 
+        <img  alt="APOD image" src={data?.url} /> 
+    }
   </>
 );
 ```
@@ -118,8 +126,14 @@ else {
   return (
     <>
       <p>Explanation: {data?.explanation}</p>
-      { data?.media_type === 'video' && <iframe width="520" height="415" src={data.url}></iframe> }          
-      { data?.media_type === 'image' && <img  alt="APOD image" src={data.url} /> }
+      { data?.media_type === 'video' &&      { 
+        <video controls width="500" height="500">
+          <source src={data?.url} type="video/mp4" />
+        </video> 
+      }        
+      { data?.media_type === 'image' && 
+        <img  alt="APOD image" src={data?.url} /> 
+      }
     </>
   );    
 }
