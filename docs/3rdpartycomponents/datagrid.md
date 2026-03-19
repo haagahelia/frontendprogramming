@@ -174,9 +174,8 @@ const columns: GridColDef[] = [
     type: 'actions',
     headerName: 'Actions',
     //highlight-start
-    renderCell: (params: GridRenderCellParams) => [
+    renderCell: (params: GridRenderCellParams) => 
       // actions
-    ]
     //highlight-end
   },
 ]
@@ -205,7 +204,7 @@ const columns: GridColDef[] = [
     field: 'actions',
     type: 'actions',
     headerName: 'Actions',
-    renderCell: (params: GridRenderCellParams) => [
+    renderCell: (params: GridRenderCellParams) =>
       //highlight-start
       <GridActionsCell {...params}>
         <GridActionsCellItem 
@@ -214,7 +213,6 @@ const columns: GridColDef[] = [
           label="Delete" />
       </GridActionsCell>
     //highlight-end
-    ]
   },
 ]
 ```
