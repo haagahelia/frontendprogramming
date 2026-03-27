@@ -59,10 +59,11 @@ Install the libraries using the following npm command:
 ```bash
 npm install -D jsdom @testing-library/react @testing-library/jest-dom
 ```
-We also have to change our vitest configuration.
+We also have to modify vite `test` configuration:
 
-```ts title="vitest.config.ts"
+```ts title="vite.config.ts"
 import { defineConfig } from "vitest/config";
+import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
