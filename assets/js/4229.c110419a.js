@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkfrontendcourse=globalThis.webpackChunkfrontendcourse||[]).push([[4229],{4229(e,n,r){r.d(n,{createCynefinServices:()=>s.t});var s=r(3486);r(1400)}}]);
