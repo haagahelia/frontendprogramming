@@ -1,21 +1,15 @@
 ---
-title: 'Github Classroom'
+title: 'Classroom50'
 sidebar_position: 5
 ---
 ## Submitting assignments
 
-We'll use **GitHub Classroom** to manage your assignments. Please follow these instructions carefully for each submission. 
+We'll use **Classroom50** (https://classroom50.org/) to manage your assignments. Please follow these instructions carefully for each submission. 
 
 :::note
 **This step must be done once at the start of the course.**
 
-A **roster** is a list of names for the students who participate in a course. We use that to link students names and GitHub accounts.
-
-When you first time navigate to the assignment URL, you will be prompted to authorize GitHub Classroom to access your classroom repositories. Click "Authorize GitHub" to continue.
-
-Then, You will see a list of names. Choose your full name from the list and Click "Join classroom".
-
-If your name isn’t listed, let your teacher know. Don’t choose someone else’s name!
+GitHub username is required to be able to submit assignments, and the pre-assignment is where you submit your GitHub username before the course starts.
 :::
 
 1. **Accept the Assignment**
@@ -37,7 +31,6 @@ Replace the URL with your actual repo link.
 ```bash
 npm install
 ```
-
 3. **Work on Your Code**
 
 - Follow the instructions in the README.md.
@@ -70,10 +63,8 @@ Once:
 You must push your code **before the deadline**, and the **linter must pass** for the submission to be valid. Late or failed-linting submissions will not be graded.
 :::
 
-You can also watch Github's video about GitHub classroom assignment [here](https://www.youtube.com/watch?v=ObaFRGp_Eko).
-
 ---
-### Submitting assignments in Github
+## Submitting assignments in Github
 
 1. Create the project for the exercise. Create a local git repository in your Vite project.
 
