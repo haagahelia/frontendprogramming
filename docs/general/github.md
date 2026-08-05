@@ -4,7 +4,7 @@ sidebar_position: 5
 ---
 ## Submitting assignments
 
-We'll use **Classroom50** (https://classroom50.org/) to manage your assignments. Please follow these instructions carefully for each submission. 
+We'll use **Classroom50** (https://classroom50.org/) to manage your assignments. Please follow these instructions carefully for each submission.
 
 :::note
 **This step must be done once at the start of the course.**
@@ -12,9 +12,14 @@ We'll use **Classroom50** (https://classroom50.org/) to manage your assignments.
 GitHub username is required to be able to submit assignments, and the pre-assignment is where you submit your GitHub username before the course starts.
 :::
 
+There are two recommended ways to use Classroom50:
+1. **Web UI** – use the browser-based interface for managing assignments at [classroom50.org](https://classroom50.org/). The student guide can be found here: [Web Student Guide](https://github.com/foundation50/classroom50/wiki/Web-Student-Guide).
+2. **VS Code extension** – use the extension for a more integrated workflow in your editor: [Classroom50 VS Code extension](https://marketplace.visualstudio.com/items?itemName=juhahinkula.classroom-extension).
+
+**These steps explain how to complete and submit assignments using Classroom50.**
+
 1. **Accept the Assignment**
-- Go to the assignment link provided by your teacher (e.g., posted in Moodle or Teams).
-- Click the link and sign in with your GitHub account.
+- Go to the assignment link provided by your teacher (e.g., posted in Moodle or Teams). Or accept assignment using VS Code extension.
 - GitHub will create a private repository just for you.
 
 Example repository name: `frontend-assignment-1-username`
@@ -32,7 +37,6 @@ Replace the URL with your actual repo link.
 npm install
 ```
 3. **Work on Your Code**
-
 - Follow the instructions in the README.md.
 - Edit the files as needed for the assignment. Save your work.
 
@@ -62,47 +66,3 @@ Once:
 :::note
 You must push your code **before the deadline**, and the **linter must pass** for the submission to be valid. Late or failed-linting submissions will not be graded.
 :::
-
----
-## Submitting assignments in Github
-
-1. Create the project for the exercise. Create a local git repository in your Vite project.
-
-```bash
-git init
-```
-
-2. Complete the exercise and store it in your repository (add, commit).
-
-```bash
-git add .
-git commit -m "Exercise complete"
-```
-
-3. Create a repository for your project in GitHub and synchronize your changes there:
-- Create a new, completely empty repository in GitHub.
-- Configure this repository as a remote for your local repository and push the local changes to
-your GitHub repository according to GitHub instructions (…or push an existing repository from
-the command line), for example:
-```bash
-git remote add origin https://github.com/<repository_name>.git
-git push -u origin master
-```
-Example explained:
-- Configure a remote called origin in your local repository, the address of the remote is given in the command.
-- Then synchronize all changes in branch master of your local repository to remote repository origin.
-Option -u (--set-upstream) configures the local master branch to follow the master branch in the remote repository. Thus it is no longer necessary to define the target repository and source branch in push operations, `git push` suffices.
-If your repository is not public, grant teacher's GitHub user access to the repository (Settings/Collaborators/Add people).
-
-**Submit just a link to the repository in GitHub.**
-
-When you make further changes in your project, commit the changes in your local repository and push them to the GitHub repository:
-```bash
-git add .
-$ git commit -m "Exercise enhanced"
-$ git push
-```
-
----
-### Further reading
-- https://docs.github.com/en/get-started/start-your-journey
