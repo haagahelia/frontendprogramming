@@ -10,7 +10,13 @@ We'll use **Classroom50** (https://classroom50.org/) to manage your assignments.
 **This step must be done once at the start of the course.**
 
 GitHub username is required to be able to submit assignments, and the pre-assignment is where you submit your GitHub username before the course starts.
+
+**After the teacher has added you to the class, accept the organization invitation.**
+
+Before starting, you must accept the invitation to the **hh-frontend** organization. Check the email connected to your GitHub account, or in GitHub click your profile picture (top-right) -> **Organizations** and review your pending invitations.
 :::
+
+### How to use Classroom50
 
 There are two recommended ways to use Classroom50:
 1. **Web UI** – use the browser-based interface for managing assignments at [classroom50.org](https://classroom50.org/). The student guide can be found here: [Web Student Guide](https://github.com/foundation50/classroom50/wiki/Web-Student-Guide).
