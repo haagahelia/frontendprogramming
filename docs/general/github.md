@@ -18,14 +18,13 @@ Before starting, you must accept the invitation to the **hh-frontend** organizat
 
 ### How to use Classroom50
 
-There are two recommended ways to use Classroom50:
-1. **Web UI** – use the browser-based interface for managing assignments at [classroom50.org](https://classroom50.org/). The student guide can be found here: [Web Student Guide](https://github.com/foundation50/classroom50/wiki/Web-Student-Guide).
-2. **VS Code extension** – use the extension for a more integrated workflow in your editor: [Classroom50 VS Code extension](https://marketplace.visualstudio.com/items?itemName=juhahinkula.classroom-extension).
+**Web UI** – use the browser-based interface for managing assignments at [classroom50.org](https://classroom50.org/). The student guide can be found here: [Web Student Guide](https://github.com/foundation50/classroom50/wiki/Web-Student-Guide).
+
 
 **These steps explain how to complete and submit assignments using Classroom50.**
 
 1. **Accept the Assignment**
-- Go to the assignment link provided by your teacher (e.g., posted in Moodle or Teams). Or accept assignment using VS Code extension.
+- Go to the assignment link provided by your teacher (e.g., posted in Moodle or Teams). Or accept assignment using Web UI.
 - GitHub will create a private repository just for you.
 
 Example repository name: `frontend-assignment-1-username`
