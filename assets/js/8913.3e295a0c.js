@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkfrontendcourse||=[]).push([[8913],{8913(s,e,r){r.r(e)}}]);

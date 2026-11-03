@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunkfrontendcourse=globalThis.webpackChunkfrontendcourse||[]).push([[388],{388(e,r,a){a.d(r,{createRailroadServices:()=>s.l});var s=a(805);a(1400)}}]);

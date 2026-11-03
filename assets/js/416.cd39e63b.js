@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkfrontendcourse||=[]).push([[416],{416(s,e,r){r.r(e)}}]);

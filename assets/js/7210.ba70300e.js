@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunkfrontendcourse=globalThis.webpackChunkfrontendcourse||[]).push([[7210],{7210(e,r,a){a.d(r,{createRadarServices:()=>s.f});var s=a(7899);a(1400)}}]);
